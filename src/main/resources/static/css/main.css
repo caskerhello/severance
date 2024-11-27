@@ -1,0 +1,55 @@
+@charset "UTF-8";
+
+.container{
+    display: flex;
+    justify-content: center;
+}
+
+.link {
+    width: 250px;
+    height: 80px;
+    display: inline-flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    justify-content: center;
+}
+
+.link1{
+    background-color: #2faaff;
+}
+
+.link2{
+    background-color: #0094fb;
+}
+
+.link3{
+    background-color: #007cfb;
+}
+
+.link4{
+    background-color: #0054d1;
+}
+
+.link5{
+    background-color: #003d7d;
+}
+
+/* 아이콘 크기와 간격 */
+.link i {
+    font-size: 28px;
+    margin-left: 8px;
+}
+
+.link .text {
+    font-size: 28px;
+    font-weight: 600;
+    margin-right: 20px;
+}
+
+/* 호버 시 배경색 변화 */
+.link:hover {
+    background-color: #1a4db2;
+}
+

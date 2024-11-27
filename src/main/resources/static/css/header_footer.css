@@ -1,0 +1,147 @@
+@charset "UTF-8";
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	list-style: none;
+	text-decoration: none;
+	scroll-behavior: smooth;
+	font-family: "Jost", sans-serif;
+}
+
+.logo img{
+	width: 60px;
+	height: 60px;
+	display: block;
+}
+
+.logo-container {
+	display: flex;
+	align-items: center; /* 수직 정렬 */
+}
+
+.logo-text {
+	font-size: 30px;
+	font-weight: bold;
+	color: #000000;
+}
+
+:root{
+	--bg-color: #ffffff;
+	--main-color: #275DE8;
+	--text-color: #000000;
+	--other-color: #83868c;
+	--second-color: #d9d9d9;
+
+	--h1-font:6rem;
+	--h2-font:2.8rem;
+	--p-font:1.5rem;
+
+}
+
+
+header{
+	display: flex;
+	width: 100%;
+	top: 0;
+	right: 0;
+	z-index: 1000;
+	align-items: center;
+	justify-content: space-between;
+	padding: 20px 10%;
+	transition: all .6s ease;
+}
+
+.navlist{
+	display: flex;
+}
+
+.navlist a{
+	display: inline-block;
+	font-size: var(--p-font);
+	color: var(--text-color);
+	margin: 0 30px;
+	padding: 2px 0;
+	border-bottom: transparent;
+	transition: all .6s ease;
+}
+
+.navlist a:hover{
+	color: var(--main-color);
+	border-bottom: 2px solid var(--main-color);
+}
+
+.nav-content{
+	display: flex;
+	align-items: center;
+}
+
+.nav-content a{
+	display: inline-block;
+	font-size: 30px;
+	color: var(--text-color);
+	margin: 0 10px;
+	transition: all .6s ease;
+}
+
+.nav-content a:hover {
+	transform: scale(1.1);
+	color: var(--main-color);
+}
+
+#menu-icon{
+	font-size: 30px;
+	z-index: 10001;
+	cursor: pointer;
+	margin-left: 10px;
+	display: none;
+}
+
+
+
+section{
+	padding: 80px 10% 80px;
+}
+
+
+.center{
+	position: relative;
+	width: 80%;
+	height: 600px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	background: url(../images/center.jpg);
+	background-size: cover;
+	background-position: center;
+	margin: 0 auto;
+}
+
+.center-text h1{
+	font-size: var(--h1-font);
+	color: var(--bg-color);
+	margin: 10px 0 20px;
+	line-height: 1;
+}
+
+.center-text h2{
+	color: #343a40;
+	margin: 10px 0 20px;
+	line-height: 1;
+	font-weight: normal;
+}
+
+.part1 {
+	font-size: 3rem; /* 공감, 부분의 크기 */
+	color: #343a40; /* 공감, 색상 */
+	font-weight: 700;
+}
+
+.part2 {
+	font-size: 3rem; /* 또 하나의 치료 부분의 크기 */
+	color: #343a40; /* 또 하나의 치료 색상 */
+	font-weight: normal;
+
+}
