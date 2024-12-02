@@ -28,7 +28,7 @@
 <header>
     <div class="logo-container">
         <a href="#" class="logo"><img src="/images/logo.png"></a>
-        <a href="#" class="logo-text">하이미디어 병 원</a>
+        <a href="#" class="logo-text">하이미디어 병원</a>
     </div>
 
     <input type="checkbox" id="menu-toggle" class="menu-checkbox" />
