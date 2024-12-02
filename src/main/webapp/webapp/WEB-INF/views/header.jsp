@@ -68,7 +68,7 @@
             <span class="part1">공감,</span>
             <span class="part2">또 하나의 치료</span>
         </h1>
-        <h2>질병 치료를 넘어 환자의 마음까지  치유하겠습니다.</h2>
+        <h2>질병 치료를 넘어 환자의 마음까지 치유하겠습니다.</h2>
     </div>
 </section>
 </div>

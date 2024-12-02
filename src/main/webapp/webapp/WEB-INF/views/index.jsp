@@ -11,7 +11,7 @@
         <div class="hospital-link">
             <div class="track">
                 <a class="link link1" href="#" title="새창">
-                    <span class="text">내과</span>
+                    <span class="text">내 과</span>
                     <i class='bx bx-link-external'></i>
                 </a>
 
