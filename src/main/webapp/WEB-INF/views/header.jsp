@@ -28,8 +28,15 @@
 <header>
     <div class="logo-container">
         <a href="#" class="logo"><img src="/images/logo.png"></a>
-      <span class="logo-text">하이미디어 병원</span>
+        <a href="#" class="logo-text">하이미디어 병원</a>
     </div>
+
+    <input type="checkbox" id="menu-toggle" class="menu-checkbox" />
+    <label for="menu-toggle" class="menu-icon">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </label>
 
     <ul class="navlist">
       <li><a href="#">의료진</a></li>
@@ -39,10 +46,17 @@
     </ul>
 
     <div class="nav-content">
-      <a href="#"><i class="ri-user-line"></i></a>
-      <a href="#"><i class="ri-draft-line"></i></a>
+        <a href="#" class="login">
+            <i class="ri-user-line"></i>
+            <span class="tooltip left">로그인</span>
+        </a>
+        <a href="#" class="signup">
+            <i class="ri-draft-line"></i>
+            <span class="tooltip right">회원가입</span>
+        </a>
 
       <div class="bx bx-menu" id="menu-icon"></div>
+    </div>
 
 </header>
 
@@ -59,12 +73,6 @@
 </section>
 </div>
 
-<!-- JS -->
-<script type="js/script"></script>
-
-
-
-
-
 </body>
+
 </html>
