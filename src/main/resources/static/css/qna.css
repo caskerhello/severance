@@ -1,16 +1,25 @@
 
 /* QnA 게시판 상단
 h2, 질문하기 버튼*/
-.qna_top{
-    display:flex;
+
+
+article form{
     flex:1;
-    justify-content : space-between;
+    display: flex;
+    flex-direction: column;
+    padding : 10px;
 }
 
 form h2{
     margin:0;
     font-weight: normal;
     font-size: 28px;
+}
+
+.qna_top{
+    display:flex;
+    flex:1;
+    justify-content : space-between;
 }
 
 .qna_top .btn {
@@ -26,6 +35,7 @@ form h2{
 }
 
 .qna_top .btn input[type=button]{
+    width:100%;
     font-weight: bold;
     color: #fff;
     border: none;
@@ -70,4 +80,46 @@ form h2{
     align-items: center;
     font-size: 1rem;
     padding:10px 0;
+}
+
+.field{
+    display: flex;
+    margin:10px;
+}
+
+.reply{
+    display: flex;
+    margin:10px;
+    border-radius: 5px;
+}
+
+.btn {
+    display: flex;
+    margin:10px 3px;
+    border-radius: 5px;
+    padding:10px 0;
+    cursor:pointer;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn input[type=button]{
+    width:100%;
+
+    font-weight: bold;
+    color: #fff;
+    border: none;
+    outline: none;
+    background-color: inherit ;
+    cursor: pointer;
+}
+
+.btn input[type=submit]{
+    width:100%;
+    font-weight: bold;
+    color: #fff;
+    border: none;
+    outline: none;
+    background-color: inherit ;
+    cursor: pointer;
 }

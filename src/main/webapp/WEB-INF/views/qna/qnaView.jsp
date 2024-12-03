@@ -4,23 +4,26 @@
 	<article>
 		<form name="frm">
 			<h2> Q & A </h2>
-			<div class="row">
+			<div class="field" style="border-bottom: 2px dotted #0054d1;">
 				<div class="col">no. ${qnaVO.qseq}</div>
 				<div class="qnatitle">${qnaVO.subject}</div>
 				<div class="col">${qnaVO.userid}</div>
 				<div class="col"><fmt:formatDate value="${qnaVO.indate}" type="date"/></div>
 			</div>
-			<div class="field" style="border-top:1px dotted #2faaff;">
-				<div><pre>${qnaVO.content}</pre></div>
+			<div class="reply">
+				<div class="col"><pre>${qnaVO.content}</pre></div>
 			</div>
-			<div class="field" style="background: #2faaff; border-radius: 3px; " >
-				<label style="color:#fff; font-weight: bold; ">답변</label>
-				<div style="padding:10px;">${qnaVO.reply}&nbsp;</div>
+			<div class="field" style=" background: #0054d1; border-radius: 5px; " >
+				<label style="color:#fff; font-weight: bold; display:flex;">답변</label>
 			</div>
 
-			<div class="btn" >
-		   		<input type="button" value="목록으로" onClick="location.href='qnaList'">
-		   	</div>
+			<div class="field">
+			<div style="width:100%; padding:15px; border-bottom:1px dotted #0054d1;">${qnaVO.reply}&nbsp; 관리자 답변 내용</div>
+			</div>
+			<div class="btn" style="flex:1; background-color: #2faaff;" >
+				<input type="button" value="목록으로" onClick="location.href='qnaList'">
+			</div>
+
 		</form>
 	</article>
 </section>
