@@ -17,7 +17,7 @@
 }
 
 .logo-container {
-	display: flex;
+	display: flex ;
 	align-items: center; /* 수직 정렬 */
 }
 
