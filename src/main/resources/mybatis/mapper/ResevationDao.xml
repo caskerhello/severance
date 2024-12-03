@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.third.severance.dao.IReservationDao">
+
+    <select id="getBookedTimes" parameterType="int" resultType="com.third.severance.dto.ReservationVO">
+
+        SELECT *
+        FROM (
+                 SELECT *, TIMESTAMPDIFF(DAY, NOW(), bookdate) AS timeDiff
+                 FROM memberreservationhistory
+                 WHERE dseq = #{dseq}
+             ) r
+        WHERE r.timeDiff BETWEEN 0 AND 31
+        ORDER BY bookdate ASC
+
+    </select>
+
+
+    <insert id="insertReservation" >
+        INSERT INTO reserve (dseq, mseq, bookdate, time)
+        VALUES (#{dseq}, #{mseq}, #{bookdate}, #{time})
+    </insert>
+
+<!--    <insert id="insertReservation">-->
+<!--        INSERT INTO reserve (dseq, mseq, bookdate, time, bookable)-->
+<!--        VALUES (#{dseq}, #{mseq}, #{bookdate}, #{time},-->
+<!--                (SELECT IFNULL(MAX(bookable), 0) + 1 FROM reserve));-->
+<!--    </insert>-->
+
+    <select id="lookupMaxOseq" resultType="_int">
+        select max(rseq) from memberreservationhistory where mseq=#{mseq}
+    </select>
+
+    <select id="getReserveResult" resultType="com.third.severance.dto.ReservationResultVO">
+        select * from memberreservationhistory where rseq=#{rseq}
+    </select>
+
+
+    <select id="getLoginMember" resultType="com.third.severance.dto.MemberVO">
+        select * from member where mseq=#{rseq}
+    </select>
+
+    <select id="getMember" resultType="com.third.severance.dto.MemberVO">
+        select * from member where userid=#{userid}
+    </select>
+
+    <select id="reserveIng" resultType="com.third.severance.dto.ReservationResultVO">
+        select * from memberreservationhistory where userid=#{userid}
+    </select>
+
+
+    <select id="getRseqListIng" resultType="int">
+        select distinct rseq from memberreservationhistory where userid=#{param1} order by rseq desc
+    </select>
+
+    <select id="reserveListByRseq" >
+        select * from memberreservationhistory where rseq=#{param1}
+    </select>
+
+</mapper>

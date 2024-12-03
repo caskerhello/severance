@@ -6,8 +6,12 @@
 <head>
   <meta charset="UTF-8">
   <title>Insert title here</title>
-  <link rel="stylesheet" href="/css/header_footer.css"/>
-  <link rel="stylesheet" href="/css/main.css"/>
+
+    <link rel="stylesheet" href="/css/header_footer.css"/>
+    <link rel="stylesheet" href="/css/main.css"/>
+    <link rel="stylesheet" href="/css/section.css" />
+    <link rel="stylesheet" href="/css/product.css" />
+    <link rel="stylesheet" href="/css/mypage.css" />
 
   <!-- 박스 아이콘 링크 -->
   <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
@@ -40,8 +44,8 @@
 
     <ul class="navlist">
       <li><a href="#">의료진</a></li>
-      <li><a href="#">진료 예약</a></li>
-      <li><a href="#">마이페이지</a></li>
+      <li><a href="reservationform?dseq=1">진료 예약</a></li>
+      <li><a href="mypage">마이페이지</a></li>
       <li><a href="#">고객센터</a></li>
     </ul>
 
