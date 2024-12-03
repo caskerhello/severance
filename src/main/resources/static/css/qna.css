@@ -55,6 +55,22 @@ form h2{
     border-bottom:none;
 }
 
+.row .col label{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    font-size: 1rem;
+    padding:10px 0;
+}
+.row .col input[type=text]{
+    display: flex;
+    flex:5;
+    justify-content: right;
+    align-items: center;
+    font-size: 1rem;
+    padding:10px 0;
+}
+
 .coltitle{
     font-weight:bold;
     flex:1;

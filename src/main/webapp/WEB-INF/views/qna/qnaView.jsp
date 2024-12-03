@@ -6,14 +6,14 @@
 			<h2> Q & A </h2>
 			<div class="field" style="border-bottom: 2px dotted #0054d1;">
 				<div class="col">no. ${qnaVO.qseq}</div>
-				<div class="qnatitle">${qnaVO.subject}</div>
-				<div class="col">${qnaVO.userid}</div>
+				<div class="coltitle">${qnaVO.subject}</div>
+				<div class="coltitle">${qnaVO.userid}</div>
 				<div class="col"><fmt:formatDate value="${qnaVO.indate}" type="date"/></div>
 			</div>
-			<div class="reply">
+			<div class="field">
 				<div class="col"><pre>${qnaVO.content}</pre></div>
 			</div>
-			<div class="field" style=" background: #0054d1; border-radius: 5px; " >
+			<div class="reply" style=" background: #0054d1; border-radius: 5px 5px 0 0; " >
 				<label style="color:#fff; font-weight: bold; display:flex;">답변</label>
 			</div>
 

@@ -10,7 +10,7 @@
 				</div>
 			</div>
 			<div class="tb">
-				<div class="row" style="background:#0054d1; color:#fff;">
+				<div class="row" style="background:#0054d1; color:#fff; border-radius:5px 5px 0 0;">
 					<div class="coltitle">No.</div>
 					<div class="coltitle">작성자</div>
 					<div class="qnatitle">제목</div>
