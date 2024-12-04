@@ -9,8 +9,8 @@
 					<input type="button" value="질문하기" onClick="location.href='writeQnaForm'"/>
 				</div>
 			</div>
-			<!-- QnA 게시판 시작 -->
 
+			<!-- QnA 게시판 시작 -->
 			<div class="tb">
 				<div class="row" style="background:#0054d1; color:#fff; border-radius:5px 5px 0 0;">
 					<div class="coltitle">No.</div>
@@ -33,6 +33,7 @@
 						</div>
 					</div>
 				</c:forEach>
+				<!-- QnA 게시판 끝 -->
 
 				<!-- paging 시작 -->
 				<div class="row">
