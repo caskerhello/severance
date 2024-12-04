@@ -11,5 +11,4 @@ public interface IDoctorDao {
 
     DoctorVO doctorDetail(int dseq);
 
-
 }

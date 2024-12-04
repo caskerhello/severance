@@ -5,6 +5,7 @@
 
 <mapper namespace="com.third.severance.dao.IDoctorDao">
 
+
     <select id="selectSection" resultType="com.third.severance.dto.DoctorVO">
         select * from DOCTOR where doctorsection=#{param1}
     </select>
@@ -12,6 +13,7 @@
     <select id="doctorDetail" resultType="com.third.severance.dto.DoctorVO">
         select * from DOCTOR where dseq=#{param1}
     </select>
+
 
 
 
