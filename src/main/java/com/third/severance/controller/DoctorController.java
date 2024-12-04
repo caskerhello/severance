@@ -68,7 +68,7 @@ public class DoctorController {
 
        // mav.addObject("dvo", dvo );
        // mav.setViewName("doctor/doctorDetail");
-       // return mav;
+       return mav;
     }
 
 
