@@ -65,9 +65,8 @@
 										<c:when test="${rvo.result == 4}">진료 완료</c:when>
 										<c:when test="${rvo.result == 3}">예약 완료</c:when>
 
-										<c:when test="${rvo.result == 2}">예약 접수 완료<div><input type="button" value="예약취소" onclick="cancelreservation(${rvo.rseq})" id="reserve_delete"/></div></c:when>
-
-										<c:otherwise>예약 접수 중<div><input type="button" value="예약취소" onclick="cancelreservation(${rvo.rseq})" id="reserve_delete"/></div></c:otherwise>
+										<c:when test="${rvo.result == 2}">예약 접수 완료<div><input type="button" value="예약취소" onclick="cancelreservation(${rvo.rseq})"/></div></c:when>
+										<c:otherwise>예약 접수 중<div><input type="button" value="예약취소" onclick="cancelreservation(${rvo.rseq})"/></div></c:otherwise>
 									</c:choose>
 
 								</div>
@@ -77,10 +76,10 @@
 
 							</div>
 						</c:forEach>
-
 				</c:otherwise>
 			</c:choose>
-			</div>
+					</div>
+				</div>
 			</div>
 		</form>
 	</article>
