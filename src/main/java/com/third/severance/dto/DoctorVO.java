@@ -1,5 +1,6 @@
 package com.third.severance.dto;
 
+
 import lombok.Data;
 
 @Data
@@ -17,4 +18,5 @@ public class DoctorVO {
     private String doctd;
     private String resume;
     private String univlogo;
+
 }
