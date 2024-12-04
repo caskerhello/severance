@@ -1,9 +1,50 @@
 @charset "UTF-8";
 
+.center{
+    position: relative;
+    width: 80%;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: url(../images/center.jpg);
+    background-size: cover;
+    background-position: center;
+    margin: 0 auto;
+}
+
+.center-text h1{
+    font-size: var(--h1-font);
+    color: var(--bg-color);
+    margin: 10px 0 20px;
+    line-height: 1;
+
+}
+
+.center-text h2{
+    color: #343a40;
+    margin: 10px 0 20px;
+    line-height: 1;
+    font-weight: normal;
+}
+
+.part1 {
+    font-size: 3rem; /* 공감, 부분의 크기 */
+    color: #343a40; /* 공감, 색상 */
+    font-weight: 700;
+}
+
+.part2 {
+    font-size: 3rem; /* 또 하나의 치료 부분의 크기 */
+    color: #343a40; /* 또 하나의 치료 색상 */
+    font-weight: normal;
+
+}
+
 .container{
     display: flex;
     justify-content: center;
-
 }
 
 .link {
@@ -53,7 +94,6 @@
 .link:hover {
     background-color: #1a4db2;
 }
-
 
 .doc-content{
     width: 100%;
