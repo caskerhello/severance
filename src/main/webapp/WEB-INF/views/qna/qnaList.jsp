@@ -9,19 +9,21 @@
 					<input type="button" value="질문하기" onClick="location.href='writeQnaForm'"/>
 				</div>
 			</div>
+			<!-- QnA 게시판 시작 -->
+
 			<div class="tb">
 				<div class="row" style="background:#0054d1; color:#fff; border-radius:5px 5px 0 0;">
 					<div class="coltitle">No.</div>
 					<div class="coltitle">작성자</div>
-					<div class="qnatitle">제목</div>
+					<div class="coltitle" style="flex:4">제목</div>
 					<div class="coltitle">작성일</div>
 					<div class="coltitle">답변여부</div>
 				</div>
 				<c:forEach items="${qnaList}" var="qnaVO" >
-					<div class="row">
+					<div class="row" onClick="qnaView('${qnaVO.qseq}')">
 						<div class="col">${qnaVO.qseq}</div>
-						<div class="col" onClick="qnaView('${qnaVO.qseq}')">${qnaVO.userid}</div>
-						<div class="qnatitle" onClick="qnaView('${qnaVO.qseq}')">${qnaVO.subject}</div>
+						<div class="col">${qnaVO.userid}</div>
+						<div class="col" style="flex:4">${qnaVO.subject}</div>
 						<div class="col"><fmt:formatDate value="${qnaVO.indate}" type="date"/></div>
 						<div class="col">
 							<c:choose>
@@ -32,7 +34,8 @@
 					</div>
 				</c:forEach>
 
-				<div class="row">  <!-- 페이지의 시작 -->
+				<!-- paging 시작 -->
+				<div class="row">
 					<div class="coltitle" style="font-size:120%; font-weight:bold;">
 						<c:if test="${paging.prev}" >
 							<a href="qnaList?page=${paging.beginPage-1}">◀</a>
@@ -53,7 +56,8 @@
 							<a href="qnaList?page=${paging.endPage+1}">▶</a>
 						</c:if>
 					</div>
-				</div><!-- 페이지의 끝 -->
+				</div>
+				<!-- paging 끝 -->
 
 			</div>
 		</form>

@@ -14,7 +14,7 @@ public class Paging {
         endPage = ((int) (Math.ceil(page / (double) displayPage))) * displayPage;
         beginPage = endPage - (displayPage - 1);
         int totalPage = (int) Math.ceil(totalCount / (double) displayRow);
-        if (totalPage < endPage) {
+        if (totalPage <= endPage) {
             endPage = totalPage;    next = false;
         } else {
             next = true;

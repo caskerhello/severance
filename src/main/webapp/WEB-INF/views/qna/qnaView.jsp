@@ -11,7 +11,7 @@
 				<div class="col"><fmt:formatDate value="${qnaVO.indate}" type="date"/></div>
 			</div>
 			<div class="field">
-				<div class="col"><pre>${qnaVO.content}</pre></div>
+				<pre>${qnaVO.content}</pre>
 			</div>
 			<div class="reply" style=" background: #0054d1; border-radius: 5px 5px 0 0; " >
 				<label style="color:#fff; font-weight: bold; display:flex;">답변</label>
