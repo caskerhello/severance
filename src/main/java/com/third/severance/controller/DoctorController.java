@@ -32,7 +32,7 @@ public class DoctorController {
     public ModelAndView category(@RequestParam("doctorsection") int doctorsection ) {
         ModelAndView mav = new ModelAndView();
 
-        DoctorVO dvo = ds.selectSection( doctorsection );
+        List<DoctorVO> dvo = ds.selectSection( doctorsection );
 
         mav.addObject("doctorsection", doctorsection );
 
