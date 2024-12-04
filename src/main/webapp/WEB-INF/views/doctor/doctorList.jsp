@@ -12,6 +12,10 @@
         <div class="table">
             <div class="heading">
                 <h2>Doctor List</h2>
+                <div class="search">
+                    <input type="text" name="search" placeholder="Search here">
+                    <lavel for="search"><i class="ri-search-line"></i></lavel>
+                </div>
             </div>
             <table class="doctorList">
                 <thead>
