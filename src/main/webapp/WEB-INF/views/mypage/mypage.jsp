@@ -6,7 +6,9 @@
 	<article>
 
 		<form name="mypageForm" >
-			<h2> ${title} </h2>	
+			<h2> ${title} </h2>
+			<div id="mypagecontainer">
+				<div id="mypagewrap">
 			<c:choose>
 				<c:when test="${reserveList.size()==0}">
 					<h3>예약 내역이 없습니다</h3>
@@ -63,8 +65,9 @@
 										<c:when test="${rvo.result == 4}">진료 완료</c:when>
 										<c:when test="${rvo.result == 3}">예약 완료</c:when>
 
-										<c:when test="${rvo.result == 2}">예약 접수 완료<div><input type="button" value="예약취소"/></div></c:when>
-										<c:otherwise>예약 접수 중<div><input type="button" value="예약취소"/></div></c:otherwise>
+										<c:when test="${rvo.result == 2}">예약 접수 완료<div><input type="button" value="예약취소" onclick="cancelreservation(${rvo.rseq})" id="reserve_delete"/></div></c:when>
+
+										<c:otherwise>예약 접수 중<div><input type="button" value="예약취소" onclick="cancelreservation(${rvo.rseq})" id="reserve_delete"/></div></c:otherwise>
 									</c:choose>
 
 								</div>
@@ -77,6 +80,8 @@
 
 				</c:otherwise>
 			</c:choose>
+			</div>
+			</div>
 		</form>
 	</article>
 </section>

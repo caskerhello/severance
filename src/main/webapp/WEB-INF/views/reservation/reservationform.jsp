@@ -19,154 +19,7 @@
 
 
 <main>
-    <style>
-        #reservation_share{
-            margin:50px;
-            width:970px;
-            border-collapse:collapse;
-            color: #505050;
-            /* 		border: 1px solid #f0f0f0; */
-        }
-        #reservation_share td.top{
-            padding-bottom: 10px;
-            font-weight:700; font-size:25px;
-        }
 
-        #reservation_share td.title{
-            padding-left: 15px;
-            width:110px;
-            height: 90px;
-            font-weight:700;
-            font-size:20px;
-            border-bottom: 1px solid #dcdcdc;
-            background-color: #fbedaa;
-        }
-        #reservation_share td.content{
-            font-size:19px;
-            width:320px;
-            padding-left:20px;
-            border-bottom: 1px solid #dcdcdc;
-        }
-
-        #reservation_user{
-            margin:50px;
-            width:600px;
-            border-collapse:collapse;
-            color: #505050;
-            /* 		border: 1px solid #dcdcdc; */
-        }
-        #reservation_user td.top{
-            padding-bottom: 20px;
-            font-weight:700; font-size:25px;
-        }
-
-        #reservation_user td.title{
-            padding : 15px;
-            font-weight:700;
-            font-size:20px;
-        }
-        #reservation_user td.content{
-            font-size:19px;
-            width:450px;
-            padding-left:20px;
-        }
-
-        #reservation_time{
-            margin:50px;
-            width:600px;
-            border-collapse:collapse;
-            color: #505050;
-            /* 		border: 1px solid #dcdcdc; */
-        }
-        #reservation_time td.top{
-            padding-bottom: 20px;
-            font-weight:700; font-size:25px;
-        }
-        #reservation_time td.content{
-            padding-bottom: 50px;
-        }
-
-        #calendar{margin-bottom:50px; padding: 10px; width:250px; color: #505050; border: 1px solid #dcdcdc;}
-        #calendar td{padding:10px;	}
-
-        #timeTable{margin-bottom:50px; padding: 5px; width:200px; color: #505050;}
-        #timeTable td{padding:8px;	}
-
-        #selectedDate{width: 200px; height: 25px;	padding: 10px;
-            color: #505050; font-size:17px;	background-color: #fff;	border: 1px solid #dcdcdc;	}
-        #selectedTime{width: 200px; height: 25px;	padding: 10px;
-            color: #505050; font-size:17px;	background-color: #fff;	border: 1px solid #dcdcdc;	}
-        #totalPrice{width: 200px; height: 25px;	padding: 10px;
-            color: #505050; font-size:17px;	background-color: #fff;	border: 1px solid #dcdcdc;	}
-
-        #btn_submit{
-            margin: 0;
-            padding: 20px;
-            text-align: center;
-            text-decoration: none;
-            font-size: 20px; color:#fff;
-            background-color: #ace2f9;
-            font-weight:700;
-
-            border: none;
-            /* 		border-radius: 10px; */
-
-            display: inline-block;
-            width: 300px;
-        }
-        #btn_submit:hover{
-            margin: 0;
-            padding: 20px;
-            text-align: center;
-            text-decoration: none;
-            font-size: 20px; color:#ace2f9;
-            background-color: #fff;
-            font-weight:700;
-
-            border: 1px solid #ace2f9;
-            /* 		border-radius: 10px; */
-
-            display: inline-block;
-            width: 300px;
-        }
-
-    </style>
-
-
-
-
-    <div class="section-hospital">
-        <div class="container">
-            <div class="hospital-link">
-                <div class="track">
-                    <a class="link link1" href="#" title="새창">
-                        <span class="text">내 과</span>
-                        <i class='bx bx-link-external'></i>
-                    </a>
-
-                    <a class="link link2" href="#" title="새창">
-                        <span class="text">외 과</span>
-                        <i class='bx bx-link-external'></i>
-                    </a>
-
-                    <a class="link link3" href="#" title="새창">
-                        <span class="text">이비인후과</span>
-                        <i class='bx bx-link-external'></i>
-                    </a>
-
-                    <a class="link link4" href="#" title="새창">
-                        <span class="text">소아과</span>
-                        <i class='bx bx-link-external'></i>
-                    </a>
-
-                    <a class="link link5" href="#" title="새창">
-                        <span class="text">정형외과</span>
-                        <i class='bx bx-link-external'></i>
-                    </a>
-                </div>
-            </div>
-		</div>
-	</div>
 
                 <%
 //                System.out.println(request.getAttribute("ReservationResponse"));
@@ -207,6 +60,8 @@
 	//시간당 가격
 //	int price = dtvo.getPrice();
 %>
+
+
 
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
@@ -750,6 +605,10 @@
 				cell.setAttribute('id', i);  // id를 0(오전) 또는 1(오후)로 설정
 				cell.innerHTML = inputCellText;
 
+				cell.style.borderStyle = 'solid';
+				cell.style.borderWidth = '1px';
+				cell.style.borderColor = '#C6C6C6';
+
 				var selectedFirstTime = null;
 				var cellTime = null;
 
@@ -937,61 +796,88 @@
 
 
 
-            <div class="mainBox">
+
+
+
+	<div class="mainBox">
 	<div class="contentBox">
-		<div class="textLeft"><span style="color: #505050; font-size:40px; font-weight:700">예약하기</span>
-		<div class="underline"></div></div>
+
 
 		<form action="reservation" method="post" name="reservationform">
-		<table id="reservation_share" align="center">
-			<tr>
-				<td class="top" colspan="3" align="left">의사 성명 ${detail.name}</td>
-			</tr>
+			<div class="textLeft"><span style="color: #505050; font-size:40px; font-weight:700">예약하기</span></div>
+			<div class="underline"></div>
+
+		<table id="reservation_docinfo" align="center">
+
 
 			<tr>
-				<td rowspan="3">
-				<div class="share"><img src="images/Doctor_image/${detail.savefilename}" /></div>
-				</td>
-				<td class="title" align="left" style="border-top:1px solid #dcdcdc;"> 과 </td>
-				<c:if test="${detail.doctorsection == 1 }"><td class="content" align="left" style="border-top:1px solid #dcdcdc;">정형외과</td></c:if>
-				<c:if test="${detail.doctorsection == 2 }"><td class="content" align="left" style="border-top:1px solid #dcdcdc;">이비인후과</td></c:if>
-				<c:if test="${detail.doctorsection == 3 }"><td class="content" align="left" style="border-top:1px solid #dcdcdc;">외과</td></c:if>
-				<c:if test="${detail.doctorsection == 4 }"><td class="content" align="left" style="border-top:1px solid #dcdcdc;">산부인과</td></c:if>
-				<c:if test="${detail.doctorsection == 5 }"><td class="content" align="left" style="border-top:1px solid #dcdcdc;">비뇨기과</td></c:if>
+				<td class="top"  style="text-align: center">의사 정보</td>
+				<td class="top"  style="text-align: center">	과 </td>
+<%--		<td class="title" align="left" style="border-top:1px solid #dcdcdc;"> 과 </td>--%>
+
 			</tr>
+
+
+			<tr>
+				<td class="content"><div id="doctorface" ><img src="images/Doctor_image/${detail.savefilename}" />${detail.name}</div></td>
+
+				<td class="content">
+				<c:if test="${detail.doctorsection == 1 }">정형외과</c:if>
+				<c:if test="${detail.doctorsection == 2 }">이비인후과</c:if>
+				<c:if test="${detail.doctorsection == 3 }">외과</c:if>
+				<c:if test="${detail.doctorsection == 4 }">산부인과</c:if>
+				<c:if test="${detail.doctorsection == 5 }">비뇨기과</c:if>
+				</td>
+
+			</tr>
+
 
 		</table>
+
+
+
+
 		<table id="reservation_user">
 				<tr>
 <%--					<input type="hidden" name="productName" value=""></input>--%>
 <%--					<input type="hidden" name="placeNo" value=""></input>--%>
 <%--					--%>
-					<input type="hidden" name="mseq" value="${mvo.mseq}"></input>
-					<td class="top" align="left">예약자 정보</td>
+
+					<td class="top">예약자 정보</td>
+				</tr>
+
+				<tr>
+					<td class="top" style="text-align: center">예약자</td>
+					<td class="top" style="text-align: center">전화번호</td>
+
 				</tr>
 				<tr>
-					<td class="title" align="right">예약자</td>
-					<td class="content" align="left"> <input type="text" id="userName" name="userName" size="20" value="${mvo.name}"> </td>
-				</tr>
-				<tr>
-					<td class="title" align="right">전화번호</td>
-					<td class="content" align="left"> <input type="text" id="userPhone" name="userPhone" size="20" value="${mvo.phone}"> </td>
+					<td class="content"> ${mvo.name} </td>
+					<td class="content"> ${mvo.phone} </td>
 				</tr>
 
 		</table>
 
+
+
+
+
 		<table id="reservation_time">
 			<tr>
-				<td class="top" align="left">시간선택</td>
-				<div>빨간색 : 오전/오후중 하나가 이미 예약된날</div>
-				<div>회색 : 오전/오후가 모두 예약된날 혹은 휴무</div>
+				<td class="top" align="left" colspan="2" style="text-align: center"><span>시간선택</span>&nbsp;&nbsp;&nbsp;&nbsp;<span><button class="btnTime" type="button" id="btn_init" onclick="tableinit()">시간초기화</button></span></td>
 
-				<td class="top" align="right">
-					<button class="btnTime" type="button" onclick="tableinit()">초기화</button></td>
+
+
+<%--				<td class="top" align="center"><button class="btnTime" type="button" onclick="tableinit()">초기화</button></td>--%>
+
+<%--				<td class="top" align="right"><button class="btnTime" type="button" onclick="tableinit()">초기화</button></td>--%>
+				<td class="top" colspan="2" style="text-align: center">예약일시</td>
 			</tr>
+
 			<tr>
-				<td>
+				<td style="border:1px">
 					<table id="calendar">
+
 						<tr>
 							<td align="center"><label onclick="prevCalendar()"> ◀ </label></td>
 							<td colspan="5" align="center" id="calendarTitle">yyyy년 m월</td>
@@ -1006,35 +892,98 @@
 							<td align="center">금</td>
 							<td align="center"><font color ="skyblue">토</td>
 						</tr>
+
 					</table>
 				</td>
 
 				<td>
 					<table id = "timeTable">	</table>
+
+				</td>
+
+
+				<td class="content" style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%;">
+
+
+					<table id = "reservationselected"  style="border:1px;text-align: center; width: 100%;">
+
+						<tr style="text-align: center">
+							<td class="title" style="border:1px">
+								선택날짜
+							</td>
+							<td class="title" style="border:1px">
+								선택 시간
+							</td>
+
+						</tr>
+
+						<tr style="text-align: center">
+
+							<td class="content" style="text-align: center; border:1px">
+								<div>
+								<input id="selectedDate" style="border:none; width:150px"  name="selectedDate" value="" readonly="readonly" ></input>
+								</div>
+
+							</td>
+							<td class="content" style="text-align: center">
+								<div>
+								<input id="selectedTime" style="border:none; width:150px"  name="selectedTime" value="" readonly="readonly"></input>
+
+								<input id="selectedTime2" type="hidden" style="border:none"  name="selectedTime2" value="" readonly="readonly"></input>
+								</div>
+
+							</td>
+
+
+						</tr>
+
+
+
+
+					</table>
+
+					<input type="hidden" name="mseq" value="${mvo.mseq}"></input>
+					<input type="hidden" name="dseq" value="${dseq}"></input>
+					<input type="submit" value="예약" id="btn_submit">
+
+
+
+
+
+                                <%--					<input type="text" style="border:none; width:150px" value="선택 날짜"	readonly="readonly"></input>--%>
+<%--					<input id="selectedDate" style="border:none; width:150px"  name="selectedDate" value="" readonly="readonly" ></input>--%>
+
+<%--					<input type="text" style="border:none; width:150px" value="선택 시간"	readonly="readonly"></input>--%>
+<%--					<input id="selectedTime" style="border:none; width:150px"  name="selectedTime" value="" readonly="readonly"></input>--%>
+
+<%--					<input id="selectedTime2" type="hidden" style="border:none"  name="selectedTime2" value="" readonly="readonly"></input>--%>
+
+
+
+
+
+
+				</td>
+
+<%--				<td class="content" colspan="2" align="right">--%>
+
+<%--				</td>--%>
+			</tr>
+			<tr>
+				<td>
+				<div><span style="color:#ff0000">빨간색<span> : 오전/오후중 하나가 이미 예약된날</div><br>
+				<div>회색 : 오전/오후가 모두 예약된날 혹은 휴무</div>
 				</td>
 			</tr>
 
-			<tr>
-				<td class="top" align="left" colspan="2">예약일시</td>
-			</tr>
-
-			<tr>
-				<td class="content" colspan="2" align="left">
-<%--					<input type="hidden" name="mseq" value="${mseq}"></input>--%>
-					<input type="text" name="dseq" value="${dseq}">예약의사</input>
-
-					<input id="selectedDate" style="border:none; width:100px"  name="selectedDate" value="" readonly="readonly" ></input>
-					<input id="selectedTime" style="border:none"  name="selectedTime" value="" readonly="readonly"></input>
-					<input id="selectedTime2" type="hidden" style="border:none"  name="selectedTime2" value="" readonly="readonly"></input>
 
 
 
-					<input type="submit" value="예약" >
-				</td>
-			</tr>
 
 		</table>
 		</form>
+	</div>
+	</div>
 
 <script type="text/javascript">buildCalendar();</script>
 

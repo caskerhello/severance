@@ -136,4 +136,14 @@ public class ReservationController {
 
     }
 
+
+
+    @GetMapping("/cancelreservation")
+    public String reservation(@RequestParam("rseq") int rseq,
+                                                                HttpServletRequest req){
+
+    rs.cancelreservation(rseq);
+
+    return "redirect:/mypage";}
+
 }

@@ -60,4 +60,8 @@
         select * from memberreservationhistory where rseq=#{param1}
     </select>
 
+    <delete id="cancelreservation">
+        delete from reserve where rseq=#{param1}
+    </delete>
+
 </mapper>

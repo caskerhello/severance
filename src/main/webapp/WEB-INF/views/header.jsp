@@ -9,9 +9,21 @@
 
     <link rel="stylesheet" href="/css/header_footer.css"/>
     <link rel="stylesheet" href="/css/main.css"/>
-    <link rel="stylesheet" href="/css/section.css" />
-    <link rel="stylesheet" href="/css/product.css" />
     <link rel="stylesheet" href="/css/mypage.css" />
+    <link rel="stylesheet" href="/css/reservation.css" />
+
+<%--    <link rel="stylesheet" href="/css/section.css" />--%>
+<%--    <link rel="stylesheet" href="/css/product.css" />--%>
+
+
+    <script src="/script/mypage.js"></script>
+    <script src="/script/reservation.js"></script>
+
+    <script src="/script/jquery-3.7.1.min.js"></script>
+<%--    <script src="/script/hmenu.js"></script>--%>
+<%--    <script src="/script/member.js"></script>--%>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
   <!-- 박스 아이콘 링크 -->
   <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
@@ -23,8 +35,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-
-
 
 </head>
 <body>

@@ -181,5 +181,8 @@ public class ReservationService {
         }
         return reserveList;
     }
+
+    public void cancelreservation(int rseq) {
+    rdao.cancelreservation(rseq);}
 }
 

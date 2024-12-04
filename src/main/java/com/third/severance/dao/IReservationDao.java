@@ -28,4 +28,6 @@ public interface IReservationDao {
     List<Integer> getRseqListIng(String userid);
 
     List<ReservationResultVO> reserveListByRseq(Integer rseq);
+
+    void cancelreservation(int rseq);
 }

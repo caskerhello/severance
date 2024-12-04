@@ -10,7 +10,7 @@
 
 
 .row{
-	border-bottom:2px dotted #275DE8;
+	border-bottom:1px solid #275DE8;
 	display: flex;
 }
 .row:first-child{
@@ -40,4 +40,58 @@
 	font-size: 1rem;
 	font-weight: normal;	
 	color:#275DE8;
+}
+
+
+
+#mypagecontainer{
+	position: relative;
+	width:100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+}
+#mypagewrap{
+	width:80%;
+}
+
+
+
+#reserve_delete{
+	margin: 0;
+	padding: 0px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 15px; color:#fff;
+	background-color: #275DE8;
+	font-weight:700;
+
+	border: none;
+	/* 		border-radius: 10px; */
+	border-radius: 5px;
+
+	display: inline-block;
+	width: 120px;
+	height: 30px;
+}
+
+
+
+#reserve_delete:hover{
+	margin: 0;
+	padding: 0px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 15px; color:#275DE8;
+	background-color: #fff;
+	font-weight:700;
+
+	border: 1px solid #275DE8;
+	/* 		border-radius: 10px; */
+	border-radius: 5px;
+
+	display: inline-block;
+	width: 120px;
+	height: 30px;
 }
