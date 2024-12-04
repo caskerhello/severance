@@ -10,6 +10,7 @@
   <title>Insert title here</title>
   <link rel="stylesheet" href="/css/header_footer.css"/>
   <link rel="stylesheet" href="/css/main.css"/>
+  <link rel="stylesheet" href="/css/qna.css"/>
 
     <script src="/script/jquery-3.7.1.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -24,6 +25,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+  <!-- Script -->
+  <script src="/script/qna.js"></script>
 
 </head>
 <body>
@@ -44,8 +48,12 @@
     <ul class="navlist">
       <li><a href="#">의료진</a></li>
       <li><a href="#">진료 예약</a></li>
+
       <li><a href="updateMemberForm">마이페이지</a></li>
-      <li><a href="#">고객센터</a></li>
+      <li><a href="qnaList">고객센터</a></li>
+
+
+
     </ul>
 
     <div class="nav-content">
@@ -75,60 +83,7 @@
         <h2>질병 치료를 넘어 환자의 마음까지 치유하겠습니다.</h2>
     </div>
 </section>
-    <script type="text/javascript">
-        $(function(){
-            $('#idCheckButton').click(function(){
-
-                const useridInput = $('#userid');
-                const userid = useridInput.val().trim();
-
-                const useridRegex = /^[a-zA-Z0-9]{6,20}$/;
-                if (!useridRegex.test(userid)) {
-                    alert('아이디는 6자 이상, 20자 이내의 영문과 숫자만 사용할 수 있습니다.');
-                    useridInput.val('');
-                    useridInput.focus();
-                    return;
-                }
-
-                var formselect = $('#joinFrm')[0];
-                var formdata = new FormData( formselect );
-                $.ajax({
-                    url:"<%=request.getContextPath()%>/idcheck",
-                    type:"POST",
-                    async: false,
-                    data: formdata,
-                    timeout: 10000,
-                    contentType : false,
-                    processData : false,
-
-                    success:function(data){
-                        if( data.idmessage == '1'){
-                            $('#idmessage').html("&nbsp;&nbsp;<span style='color:blue' >사용 가능합니다</span>");
-                            $('#reid').val(data.userid);
-                        }else{
-                            $('#idmessage').html("&nbsp;&nbsp;<span style='color:red' >사용중인 아이디입니다</span>");
-                            $('#reid').val("");
-                        }
-                    },
-                    error:function(){
-                        alert("중복 조회 실패");
-                    },
-                });
-            });
-            $('#pwd').on('blur', function () {
-                const pwdInput = $('#pwd');
-                const pwd = pwdInput.val().trim();
-
-                const pwdRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_+|~\-=`{}:";'<>?,./]).{8,20}$/;
-
-                if (!pwdRegex.test(pwd)) {
-                    $('#pwdmessage').html("<span style='color:red'>비밀번호는 8자 이상, 20자 이내이며 영문, 숫자, 특수문자를 포함해야 합니다.</span>");
-                } else {
-                    $('#pwdmessage').html("<span style='color:blue'>사용 가능한 비밀번호입니다.</span>");
-                }
-            });
-        });
-    </script>
+    
 </div>
 </body>
 </html>

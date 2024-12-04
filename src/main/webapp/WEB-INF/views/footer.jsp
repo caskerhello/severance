@@ -11,7 +11,7 @@
                 사업자 등록번호 : 128-39-63754<br>
                 대표자 : 홍길동 / 상호 : 하이미디어 병원
 
-                <a href="#" class="admin-link">
+                <a href="admin" class="admin-link">
                     <i class="ri-admin-line"></i> <!-- 어드민 관리자 아이콘 -->
                 </a>
 
