@@ -54,7 +54,7 @@ public class DoctorController {
     public ModelAndView doctorDetail(@RequestParam("dseq") int dseq ) {
         ModelAndView mav = new ModelAndView();
 
-        DoctorVO dvo = ds.doctorDetail( dseq );
+        List<DoctorVO> dvo = ds.doctorDetail( dseq );
 
         String content = dvo.getContent();
         content = content.replaceAll("(?<=\\.)\\s*(?!<br>)", ".<br>").replaceAll("\\.\\.<br>", ".<br>");
