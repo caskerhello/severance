@@ -19,8 +19,6 @@ public class DoctorController {
         ModelAndView mav = new ModelAndView();
 
 //        HashMap<String, Object> result = ds.selectNewBestList();
-
-
 //        mav.addObject( "bestList", result.get("bestList") );
 
         mav.setViewName("index");

@@ -5,7 +5,6 @@
 
 <mapper namespace="com.third.severance.dao.IDoctorDao">
 
-
 <!--&lt;!&ndash;뉴스나 건강정보&ndash;&gt;-->
 <!--    <select id="selectBestList" resultType="com.third.severance.dto.DoctorVO">-->
 <!--        select * from best_pro_view-->
