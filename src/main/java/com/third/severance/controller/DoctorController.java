@@ -54,19 +54,19 @@ public class DoctorController {
     public ModelAndView doctorDetail(@RequestParam("dseq") int dseq ) {
         ModelAndView mav = new ModelAndView();
 
-        List<DoctorVO> dvo = ds.doctorDetail( dseq );
+       // List<DoctorVO> dvo = ds.doctorDetail( dseq );
 
-        String content = dvo.getContent();
-        content = content.replaceAll("(?<=\\.)\\s*(?!<br>)", ".<br>").replaceAll("\\.\\.<br>", ".<br>");
-        content = content.replaceAll("(?<=\\.<br>)", "<br>"); // 문장 뒤에 한 줄 띄우기
-        content = content.replaceAll("(^|<br>)([^<]+)", "$1<span style='font-size: 12px;'>●</span> $2");  // 각 문장 앞에 작은 ● 추가
+       // String content = dvo.getContent();
+       // content = content.replaceAll("(?<=\\.)\\s*(?!<br>)", ".<br>").replaceAll("\\.\\.<br>", ".<br>");
+       // content = content.replaceAll("(?<=\\.<br>)", "<br>"); // 문장 뒤에 한 줄 띄우기
+       // content = content.replaceAll("(^|<br>)([^<]+)", "$1<span style='font-size: 12px;'>●</span> $2");  // 각 문장 앞에 작은 ● 추가
 
         // dvo 객체에 처리된 content 값을 다시 설정
-        dvo.setContent(content);
+       // dvo.setContent(content);
 
-        mav.addObject("dvo", dvo );
-        mav.setViewName("doctor/doctorDetail");
-        return mav;
+       // mav.addObject("dvo", dvo );
+       // mav.setViewName("doctor/doctorDetail");
+       // return mav;
     }
 
 
