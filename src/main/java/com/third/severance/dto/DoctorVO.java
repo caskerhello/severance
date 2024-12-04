@@ -19,6 +19,4 @@ public class DoctorVO {
     private String resume;
     private String univlogo;
 
-
-
 }

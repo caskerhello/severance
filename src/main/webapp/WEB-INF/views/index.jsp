@@ -4,34 +4,47 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
+<!-- 가운데 -->
+<div class="container">
+    <section class="center">
+        <div class="center-text">
+            <h1>
+                <span class="part1">공감,</span>
+                <span class="part2">또 하나의 치료</span>
+            </h1>
+            <h2>질병 치료를 넘어 환자의 마음까지 치유하겠습니다.</h2>
+        </div>
+    </section>
+</div>
+
 
 
     <div class="section-hospital">
     <div class="container">
         <div class="hospital-link">
             <div class="track">
-                <a class="link link1" href="#" title="새창">
-                    <span class="text">내과</span>
+                <a class="link link1" href="doctorsection?doctorsection=1" title="새창">
+                    <span class="text">정형외과</span>
                     <i class='bx bx-link-external'></i>
                 </a>
 
-                <a class="link link2" href="#" title="새창">
-                    <span class="text">외 과</span>
-                    <i class='bx bx-link-external'></i>
-                </a>
-
-                <a class="link link3" href="#" title="새창">
+                <a class="link link2" href="doctorsection?doctorsection=2" title="새창">
                     <span class="text">이비인후과</span>
                     <i class='bx bx-link-external'></i>
                 </a>
 
-                <a class="link link4" href="#" title="새창">
-                    <span class="text">소아과</span>
+                <a class="link link3" href="doctorsection?doctorsection=3" title="새창">
+                    <span class="text">외과</span>
                     <i class='bx bx-link-external'></i>
                 </a>
 
-                <a class="link link5" href="#" title="새창">
-                    <span class="text">정형외과</span>
+                <a class="link link4" href="doctorsection?doctorsection=4" title="새창">
+                    <span class="text">산부인과</span>
+                    <i class='bx bx-link-external'></i>
+                </a>
+
+                <a class="link link5" href="doctorsection?doctorsection=5" title="새창">
+                    <span class="text">비뇨기과</span>
                     <i class='bx bx-link-external'></i>
                 </a>
             </div>
@@ -46,33 +59,9 @@
             </div>
 
             <div class="col-text">
-                <h4>내 과</h4>
-                <p>서울의대 수석 졸업</p>
-                <p>홍 길 동</p>
-            </div>
-        </div>
-
-        <div class="col">
-            <div class="col-img">
-                <img src="/images/2_profile.jpg" />
-            </div>
-
-            <div class="col-text">
-                <h4>외 과</h4>
-                <p>서울의대 수석 졸업</p>
-                <p>홍 길 동</p>
-            </div>
-        </div>
-
-        <div class="col">
-            <div class="col-img">
-                <img src="/images/3_profile.jpg" />
-            </div>
-
-            <div class="col-text">
-                <h4>이비인후과</h4>
-                <p>서울의대 수석 졸업</p>
-                <p>홍 길 동</p>
+                <h4>정형외과</h4>
+                <p>가톨릭대학교 의대 졸업</p>
+                <p>박 지 성</p>
             </div>
         </div>
 
@@ -82,21 +71,45 @@
             </div>
 
             <div class="col-text">
-                <h4>소아과</h4>
-                <p>서울의대 수석 졸업</p>
-                <p>홍 길 동</p>
+                <h4>이비인후과</h4>
+                <p>서울대학교 의대 졸업</p>
+                <p>최 민 아</p>
             </div>
         </div>
 
         <div class="col">
             <div class="col-img">
-                <img src="/images/5_profile.jpg" />
+                <img src="/images/7_profile.jpg" />
             </div>
 
             <div class="col-text">
-                <h4>정형외과</h4>
-                <p>서울의대 수석 졸업</p>
-                <p>홍 길 동</p>
+                <h4>외 과</h4>
+                <p>연세대학교 의대 졸업</p>
+                <p>이 서 준</p>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="col-img">
+                <img src="/images/10_profile.jpg" />
+            </div>
+
+            <div class="col-text">
+                <h4>산부인과</h4>
+                <p>경희대학교 의대 졸업</p>
+                <p>장 태 영</p>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="col-img">
+                <img src="/images/11_profile.jpg" />
+            </div>
+
+            <div class="col-text">
+                <h4>비뇨기과</h4>
+                <p>고려대학교 의대 졸업</p>
+                <p>정 민 재</p>
             </div>
         </div>
 

@@ -8,7 +8,9 @@ import java.util.List;
 
 @Mapper
 public interface IDoctorDao {
+    DoctorVO selectSection(int doctorsection);
 
+    DoctorVO doctorDetail(int dseq);
 
     List<DoctorVO> selectSection(int doctorsection);
 

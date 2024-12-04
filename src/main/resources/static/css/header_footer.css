@@ -8,7 +8,6 @@
 	text-decoration: none;
 	scroll-behavior: smooth;
 	font-family: "Jost", sans-serif;
-
 }
 
 .logo img{
@@ -18,7 +17,7 @@
 }
 
 .logo-container {
-	display: flex;
+	display: flex ;
 	align-items: center; /* 수직 정렬 */
 }
 
@@ -28,6 +27,30 @@
 	color: #000000;
 }
 
+.tooltip {
+	display: none;
+	position: absolute;
+	background-color: #333;
+	color: white;
+	padding: 5px 10px;
+	border-radius: 5px;
+	font-size: 12px;
+	visibility: hidden;
+	white-space: nowrap;
+	margin-top: 5px; /* 아이콘과 툴팁 사이의 간격 */
+}
+
+.tooltip.left {
+	right: 100%;  /* 아이콘의 왼쪽에 위치 */
+	top: 40%;
+	transform: translateY(-50%);  /* 수직 가운데 정렬 */
+}
+
+.tooltip.right {
+	left: 100%;  /* 아이콘의 오른쪽에 위치 */
+	top: 40%;
+	transform: translateY(-50%);  /* 수직 가운데 정렬 */
+}
 
 :root{
 	--bg-color: #ffffff;
@@ -57,26 +80,59 @@ header{
 
 .navlist {
 	display: flex;
+	gap: 20px;
+	list-style: none;
+}
 
-	.navlist a {
-		display: inline-block;
-		font-size: var(--p-font);
-		color: var(--text-color);
-		margin: 0 30px;
-		padding: 2px 0;
-		border-bottom: transparent;
-		transition: all .6s ease;
-	}
+
+
+.navlist a{
+	display: inline-block;
+	font-size: var(--p-font);
+	color: var(--text-color);
+	margin: 0 30px;
+	padding: 2px 0;
+	border-bottom: transparent;
+	transition: all .6s ease;
+}
+
+.navlist a:hover{
+	color: var(--main-color);
+	border-bottom: 2px solid var(--main-color);
+}
+
+.nav-content{
+	display: flex;
+	align-items: center;
+}
+
+.nav-content a{
+	display: inline-block;
+	font-size: 30px;
+	color: var(--text-color);
+	margin: 0 10px;
+	transition: all .6s ease;
+	text-decoration: none;
+	position: relative;
+}
+
 
 	.navlist a:hover {
 		color: var(--main-color);
 		border-bottom: 2px solid var(--main-color);
 	}
 
+
 	.nav-content {
 		display: flex;
 		align-items: center;
 	}
+
+.nav-content a:hover .tooltip {
+	display: inline-block;
+	visibility: visible;
+}
+
 
 	.nav-content a {
 		display: inline-block;
@@ -87,10 +143,16 @@ header{
 
 	}
 
+
 	.nav-content a:hover {
 		transform: scale(1.1);
 		color: var(--main-color);
 	}
+
+
+section{
+	padding: 80px 10% 80px;
+}
 
 
 	#menu-icon {
@@ -100,6 +162,7 @@ header{
 		margin-left: 10px;
 		display: none;
 	}
+
 
 
 	section {
@@ -135,6 +198,7 @@ header{
 		line-height: 1;
 		font-weight: normal;
 	}
+
 
 	.part1 {
 		font-size: 3rem; /* 공감, 부분의 크기 */
@@ -262,8 +326,3 @@ header{
 		color: #007bff; /* 색상 변경 */
 	}
 }
-
-
-
-
-

@@ -14,6 +14,7 @@ public class DoctorService {
     @Autowired
     IDoctorDao ddao;
 
+
     public List<DoctorVO> selectSection(int doctorsection) {
         return ddao.selectSection(doctorsection);
     }
@@ -21,4 +22,7 @@ public class DoctorService {
     public DoctorVO getDoctor(int dseq) {
         return ddao.getDoctor(dseq);
     }
+
+
+ 
 }
