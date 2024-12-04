@@ -1,0 +1,147 @@
+article form{
+    flex:1;
+    display: flex;
+    flex-direction: column;
+    padding : 10px;
+}
+
+form h2{
+    margin:0;
+    font-weight: normal;
+    font-size: 28px;
+}
+
+/* QnA 게시판 상단 */
+
+.qna_top{
+    display:flex;
+    flex:1;
+    justify-content : space-between;
+}
+
+.qna_top .btn {
+    display: flex;
+    width:20%;
+    margin:10px 3px;
+    background-color: #2faaff;
+    border-radius: 5px;
+    padding:10px 0;
+    cursor:pointer;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 글 작성하기 */
+.qna_top .btn input[type=button]{
+    width:100%;
+    font-weight: bold;
+    color: #fff;
+    border: none;
+    outline: none;
+    background-color: inherit ;
+    cursor: pointer;
+}
+
+.row{
+    border-bottom:1px dotted #0054d1;
+    display: flex;
+}
+.row:first-child{
+    border-bottom:2px solid #0054d1;
+}
+.row:last-child{
+    border-bottom:none;
+}
+
+.row .col label{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    font-size: 1rem;
+    padding:10px 0;
+}
+.row .col input[type=text]{
+    display: flex;
+    flex:5;
+    justify-content: right;
+    align-items: center;
+    font-size: 1rem;
+    padding:10px 0;
+}
+
+.coltitle{
+    flex:1;
+    font-weight:bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:10px 0;
+}
+
+.qnatitle{
+    flex:1;
+    font-weight:bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:10px 0;
+}
+
+.col{
+    flex:1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    padding:10px 0;
+}
+
+.field{
+    display: flex;
+    margin:10px;
+    word-break:break-all;
+    white-space : pre-wrap;
+}
+
+pre{
+    overflow: auto;
+    white-space : pre-wrap;
+    /* pre 태그 사용시, 가로로 길어진 글을 자동개행 */
+}
+
+.reply{
+    display: flex;
+    margin:10px;
+    border-radius: 5px;
+}
+
+.btn {
+    display: flex;
+    margin:10px 3px;
+    border-radius: 5px;
+    padding:10px 0;
+    cursor:pointer;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn input[type=button]{
+    width:100%;
+
+    font-weight: bold;
+    color: #fff;
+    border: none;
+    outline: none;
+    background-color: inherit ;
+    cursor: pointer;
+}
+
+.btn input[type=submit]{
+    width:100%;
+    font-weight: bold;
+    color: #fff;
+    border: none;
+    outline: none;
+    background-color: inherit ;
+    cursor: pointer;
+}

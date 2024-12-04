@@ -8,6 +8,7 @@
   <title>Insert title here</title>
   <link rel="stylesheet" href="/css/header_footer.css"/>
   <link rel="stylesheet" href="/css/main.css"/>
+  <link rel="stylesheet" href="/css/qna.css"/>
 
   <!-- 박스 아이콘 링크 -->
   <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
@@ -20,6 +21,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
+  <!-- Script -->
+  <script src="/script/qna.js"></script>
 
 
 </head>
@@ -42,7 +45,7 @@
       <li><a href="#">의료진</a></li>
       <li><a href="#">진료 예약</a></li>
       <li><a href="#">마이페이지</a></li>
-      <li><a href="#">고객센터</a></li>
+      <li><a href="qnaList">고객센터</a></li>
     </ul>
 
     <div class="nav-content">
