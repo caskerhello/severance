@@ -5,18 +5,15 @@
 
 <mapper namespace="com.third.severance.dao.IDoctorDao">
 
+    <select id="selectSection" resultType="com.third.severance.dto.DoctorVO">
+        select * from DOCTOR where doctorsection=#{param1}
+    </select>
 
-<!--&lt;!&ndash;뉴스나 건강정보&ndash;&gt;-->
-<!--    <select id="selectBestList" resultType="com.third.severance.dto.DoctorVO">-->
-<!--        select * from best_pro_view-->
-<!--    </select>-->
+    <select id="doctorDetail" resultType="com.third.severance.dto.DoctorVO">
+        select * from DOCTOR where dseq=#{param1}
+    </select>
 
-<!--    <select id="selectCategory" resultType="com.himedia.sp14.dto.ProductVO" >-->
-<!--        select * from product where category=#{param1}-->
-<!--    </select>-->
 
-<!--    <select id="getProduct" resultType="com.himedia.sp14.dto.ProductVO">-->
-<!--        select * from product where pseq=#{param1}-->
-<!--    </select>-->
+
 
 </mapper>

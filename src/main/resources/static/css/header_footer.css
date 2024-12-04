@@ -8,7 +8,6 @@
 	text-decoration: none;
 	scroll-behavior: smooth;
 	font-family: "Jost", sans-serif;
-
 }
 
 .logo img{
@@ -18,7 +17,7 @@
 }
 
 .logo-container {
-	display: flex;
+	display: flex ;
 	align-items: center; /* 수직 정렬 */
 }
 
@@ -28,6 +27,30 @@
 	color: #000000;
 }
 
+.tooltip {
+	display: none;
+	position: absolute;
+	background-color: #333;
+	color: white;
+	padding: 5px 10px;
+	border-radius: 5px;
+	font-size: 12px;
+	visibility: hidden;
+	white-space: nowrap;
+	margin-top: 5px; /* 아이콘과 툴팁 사이의 간격 */
+}
+
+.tooltip.left {
+	right: 100%;  /* 아이콘의 왼쪽에 위치 */
+	top: 40%;
+	transform: translateY(-50%);  /* 수직 가운데 정렬 */
+}
+
+.tooltip.right {
+	left: 100%;  /* 아이콘의 오른쪽에 위치 */
+	top: 40%;
+	transform: translateY(-50%);  /* 수직 가운데 정렬 */
+}
 
 :root{
 	--bg-color: #ffffff;
@@ -57,6 +80,10 @@ header{
 
 .navlist{
 	display: flex;
+	gap: 20px;
+	list-style: none;
+}
+
 
 .navlist a{
 	display: inline-block;
@@ -84,7 +111,8 @@ header{
 	color: var(--text-color);
 	margin: 0 10px;
 	transition: all .6s ease;
-
+	text-decoration: none;
+	position: relative;
 }
 
 .nav-content a:hover {
@@ -92,6 +120,10 @@ header{
 	color: var(--main-color);
 }
 
+.nav-content a:hover .tooltip {
+	display: inline-block;
+	visibility: visible;
+}
 
 #menu-icon{
 	font-size: 30px;
@@ -102,53 +134,11 @@ header{
 }
 
 
-
 section{
 	padding: 80px 10% 80px;
 }
 
 
-.center{
-	position: relative;
-	width: 80%;
-	height: 600px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	text-align: center;
-	background: url(../images/center.jpg);
-	background-size: cover;
-	background-position: center;
-	margin: 0 auto;
-}
-
-.center-text h1{
-	font-size: var(--h1-font);
-	color: var(--bg-color);
-	margin: 10px 0 20px;
-	line-height: 1;
-
-}
-
-.center-text h2{
-	color: #343a40;
-	margin: 10px 0 20px;
-	line-height: 1;
-	font-weight: normal;
-}
-
-.part1 {
-	font-size: 3rem; /* 공감, 부분의 크기 */
-	color: #343a40; /* 공감, 색상 */
-	font-weight: 700;
-}
-
-.part2 {
-	font-size: 3rem; /* 또 하나의 치료 부분의 크기 */
-	color: #343a40; /* 또 하나의 치료 색상 */
-	font-weight: normal;
-
-}
 
 
 footer {
@@ -262,7 +252,6 @@ footer {
 .admin-link:hover i {
 	color: #007bff;  /* 색상 변경 */
 }
-
 
 
 
