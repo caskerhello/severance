@@ -7,7 +7,6 @@ function go_save() {
         form.name.focus();
         return;
     }
-
     // 아이디 검증: 6~20자, 영문/숫자만 가능
     const useridRegex = /^[a-zA-Z0-9]{6,20}$/;
     if (!form.userid.value.trim()) {
@@ -19,13 +18,11 @@ function go_save() {
         form.userid.focus();
         return;
     }
-
     // 아이디 중복 검사 확인
     if (!form.reid.value.trim()) {
         alert('아이디 중복 검사를 실행하세요.');
         return;
     }
-
     // 비밀번호 검증: 8~20자, 영문(대소문자), 숫자, 특수문자 포함
     const pwdRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_+|~\-=`{}:";'<>?,./]).{8,20}$/;
     if (!form.pwd.value.trim()) {
@@ -37,33 +34,47 @@ function go_save() {
         form.pwd.focus();
         return;
     }
-
     // 비밀번호 일치 확인
     if (form.pwd.value !== form.pwdCheck.value) {
         alert('비밀번호가 일치하지 않습니다.');
         form.pwdCheck.focus();
         return;
     }
-
     // 연락처 입력 확인
     if (!form.phone.value.trim()) {
         alert('연락처를 입력하세요.');
         form.phone.focus();
         return;
     }
-
     // 우편번호 입력 확인
     if (!form.zip_num.value.trim()) {
         alert('우편번호를 입력하세요.');
         return;
     }
-
     // 주소 입력 확인
     if (!form.sample6_address.value.trim()) {
         alert('주소를 입력하세요.');
         return;
     }
-
     // 모든 검증 통과 후 폼 제출
     form.submit();
+}
+
+function sample6_execDaumPostcode() {
+    new daum.Postcode({
+        oncomplete: function (data) {
+            var addr = '';
+
+            if (data.userSelectedType === 'R') {
+                addr = data.roadAddress;
+            } else {
+                addr = data.jibunAddress;
+            }
+
+            document.getElementById('zip_num').value = data.zonecode;
+            document.getElementById("sample6_address").value = addr;
+
+            document.getElementById("sample6_address").focus();
+        }
+    }).open();
 }

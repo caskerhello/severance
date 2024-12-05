@@ -49,7 +49,7 @@
       <li><a href="#">의료진</a></li>
       <li><a href="#">진료 예약</a></li>
 
-      <li><a href="updateMemberForm">마이페이지</a></li>
+      <li><a href="mypage">마이페이지</a></li>
       <li><a href="qnaList">고객센터</a></li>
 
 
