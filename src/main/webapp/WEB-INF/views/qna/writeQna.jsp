@@ -5,7 +5,8 @@
   <article>
     <form action="writeQna" method="post"  name="formm">
       <div class="qna_top">
-        <h2 > 고객센터 ( Q&A ) </h2>
+       
+      <h2 > 고객센터 ( Q&A ) </h2>
       </div>
 
       <div class="row" >
