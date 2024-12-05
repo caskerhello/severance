@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-public class AdminController {
+public class AdminController1 {
 
     @Autowired
     AdminService as;
@@ -24,15 +24,7 @@ public class AdminController {
         return "admin/adminLogin";
     }
 
-    @GetMapping("/doctorList")
-    public String doctorList(Model model) {
-        return "doctor/doctorList";
-    }
 
-    @GetMapping("/reservationList")
-    public String reservationList(Model model) {
-        return "reservation/reservationList";
-    }
 
 
 
@@ -61,6 +53,35 @@ public class AdminController {
             }
         }
         return url;
+    }
+
+
+    @GetMapping("/adminDoctorList")
+    public String adminDoctorList(Model model)
+    {
+        System.out.println("adminDoctorList");
+        return "admin/adminDoctorList";
+    }
+
+    @GetMapping("/adminReservationList")
+    public String adminReservationList(Model model)
+    {
+        System.out.println("adminReservationList");
+        return "admin/adminReservationList";
+    }
+
+    @GetMapping("/adminMemberList")
+    public String adminMemberList(Model model)
+    {
+        System.out.println("adminMemberList");
+        return "admin/adminMemberList";
+    }
+
+    @GetMapping("/adminQnaList")
+    public String adminQnaList(Model model)
+    {
+        System.out.println("adminQnaList");
+        return "admin/adminQnaList";
     }
 
 }

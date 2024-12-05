@@ -1,20 +1,22 @@
-
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="css/doctorList.css">
 </head>
 <body>
 <form method="get" name="frm">
     <div class="table-container">
         <div class="table">
             <div class="heading">
-                <h2>Doctor List</h2>
+                <h2>Admin Doctor List</h2>
+                <div class="search">
+                    <input type="text" name="search" placeholder="Search here">
+                    <lavel for="search"><i class="ri-search-line"></i></lavel>
+                </div>
             </div>
-            <table class="doctorList">
+            <table class="Admin Doctor List">
                 <thead>
+
                 <tr>
                     <th>번호</th>
                     <th>이름</th>
@@ -30,5 +32,6 @@
         </div>
     </div>
 </form>
+
 </body>
 </html>

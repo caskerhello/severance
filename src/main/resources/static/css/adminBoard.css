@@ -87,19 +87,19 @@ body{
     z-index: 1;
 }
 
-.top-bar .search{
+.top-bar .top-title{
     display: flex;
     max-width: 400px;
     align-items: center;
 }
 
-.top-bar .search i {
+.top-bar .top-title i {
     margin-right: 10px; /* Add space between the icon and the text */
     font-size: 30px;
 }
 
 
-.top-bar .search h1 {
+.top-bar .top-title h1 {
     margin-bottom: 8px; /* Remove any default margin from the heading */
     display: flex;
     align-items: center;
@@ -107,7 +107,6 @@ body{
 }
 
 
-.search{
+.top-title{
     display: flex;
 }
-

@@ -5,6 +5,7 @@
 <head>
     <title>Title</title>
     <link rel="stylesheet" href="/css/adminboard.css"/>
+    <link rel="stylesheet" href="/css/doctorList.css"/>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -12,7 +13,7 @@
     <script>
         $(document).ready(function() {
             // 기본 페이지는 doctorList로 설정
-            $(".doctor-list-content").load("/doctorList"); // 컨트롤러에서 설정한 경로로 수정
+            $(".admin-content").load("/adminDoctorList"); // 컨트롤러에서 설정한 경로로 수정
 
             // 메뉴 클릭 시 동적으로 페이지를 로드
             $(".sidebar ul li a").click(function(e) {
@@ -22,12 +23,21 @@
                 console.log("Clicked on:", targetPage);  // 클릭된 페이지 확인을 위해 콘솔 출력
 
                 // 로드할 페이지가 doctorList인지 reservationList인지 확인하고 동적으로 로드
-                if (targetPage === "../doctor/doctorList.jsp") {
-                    console.log("Loading doctorList...");
-                    $(".doctor-list-content").load("/doctorList");  // /doctorList 경로로 페이지 로드
-                } else if (targetPage === "../reservation/reservationList") {
-                    console.log("Loading reservationList...");
-                    $(".doctor-list-content").load("/reservationList");  // /reservationList 경로로 페이지 로드
+                if (targetPage === "../admin/adminDoctorList") {
+                    console.log("Loading adminDoctorList...");
+                    $(".admin-content").load("/adminDoctorList");  // /doctorList 경로로 페이지 로드
+
+                } else if (targetPage === "../admin/adminReservationList") {
+                    console.log("Loading adminReservationList...");
+                    $(".admin-content").load("/adminReservationList");  // /reservationList 경로로 페이지 로드
+
+                } else if (targetPage === "../admin/adminMemberList") {
+                    console.log("Loading adminMemberList...");
+                    $(".admin-content").load("/adminMemberList");  // /reservationList 경로로 페이지 로드
+
+                } else if (targetPage === "../admin/adminQnaList") {
+                    console.log("Loading adminQnaList...");
+                    $(".admin-content").load("/adminQnaList");  // /reservationList 경로로 페이지 로드
                 }
             });
         });
@@ -45,25 +55,25 @@
                 </a>
             </li>
             <li>
-                <a href="../doctor/doctorList.jsp">
+                <a href="../admin/adminDoctorList">
                     <i class="ri-team-fill"></i>
                     <div class="title">의료진 리스트</div>
                 </a>
             </li>
             <li>
-                <a href="../reservation/reservationList">
+                <a href="../admin/adminReservationList">
                     <i class="ri-calendar-schedule-fill"></i>
                     <div class="title">예약 리스트</div>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="../admin/adminMemberList">
                     <i class="ri-user-heart-fill"></i>
                     <div class="title">회원 리스트</div>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="../admin/adminQnaList">
                     <i class="ri-heart-pulse-fill"></i>
                     <div class="title">Q & A</div>
                 </a>
@@ -71,17 +81,17 @@
         </ul>
     </div>
 
-    <!-- Main content area for doctor list -->
+
     <div class="main">
         <div class="top-bar">
-            <div class="search">
+            <div class="top-title">
                 <label><i class="ri-hospital-line"></i></label>
                 <h1>Severance</h1>
             </div>
         </div>
 
         <!-- Insert the doctor list content here -->
-        <div class="doctor-list-content">
+        <div class="admin-content">
 
 
 

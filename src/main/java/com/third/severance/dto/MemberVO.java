@@ -21,3 +21,4 @@ public class MemberVO {
     private String phone;
     private Timestamp indate;
 }
+

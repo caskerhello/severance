@@ -4,20 +4,20 @@
 <html>
 <head>
     <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="css/reservationList.css">
+    <link rel="stylesheet" type="text/css" href="css/memberList.css">
 </head>
 <body>
 <form method="get" name="frm">
     <div class="table-container">
         <div class="table">
             <div class="heading">
-                <h2>Reservation List</h2>
+                <h2>Member List</h2>
                 <div class="search">
                     <input type="text" name="search" placeholder="Search here">
                     <lavel for="search"><i class="ri-search-line"></i></lavel>
                 </div>
             </div>
-            <table class="reservationList">
+            <table class="memberList">
                 <thead>
                 <tr>
                     <th>번호</th>
