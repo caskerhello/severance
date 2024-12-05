@@ -28,6 +28,12 @@
                 } else if (targetPage === "../reservation/reservationList") {
                     console.log("Loading reservationList...");
                     $(".doctor-list-content").load("/reservationList");  // /reservationList 경로로 페이지 로드
+                } else if (targetPage === "../member/memberList") {
+                    console.log("Loading memberList...");
+                    $(".doctor-list-content").load("/memberList");  // /reservationList 경로로 페이지 로드
+                } else if (targetPage === "../qna/qnaList") {
+                    console.log("Loading qnaList...");
+                    $(".doctor-list-content").load("/qnaList");  // /reservationList 경로로 페이지 로드
                 }
             });
         });
@@ -57,13 +63,13 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="../member/memberList">
                     <i class="ri-user-heart-fill"></i>
                     <div class="title">회원 리스트</div>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="../qna/qnaList">
                     <i class="ri-heart-pulse-fill"></i>
                     <div class="title">Q & A</div>
                 </a>
@@ -74,7 +80,7 @@
     <!-- Main content area for doctor list -->
     <div class="main">
         <div class="top-bar">
-            <div class="search">
+            <div class="top-title">
                 <label><i class="ri-hospital-line"></i></label>
                 <h1>Severance</h1>
             </div>
