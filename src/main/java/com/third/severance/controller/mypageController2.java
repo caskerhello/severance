@@ -2,6 +2,7 @@ package com.third.severance.controller;
 
 import com.third.severance.dto.MemberVO;
 import com.third.severance.service.ReservationService;
+import com.third.severance.service.ReserveService;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class mypageController2 {
 
     @Autowired
-    ReservationService rs;
+    ReserveService rs2;
 
 
     @GetMapping("/updateMemberForm")
@@ -31,33 +32,43 @@ public class mypageController2 {
     }
 
     @PostMapping("/updateMember")
-    public String updateMember(@ModelAttribute("dto") @Valid MemberVO membervo, BindingResult result ,
-                               @RequestParam(value="pwdCheck", required = false) String pwdCheck,
-                               HttpSession session, Model model  ) {
+    public String updateMember(@ModelAttribute("dto") @Valid MemberVO membervo, BindingResult result,
+                               @RequestParam(value = "pwdCheck", required = false) String pwdCheck,
+                               HttpSession session, Model model) {
+        // 세션에서 로그인한 사용자 정보 가져오기
         MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
+
+        // 기본 반환 URL
         String url = "mypage/updateMember";
-        if (result.getFieldError("pwd") != null)
+
+        // 유효성 검사 및 에러 처리
+        if (result.hasErrors()) {
+            if (result.getFieldError("pwd") != null) {
+                model.addAttribute("message", "패스워드를 입력하세요");
+            } else if (result.getFieldError("phone") != null) {
+                model.addAttribute("message", "전화번호를 입력하세요");
+            } else if (result.getFieldError("email") != null) {
+                model.addAttribute("message", "이메일을 입력하세요");
+            }
+        } else if (membervo.getPwd() == null || membervo.getPwd().isEmpty()) {
             model.addAttribute("message", "패스워드를 입력하세요");
-        else if (!membervo.getPwd().equals(pwdCheck))
+        } else if (!membervo.getPwd().equals(pwdCheck)) {
             model.addAttribute("message", "패스워드 확인이 일치하지 않습니다");
-        else if (result.getFieldError("name") != null)
-            model.addAttribute("message", "이름을 입력하세요");
-        else if (result.getFieldError("phone") != null)
-            model.addAttribute("message", "전화번호를 입력하세요");
-        else if (result.getFieldError("email") != null)
-            model.addAttribute("message", "이메일을 입력하세요");
-        else {
-            rs.updateMember(membervo);
-            session.setAttribute("loginUser", membervo);
-            url = "redirect:/";
+        } else {
+            // 모든 유효성 검사를 통과했을 경우
+            rs2.updateMember(membervo); // 회원정보 업데이트
+            session.setAttribute("loginUser", membervo); // 세션 정보 갱신
+            url = "redirect:/mypage"; // 성공 시 마이페이지로 리다이렉트
         }
-        return url;
+
+        return url; // 실패 시 수정 페이지 반환
     }
+
 
     @GetMapping("/deleteMember")
     public String deleteMember(HttpSession session, Model model) {
         MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
-        rs.deleteMember(loginUser.getUserid());
+        rs2.deleteMember(loginUser.getUserid());
         model.addAttribute("message", "회원탈퇴가 정상적으로 처리되었습니다. ");
         return "redirect:/";
     }
