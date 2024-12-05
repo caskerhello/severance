@@ -1,4 +1,4 @@
-package com.third.severance.dto;
-
-public class AdminVO2 {
-}
+//package com.third.severance.dto;
+//
+//public class AdminVO2 {
+//}

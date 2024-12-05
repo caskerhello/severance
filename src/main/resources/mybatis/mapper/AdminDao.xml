@@ -6,7 +6,6 @@
 <mapper namespace="com.third.severance.dao.IAdminDao">
     <select id="getAdmin" resultType="com.third.severance.dto.AdminVO" >
         select * from admin where adminid=#{param1}
-    </select>ddas
-
+    </select>
 
 </mapper>

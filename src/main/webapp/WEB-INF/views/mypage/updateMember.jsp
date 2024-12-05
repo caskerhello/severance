@@ -6,6 +6,11 @@
 <link rel="stylesheet" href="/css/main.css"/>
 <link rel="stylesheet" href="/css/updateMemberForm.css"/>
 
+<script src="/script/jquery-3.7.1.min.js"></script>
+<script src="/script/member.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 
 <section>
 
@@ -103,9 +108,12 @@
 				<input type="button" value="회원수정" onclick="go_update()">
 			</div>
 
-			<div class="field">
-				${message}
-			</div>
+			<c:if test="${not empty message}">
+				<div class="error-message" style="color: red; font-weight: bold;">
+					${message}
+				</div>
+			</c:if>
+
 		</form>
 	</article>
 </section>

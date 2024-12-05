@@ -8,11 +8,19 @@
         select * from member where userid=#{userid}
     </select>
 
-
     <insert id="insertMember" parameterType="com.third.severance.dto.MemberVO">
         insert into member( userid, pwd, name, email, zip_num, address, phone)
         values( #{userid}, #{pwd}, #{name}, #{email}, #{zip_num}, #{address}, #{phone})
     </insert>
 
+    <update id="updateMember" parameterType="com.third.severance.dto.MemberVO">
+        update member
+        set pwd=#{pwd}, phone=#{phone}, email=#{email}, zip_num=#{zip_num}, address=#{address}
+        where userid=#{userid}
+    </update>
+
+    <delete id="deleteMember">
+        delete from member where userid=#{param1}
+    </delete>
 
 </mapper>
