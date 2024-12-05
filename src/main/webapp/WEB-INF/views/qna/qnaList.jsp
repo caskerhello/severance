@@ -4,15 +4,15 @@
 	<article>
 		<form>
 			<div class="qna_top">
-				<h2> Q & A </h2>
+				<h2> 고객센터 ( Q&A ) </h2>
 				<div class="btn">
 					<input type="button" value="질문하기" onClick="location.href='writeQnaForm'"/>
 				</div>
 			</div>
-			<!-- QnA 게시판 시작 -->
 
+			<!-- QnA 게시판 시작 -->
 			<div class="tb">
-				<div class="row" style="background:#0054d1; color:#fff; border-radius:5px 5px 0 0;">
+				<div class="rowtitle">
 					<div class="coltitle">No.</div>
 					<div class="coltitle">작성자</div>
 					<div class="coltitle" style="flex:4">제목</div>
@@ -21,11 +21,11 @@
 				</div>
 				<c:forEach items="${qnaList}" var="qnaVO" >
 					<div class="row" onClick="qnaView('${qnaVO.qseq}')">
-						<div class="col">${qnaVO.qseq}</div>
-						<div class="col">${qnaVO.userid}</div>
-						<div class="col" style="flex:4">${qnaVO.subject}</div>
-						<div class="col"><fmt:formatDate value="${qnaVO.indate}" type="date"/></div>
-						<div class="col">
+						<div class="colQ">${qnaVO.qseq}</div>
+						<div class="colQ">${qnaVO.userid}</div>
+						<div class="colQ" style="flex:4">${qnaVO.subject}</div>
+						<div class="colQ"><fmt:formatDate value="${qnaVO.indate}" type="date"/></div>
+						<div class="colQ">
 							<c:choose>
 								<c:when test="${empty qnaVO.reply }">N</c:when>
 								<c:otherwise>Y</c:otherwise>
@@ -33,6 +33,7 @@
 						</div>
 					</div>
 				</c:forEach>
+				<!-- QnA 게시판 끝 -->
 
 				<!-- paging 시작 -->
 				<div class="row">
