@@ -5,8 +5,11 @@
 <link rel="stylesheet" href="/css/header_footer.css"/>
 <link rel="stylesheet" href="/css/main.css"/>
 <link rel="stylesheet" href="/css/joinForm.css"/>
+
 <script src="/script/jquery-3.7.1.min.js"></script>
 <script src="/script/member.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <section>
     <article>
@@ -19,9 +22,55 @@
                 <input type="text" id="username" name="name" value="${dto.name}" placeholder="이름을 입력하세요" required>
             </div>
 
+            <script>
+                $(function () {
+                    $('#idCheckButton').click(function () {
+                        const useridInput = $('#userid');
+
+                        const userid = useridInput.val().trim();
+                        console.log(userid);
+
+                        const useridRegex = /^[a-zA-Z0-9]{6,20}$/;
+                        if (!useridRegex.test(userid)) {
+                            alert('아이디는 6자 이상, 20자 이내의 영문과 숫자만 사용할 수 있습니다.');
+                            useridInput.val('');
+                            useridInput.focus();
+                            return;
+                        }
+
+                        var formdata = new FormData($('#joinFrm')[0]);
+                        for (let pair of formdata.entries()) {
+                            console.log(pair[0] + ': ' + pair[1]); // 디버깅용
+                        }
+
+                        console.log(formdata);
+
+                        $.ajax({
+                            url: "<%=request.getContextPath()%>/idcheck",
+                            type: "POST",
+                            data: formdata,
+                            contentType: false,
+                            processData: false,
+                            success: function (data) {
+                                if (data.idmessage == '1') {
+                                    $('#idmessage').html("&nbsp;&nbsp;<span style='color:blue'>사용 가능합니다</span>");
+                                    $('#reid').val(data.userid);
+                                } else {
+                                    $('#idmessage').html("&nbsp;&nbsp;<span style='color:red'>사용중인 아이디입니다</span>");
+                                    $('#reid').val("");
+                                }
+                            },
+                            error:function(){
+                                alert("중복 조회 실패");
+                            },
+                        });
+                    });
+                });
+            </script>
             <div class="form-group">
                 <label for="userid">아이디</label>
                 <input type="text" id="userid" name="userid" value="${dto.userid}" placeholder="6자 이상, 20자 이내" required>
+
                 <button type="button" id="idCheckButton">중복확인</button>
                 <div id="idmessage"></div>
                 <input type="hidden" name="reid" id="reid" value="${reid}">
@@ -70,30 +119,10 @@
 
             <div class="form-group">
                 <label for="sample6_address">주소</label>
-                <input type="text" id="sample6_address" name="address" value="${dto.address}" placeholder="도로명 주소를 입력하세요" readonly required>
+                <input type="text" id="sample6_address" name="address" value="${dto.address}" placeholder="도로명 주소를 입력하세요" required>
             </div>
 
             <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-            <script>
-                function sample6_execDaumPostcode() {
-                    new daum.Postcode({
-                        oncomplete: function(data) {
-                            var addr = '';
-
-                            if (data.userSelectedType === 'R') {
-                                addr = data.roadAddress;
-                            } else {
-                                addr = data.jibunAddress;
-                            }
-
-                            document.getElementById('zip_num').value = data.zonecode;
-                            document.getElementById("sample6_address").value = addr;
-
-                            document.getElementById("sample6_address").focus();
-                        }
-                    }).open();
-                }
-            </script>
 
             <div class="form-submit">
                 <input type="button" value="메인으로" onclick="location.href='/'">

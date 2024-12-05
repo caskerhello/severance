@@ -5,6 +5,8 @@ import com.third.severance.dao.IDoctorTimeDao;
 import com.third.severance.dao.IReservationDao;
 import com.third.severance.dto.*;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotEmpty;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -184,5 +186,13 @@ public class ReservationService {
 
     public void cancelreservation(int rseq) {
     rdao.cancelreservation(rseq);}
+
+    public void updateMember(MemberVO membervo) {
+        rdao.updateMember(membervo);
+    }
+
+    public void deleteMember(String userid) {
+        rdao.deleteMember(userid);
+    }
 }
 
