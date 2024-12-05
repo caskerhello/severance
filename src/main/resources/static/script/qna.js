@@ -4,19 +4,24 @@ function qnaView( qseq ){
     location.href="qnaView?qseq="+ qseq ;
 }
 
-
-// QnA 글 작성시 글자수 세기 및 글자수 제한
+// QnA 글 작성시 제목, 질문내용 글자수 제한 및 질문내용 글자수 세기
 function counter() {
+    var qsubject = document.getElementById('subjectQ').value;
     var question = document.getElementById('contentQ').value;
 
-    // 개행 문자(enter키 사용)도 포함한 정확한 글자 수 계산
+    var qsubjectLength = qsubject.length;
+    // 개행 문자(enter키 사용) 포함한 정확한 글자 수 계산
     var questionLength = question.split('\n').join('\r\n').length;
 
     // 글자 수 제한 처리
+    if(qsubjectLength > 300){
+        alert("제목은 최대 300자까지 입력 가능합니다.");
+    }
+
     if (questionLength > 3000) {
         alert("질문 내용은 최대 3000자까지 입력 가능합니다.");
 
-        // 3000자에 맞게 잘라내기 (개행 포함)
+        // 개행 문자 포함 3000자에 맞게 잘라내기
         var truncated = question.split('\n').reduce((acc, line) => {
             var lineLength = line.length + 2; // 개행 문자 포함한 줄 길이
             if (acc.total + lineLength <= 3000) {
