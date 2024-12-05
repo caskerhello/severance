@@ -6,18 +6,22 @@ article form{
 }
 
 form h2{
-    margin:0;
+    color: #343a40;
+    margin: 10px 0 20px;
+    line-height: 1;
     font-weight: normal;
-    font-size: 28px;
 }
 
-/* QnA 게시판 상단 */
+/* QnA 게시판 상단영역 */
 
 .qna_top{
     display:flex;
     flex:1;
     justify-content : space-between;
+    height:80px;
 }
+
+/* QnA List 내 질문하기 버튼 */
 
 .qna_top .btn {
     display: flex;
@@ -25,21 +29,28 @@ form h2{
     margin:10px 3px;
     background-color: #2faaff;
     border-radius: 5px;
-    padding:10px 0;
     cursor:pointer;
     justify-content: center;
     align-items: center;
 }
 
-/* 글 작성하기 */
 .qna_top .btn input[type=button]{
     width:100%;
+    height:100%;
     font-weight: bold;
     color: #fff;
     border: none;
     outline: none;
     background-color: inherit ;
     cursor: pointer;
+}
+
+/* QnA List, QnA view 의 title */
+.rowtitle{
+    display: flex;
+    background: #0054d1;
+    color:#fff;
+    border-radius:5px 5px 0 0;
 }
 
 .row{
@@ -60,7 +71,8 @@ form h2{
     font-size: 1rem;
     padding:10px 0;
 }
-.row .col input[type=text]{
+
+.row .col input[type=button], .row .col input[type=submit]{
     display: flex;
     flex:5;
     justify-content: right;
@@ -78,41 +90,26 @@ form h2{
     padding:10px 0;
 }
 
-.qnatitle{
-    flex:1;
-    font-weight:bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding:10px 0;
-}
-
-.col{
+.colQ{
     flex:1;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1rem;
     padding:10px 0;
+    cursor:pointer;
 }
 
 .field{
     display: flex;
     margin:10px;
     word-break:break-all;
-    white-space : pre-wrap;
 }
 
 pre{
     overflow: auto;
     white-space : pre-wrap;
-    /* pre 태그 사용시, 가로로 길어진 글을 자동개행 */
-}
-
-.reply{
-    display: flex;
-    margin:10px;
-    border-radius: 5px;
+    /* pre 태그 사용시, 가로로 길어진 글 자동개행 */
 }
 
 .btn {
@@ -125,19 +122,10 @@ pre{
     align-items: center;
 }
 
-.btn input[type=button]{
+.btn input[type=button], .btn input[type=text], .btn input[type=submit]{
+    flex:1;
     width:100%;
-
-    font-weight: bold;
-    color: #fff;
-    border: none;
-    outline: none;
-    background-color: inherit ;
-    cursor: pointer;
-}
-
-.btn input[type=submit]{
-    width:100%;
+    height:100%;
     font-weight: bold;
     color: #fff;
     border: none;
