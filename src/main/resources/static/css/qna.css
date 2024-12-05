@@ -1,135 +1,183 @@
-article form{
-    flex:1;
+/* 기본 폼 스타일 */
+article form {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    padding : 10px;
+    padding: 10px;
 }
 
-form h2{
+form h2 {
     color: #343a40;
     margin: 10px 0 20px;
     line-height: 1;
     font-weight: normal;
 }
 
-/* QnA 게시판 상단영역 */
-
-.qna_top{
-    display:flex;
-    flex:1;
-    justify-content : space-between;
-    height:80px;
+/* QnA 게시판 상단 영역 */
+.qna_top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
 }
-
-/* QnA List 내 질문하기 버튼 */
 
 .qna_top .btn {
     display: flex;
-    width:20%;
-    margin:10px 3px;
+    margin: 10px 3px;
+    padding: 10px 20px;
     background-color: #2faaff;
     border-radius: 5px;
-    cursor:pointer;
+    cursor: pointer;
     justify-content: center;
     align-items: center;
-}
-
-.qna_top .btn input[type=button]{
-    width:100%;
-    height:100%;
-    font-weight: bold;
     color: #fff;
+    font-weight: bold;
     border: none;
-    outline: none;
-    background-color: inherit ;
-    cursor: pointer;
 }
 
-/* QnA List, QnA view 의 title */
-.rowtitle{
+/* QnA List, QnA View의 Title */
+.rowtitle {
     display: flex;
     background: #0054d1;
-    color:#fff;
-    border-radius:5px 5px 0 0;
+    color: #fff;
+    border-radius: 5px 5px 0 0;
 }
 
-.row{
-    border-bottom:1px dotted #0054d1;
+.row {
+    border-bottom: 1px dotted #0054d1;
     display: flex;
-}
-.row:first-child{
-    border-bottom:2px solid #0054d1;
-}
-.row:last-child{
-    border-bottom:none;
 }
 
-.row .col label{
+.row:first-child {
+    border-bottom: 2px solid #0054d1;
+}
+
+.row:last-child {
+    border-bottom: none;
+}
+
+.row .col label {
     display: flex;
-    justify-content: right;
+    justify-content: flex-end;
     align-items: center;
     font-size: 1rem;
-    padding:10px 0;
+    padding: 10px 0;
 }
 
-.row .col input[type=button], .row .col input[type=submit]{
+.row .col input[type=button],
+.row .col input[type=submit] {
+    flex: 1;
     display: flex;
-    flex:5;
-    justify-content: right;
+    justify-content: flex-end;
     align-items: center;
     font-size: 1rem;
-    padding:10px 0;
+    padding: 10px 0;
 }
 
-.coltitle{
-    flex:1;
-    font-weight:bold;
+.coltitle {
+    flex: 1;
+    font-weight: bold;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding:10px 0;
+    padding: 10px 0;
 }
 
-.colQ{
-    flex:1;
+.colline {
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1rem;
-    padding:10px 0;
-    cursor:pointer;
+    padding: 10px 0;
+    cursor: pointer;
 }
 
-.field{
+.error-message{
+    margin-left: 10px;
+    color:red;
+    font-size: 11px;
+}
+
+/* 입력 필드 */
+.field {
     display: flex;
-    margin:10px;
-    word-break:break-all;
+    margin: 10px;
+    word-break: break-all;
 }
 
-pre{
+/* 코드 블록 자동 개행 */
+pre {
     overflow: auto;
-    white-space : pre-wrap;
-    /* pre 태그 사용시, 가로로 길어진 글 자동개행 */
+    white-space: pre-wrap;
 }
 
+/* 공통 버튼 스타일 */
 .btn {
     display: flex;
-    margin:10px 3px;
+    margin: 10px 3px;
     border-radius: 5px;
-    padding:10px 0;
-    cursor:pointer;
+    cursor: pointer;
     justify-content: center;
     align-items: center;
+    height: 40px;
+    background-color: #0054d1;
+    color: #fff;
+    font-weight: bold;
 }
 
-.btn input[type=button], .btn input[type=text], .btn input[type=submit]{
-    flex:1;
-    width:100%;
-    height:100%;
+.btn input[type=button],
+.btn input[type=submit] {
+    flex: 1;
     font-weight: bold;
-    color: #fff;
+    color: inherit;
     border: none;
     outline: none;
-    background-color: inherit ;
+    background-color: inherit;
     cursor: pointer;
+}
+
+
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+
+    article form {
+        flex-direction: column;
+        min-width: 25em;
+        max-width:25em;
+    }
+
+    /* 공통 */
+    .qna_top {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .row{
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .tb .row .colline{
+        flex: 1;
+        display: flex;
+        font-size: 1rem;
+        padding: 10px 0;
+        white-space: none;
+        cursor: pointer;
+    }
+
+    .row .btn {
+        border-radius: 5px;
+        cursor: pointer;
+        background-color: #0054d1;
+        color: #fff;
+        font-weight: bold;
+        min-height:40px;
+    }
+
+    .field {
+        flex-direction: column;
+    }
 }

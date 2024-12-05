@@ -21,11 +21,11 @@
 				</div>
 				<c:forEach items="${qnaList}" var="qnaVO" >
 					<div class="row" onClick="qnaView('${qnaVO.qseq}')">
-						<div class="colQ">${qnaVO.qseq}</div>
-						<div class="colQ">${qnaVO.userid}</div>
-						<div class="colQ" style="flex:4">${qnaVO.subject}</div>
-						<div class="colQ"><fmt:formatDate value="${qnaVO.indate}" type="date"/></div>
-						<div class="colQ">
+						<div class="colline">${qnaVO.qseq}</div>
+						<div class="colline">${qnaVO.userid}</div>
+						<div class="colline" style="flex:4">${qnaVO.subject}</div>
+						<div class="colline"><fmt:formatDate value="${qnaVO.indate}" type="date"/></div>
+						<div class="colline">
 							<c:choose>
 								<c:when test="${empty qnaVO.reply }">N</c:when>
 								<c:otherwise>Y</c:otherwise>

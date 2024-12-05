@@ -48,15 +48,42 @@ public class QnaController {
             @RequestParam("userid") String userid,
             @RequestParam("subject") String subject,
             @RequestParam("content") String content
-        ) {
+    ) {
         ModelAndView mav = new ModelAndView();
+
+        // 입력값 검증
+        if (userid == null || userid.trim().isEmpty()) {
+            mav.addObject("errorMessage1", "작성자명을 입력하세요.");
+            mav.addObject("userid", userid); // 입력값 유지
+            mav.addObject("subject", subject);
+            mav.addObject("content", content);
+            mav.setViewName("qna/writeQna");
+        } else if (subject == null || subject.trim().isEmpty()) {
+            mav.addObject("errorMessage2", "제목을 입력하세요.");
+            mav.addObject("userid", userid);
+            mav.addObject("subject", subject); // 입력값 유지
+            mav.addObject("content", content);
+            mav.setViewName("qna/writeQna");
+        } else if (content == null || content.trim().isEmpty()) {
+            mav.addObject("errorMessage3", "질문 내용을 입력하세요.");
+            mav.addObject("userid", userid);
+            mav.addObject("subject", subject);
+            mav.addObject("content", content); // 입력값 유지
+            mav.setViewName("qna/writeQna");
+        } else {
+            // 데이터 저장
             QnaVO qvo = new QnaVO();
             qvo.setUserid(userid);
             qvo.setSubject(subject);
             qvo.setContent(content);
             qs.insertQna(qvo);
-            mav.setViewName("redirect:/qnaList");
 
+            // 성공 시 목록 페이지로 리다이렉트
+            mav.setViewName("redirect:/qnaList");
+        }
         return mav;
     }
+
+
+
 }
