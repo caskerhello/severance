@@ -33,10 +33,10 @@
 
                 <td class="content">
                     <c:choose>
-                        <c:when test="${rvo.doctorsection == 5}">비뇨기과</c:when>
-                        <c:when test="${rvo.doctorsection == 4}">산부인과</c:when>
-                        <c:when test="${rvo.doctorsection == 3}">외과</c:when>
-                        <c:when test="${rvo.doctorsection == 2}">이비인후과</c:when>
+                        <c:when test="${rrvo.doctorsection == 5}">비뇨기과</c:when>
+                        <c:when test="${rrvo.doctorsection == 4}">산부인과</c:when>
+                        <c:when test="${rrvo.doctorsection == 3}">외과</c:when>
+                        <c:when test="${rrvo.doctorsection == 2}">이비인후과</c:when>
                         <c:otherwise>정형외과</c:otherwise>
                     </c:choose>
 
@@ -50,7 +50,7 @@
 
                 <td class="content">
                 <c:choose>
-                    <c:when test="${rvo.time == 0}">오전</c:when>
+                    <c:when test="${rrvo.time == 0}">오전</c:when>
                     <c:otherwise>오후</c:otherwise>
                 </c:choose>
                 </td>

@@ -24,28 +24,27 @@ public class mypageController {
     public ModelAndView mypage(HttpSession session ) {
         ModelAndView mav = new ModelAndView();
 
-    //억지로 id로 멤버 조회
-    MemberVO mvo = rs.getMember( "one" );
 
-    session.setAttribute("loginUser", mvo);
+        MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
 
-    MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
-
-        System.out.println(loginUser);
-        System.out.println(loginUser.getUserid() );
+//        System.out.println("loginUser.getUserid()"+loginUser.getUserid() );
+//        System.out.println("loginUser"+loginUser);
 
 
-    //    if (loginUser == null)
-    //        mav.setViewName("member/login");
-    //    else {
+
+        if (loginUser == null)
+            mav.setViewName("member/loginForm");
+        else {
 
 
-            mav.addObject( "reserveList" , rs.reserveIng( loginUser.getUserid() ) );
+            mav.addObject("reserveList", rs.reserveIng(loginUser.getUserid()));
 
-    //        System.out.println(rs.reserveIng( loginUser.getUserid() ));
+            //        System.out.println(rs.reserveIng( loginUser.getUserid() ));
 
             mav.addObject("title", "예약 진행 내역");
             mav.setViewName("mypage/mypage");
+
+        }
 
         return mav;
     }

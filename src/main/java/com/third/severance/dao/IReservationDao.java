@@ -17,7 +17,7 @@ public interface IReservationDao {
 
     int lookupMaxOseq(int mseq);
 
-    MemberVO getLoginMember(int mseq);
+    MemberVO getLoginMember(String userid);
 
     ReservationResultVO getReserveResult(int rseq);
 

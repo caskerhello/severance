@@ -10,6 +10,7 @@
   <title>Insert title here</title>
   <link rel="stylesheet" href="/css/header_footer.css"/>
   <link rel="stylesheet" href="/css/main.css"/>
+    <link rel="stylesheet" href="/css/reservation.css"/>
   <link rel="stylesheet" href="/css/qna.css"/>
 
     <script src="/script/jquery-3.7.1.min.js"></script>
@@ -27,7 +28,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
   <!-- Script -->
-  <script src="/script/qna.js"></script>
+<script src="/script/qna.js"></script>
+<script src="/script/mypage.js"></script>
+<script src="/script/member.js"></script>
 
 </head>
 <body>
@@ -35,7 +38,7 @@
 <header>
     <div class="logo-container">
         <a href="/" class="logo"><img src="/images/logo.png"></a>
-        <a href="#" class="logo-text">하이미디어 병원</a>
+        <a href="/" class="logo-text">하이미디어 병원</a>
     </div>
 
     <input type="checkbox" id="menu-toggle" class="menu-checkbox" />
@@ -46,8 +49,8 @@
     </label>
 
     <ul class="navlist">
-      <li><a href="#">의료진</a></li>
-      <li><a href="#">진료 예약</a></li>
+<%--      <li><a href="#">의료진</a></li>--%>
+      <li><a href="beforereservation">진료 예약</a></li>
 
       <li><a href="mypage">마이페이지</a></li>
       <li><a href="qnaList">고객센터</a></li>
@@ -71,7 +74,7 @@
             </c:when>
             <c:otherwise>
 			    <label> 환영합니다. ${loginUser.name}(${loginUser.userid}) 님 </label>
-                <a href="logout"><i class="ri-user-line"></i></a> <!--로그인, 로그아웃-->
+                <a href="logout"><i class="ri-user-line"></i><span class="tooltip right">로그아웃</span></a> <!--로그인, 로그아웃-->
             </c:otherwise>
         </c:choose>
       <div class="bx bx-menu" id="menu-icon"></div>

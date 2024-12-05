@@ -139,9 +139,9 @@ public class ReservationService {
 
 
 
-    public MemberVO getLoginMember(int mseq) {
+    public MemberVO getLoginMember(String userid) {
         //DAO 호출로 로그인 유저 데이터 가져오기
-         return rdao.getLoginMember(mseq);
+         return rdao.getLoginMember(userid);
     }
 
     public ReservationResultVO getReserveResult(int rseq) {

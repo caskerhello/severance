@@ -20,7 +20,7 @@
 
   <div class="main">
     <div class="container">
-      <img src="images/${dvo.savefilename}" />
+      <img src="images/Doctor_image/${dvo.savefilename}" />
     </div>
 
     <div class="about-text">
@@ -29,7 +29,7 @@
       <div class="content">${dvo.content}</div>
 
 
-      <button onclick="#">진료예약</button>
+      <button onclick="location.href='reservationform?dseq=${dvo.dseq}'">진료예약</button>
     </div>
   </div>
 

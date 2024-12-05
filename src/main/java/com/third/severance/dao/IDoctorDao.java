@@ -10,10 +10,11 @@ import java.util.List;
 public interface IDoctorDao {
     
 
-    DoctorVO doctorDetail(int dseq);
+
 
     List<DoctorVO> selectSection(int doctorsection);
 
-
     DoctorVO getDoctor(int dseq);
+
+
 }
