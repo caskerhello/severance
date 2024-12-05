@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 
 //import net.minidev.json.JSONArray;
 
+import jakarta.servlet.http.HttpSession;
 import org.json.JSONArray;
 //import org.json.JSONObject;
 
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Controller
 public class ReservationController {
@@ -34,35 +36,103 @@ public class ReservationController {
 
 
 
+
+    @GetMapping("/beforereservation")
+    public ModelAndView beforereservation(ModelAndView mv, HttpServletRequest request) {
+
+
+        int doctorsection=1;
+
+        ModelAndView mav = new ModelAndView();
+
+        List<DoctorVO> dvo = ds.selectSection( doctorsection );
+
+//        mav.addObject("doctorsection", doctorsection );
+
+
+        System.out.println("dvo 입력 전 "+dvo);
+
+        mav.addObject("doctorList", dvo );
+
+        System.out.println("dvo 입력 후 "+dvo);
+
+
+
+        mav.setViewName("reservation/beforereservation");
+        return mav;
+
+
+
+    }
+
+
+
+
+    @GetMapping("/beforedoctorsection")
+    public ModelAndView beforedoctorsection(@RequestParam("doctorsection") int doctorsection ){
+
+
+
+        ModelAndView mav = new ModelAndView();
+
+        List<DoctorVO> dvo = ds.selectSection( doctorsection );
+
+//        mav.addObject("doctorsection", doctorsection );
+
+
+        System.out.println("dvo 입력 전 "+dvo);
+
+        mav.addObject("doctorList", dvo );
+
+        System.out.println("dvo 입력 후 "+dvo);
+
+
+
+        mav.setViewName("reservation/beforereservation");
+        return mav;
+
+    };
+
+
     @GetMapping("/reservationform")
-    public String reservationform(
+    public ModelAndView reservationform(
             @RequestParam int dseq,
-            HttpServletRequest req) {
+            HttpServletRequest req,
+            HttpSession session) {
+
+
+        ModelAndView mav = new ModelAndView();
 
         System.out.println("cont1, dseq: " + dseq);
 
 
-        //        MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
-//        if( loginUser == null )
-//            mav.setViewName("member/loginForm");
-//        else{
-//
-//        }
-//        return mav;
+        MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
+        if( loginUser == null )
+            mav.setViewName("member/loginForm");
+        else{
 
 
-        int mseq =1;
 
-        //멤버정보가져오기
-        MemberVO mvo = rs.getLoginMember(mseq);
-        
-        // ReservationResponse를 통해 예약 정보 가져오기
-        DoctorVO dvo = ds.getDoctor(dseq);
-        ReservationResponse response = rs.getDoctorTimeDetails(dseq);
+            System.out.println(loginUser);
+            System.out.println(loginUser.getUserid() );
 
 
-        // 새로운 JSONArray 생성
-        JSONArray jsonArray = new JSONArray();
+
+            //멤버정보가져오기
+            MemberVO mvo = rs.getLoginMember(loginUser.getUserid() );
+
+            System.out.println(loginUser);
+            System.out.println(loginUser.getUserid() );
+
+            System.out.println(mvo);
+
+            // ReservationResponse를 통해 예약 정보 가져오기
+            DoctorVO dvo = ds.getDoctor(dseq);
+            ReservationResponse response = rs.getDoctorTimeDetails(dseq);
+
+
+            // 새로운 JSONArray 생성
+            JSONArray jsonArray = new JSONArray();
 
 //        List<JSONObject> thisMonthResData = response.getThisMonthResData();
 //        List<JSONObject> nextMonthResData = response.getNextMonthResData();
@@ -76,30 +146,31 @@ public class ReservationController {
 //        for (JSONObject item : nextMonthResData) {
 //            jsonArray.put(item);
 //        }
-        // ReservationResponse에서 thisMonthResData와 nextMonthResData를 추출
-        JSONArray thisMonthResData = response.getThisMonthResData();
-        JSONArray nextMonthResData = response.getNextMonthResData();
+            // ReservationResponse에서 thisMonthResData와 nextMonthResData를 추출
+            JSONArray thisMonthResData = response.getThisMonthResData();
+            JSONArray nextMonthResData = response.getNextMonthResData();
 
 
-        // request에 데이터 저장
-        req.setAttribute("detail", dvo);
-        req.setAttribute("mvo", mvo);
-        req.setAttribute("dseq",1);
-        req.setAttribute("thisMonthResData", thisMonthResData);
-        req.setAttribute("nextMonthResData", nextMonthResData);
+            // request에 데이터 저장
+            req.setAttribute("detail", dvo);
+            req.setAttribute("mvo", mvo);
+            req.setAttribute("dseq",dvo.getDseq());
+            req.setAttribute("mseq",mvo.getMseq());
+            req.setAttribute("thisMonthResData", thisMonthResData);
+            req.setAttribute("nextMonthResData", nextMonthResData);
 
-        // view 이름 반환 (viewResolver가 "reservation/reservationform.jsp"로 자동 변환)
-        return "reservation/reservationform";
+            // view 이름 반환 (viewResolver가 "reservation/reservationform.jsp"로 자동 변환)
+
+            mav.setViewName("reservation/reservationform");
+//            return "reservation/reservationform";
+
+        }
+        return mav;
+
+
+
+
     }
-
-//    @GetMapping("/doctor-times")
-//    public ResponseEntity<ReservationResponse> getDoctorTimes(
-//            @RequestParam int dseq,
-//            @RequestParam LocalDate bookdate) {
-//        ReservationResponse response = rs.getDoctorTimeDetails(dseq, bookdate);
-//        return ResponseEntity.ok(response);
-//    }
-
 
     @PostMapping("/reservation")
     public ModelAndView reservation(@RequestParam("dseq") int dseq,
@@ -111,7 +182,7 @@ public class ReservationController {
         ModelAndView mav = new ModelAndView();
 
         System.out.println("cont2, dseq: " + dseq);
-        System.out.println("cont2, dseq: " + mseq);
+        System.out.println("cont2, mseq: " + mseq);
         System.out.println("cont2, selectedDate: " + bookdate);
         System.out.println("cont2, selectedTime: " + time);
 
@@ -127,7 +198,9 @@ public class ReservationController {
         System.out.println(" 입력 데이터 출력 성공");
 
         ReservationResultVO rrvo = rs.getReserveResult(rseq);
-        
+
+        System.out.println(rrvo);
+
 
         mav.addObject("rrvo", rrvo);
         mav.setViewName("reservation/reservationresult");

@@ -53,65 +53,32 @@
     </div>
 
     <div class="doc-content">
-        <div class="col">
-            <div class="col-img">
-                <img src="/images/1_profile.jpg" />
-            </div>
+        <c:forEach items="${doctorList}" var="dVO" >
+            <div class="col" onClick="location.href='doctorDetail?dseq=${dVO.dseq}'">
+                <div class="col-img">
+                    <img src="/images/Doctor_image/${dVO.savefilename}" />
+                </div>
 
-            <div class="col-text">
-                <h4>정형외과</h4>
-                <p>가톨릭대학교 의대 졸업</p>
-                <p>박 지 성</p>
-            </div>
-        </div>
+                <div class="col-text" >
+                    <h4>
+                    <c:choose>
+                        <c:when test="${dVO.doctorsection == 5}">비뇨기과</c:when>
+                        <c:when test="${dVO.doctorsection == 4}">산부인과</c:when>
+                        <c:when test="${dVO.doctorsection == 3}">외과</c:when>
+                        <c:when test="${dVO.doctorsection == 2}">이비인후과</c:when>
+                        <c:otherwise>정형외과</c:otherwise>
+                    </c:choose>
 
-        <div class="col">
-            <div class="col-img">
-                <img src="/images/4_profile.jpg" />
-            </div>
 
-            <div class="col-text">
-                <h4>이비인후과</h4>
-                <p>서울대학교 의대 졸업</p>
-                <p>최 민 아</p>
+                    </h4>
+                    <p>${dVO.bachd}</p>
+                    <p>${dVO.mastd}</p>
+                    <p>${dVO.doctd}</p>
+                    <p>${dVO.name}</p>
+                </div>
             </div>
-        </div>
+        </c:forEach>
 
-        <div class="col">
-            <div class="col-img">
-                <img src="/images/7_profile.jpg" />
-            </div>
-
-            <div class="col-text">
-                <h4>외 과</h4>
-                <p>연세대학교 의대 졸업</p>
-                <p>이 서 준</p>
-            </div>
-        </div>
-
-        <div class="col">
-            <div class="col-img">
-                <img src="/images/10_profile.jpg" />
-            </div>
-
-            <div class="col-text">
-                <h4>산부인과</h4>
-                <p>경희대학교 의대 졸업</p>
-                <p>장 태 영</p>
-            </div>
-        </div>
-
-        <div class="col">
-            <div class="col-img">
-                <img src="/images/11_profile.jpg" />
-            </div>
-
-            <div class="col-text">
-                <h4>비뇨기과</h4>
-                <p>고려대학교 의대 졸업</p>
-                <p>정 민 재</p>
-            </div>
-        </div>
 
     </div>
 

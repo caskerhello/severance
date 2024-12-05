@@ -7,6 +7,7 @@ import java.sql.Timestamp;
 
 @Data
 public class MemberVO {
+    private int mseq;
     @NotEmpty
     private String userid;
     @NotEmpty
