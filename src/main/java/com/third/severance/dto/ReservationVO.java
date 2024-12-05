@@ -7,12 +7,12 @@ import java.time.LocalDate;
 @Data
 public class ReservationVO {
 
+    private int rseq;
+    private int dseq;
     private int mseq;
     private String userid;
     private String membername;
     private String phone;
-    private int rseq;
-    private int dseq;
     private String doctorname;
     private String doctorsection;
    private LocalDate bookdate;
