@@ -59,8 +59,15 @@
     <div class="nav-content">
         <c:choose>
             <c:when test="${empty loginUser}">
-                  <a href="loginForm"><i class="ri-user-line"></i></a> <!--로그인, 로그아웃-->
-                  <a href="/contract"><i class="ri-draft-line"></i></a> <!--회원가입-->
+                  <a href="loginForm">
+                  <i class="ri-user-line"></i>
+                  <span class="tooltip left">로그인</span>
+                  </a> <!--로그인, 로그아웃-->
+
+                  <a href="/contract">
+                  <i class="ri-draft-line"></i>
+                  <span class="tooltip right">회원가입</span>
+                  </a> <!--회원가입-->
             </c:when>
             <c:otherwise>
 			    <label> 환영합니다. ${loginUser.name}(${loginUser.userid}) 님 </label>
