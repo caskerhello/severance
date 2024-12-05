@@ -117,7 +117,6 @@ public class MemberController {
 
         System.out.println(kakaoProfile.getId());
         com.third.severance.dto.KakaoProfile.KakaoAccount ac = kakaoProfile.getAccount();
-        System.out.println( ac.getEmail() );
         com.third.severance.dto.KakaoProfile.KakaoAccount.Profile pf = ac.getProfile();
         System.out.println( pf.getNickname() );
 
@@ -125,10 +124,8 @@ public class MemberController {
         if( mvo == null){
             mvo = new MemberVO();
             mvo.setUserid( kakaoProfile.getId() );
-            mvo.setEmail( ac.getEmail() );
-            // mvo.setEmail( "kakao" );
+            mvo.setEmail( pf.getNickname() );
             mvo.setName( pf.getNickname() );
-//            mvo.setProvider("kakao");
 
             ms.insertMember( mvo );
         }
@@ -161,9 +158,9 @@ public class MemberController {
     @PostMapping("/idcheck")
     @ResponseBody
     public HashMap<String, Object> idcheck(@RequestParam("userid") String userid) {
-        // System.out.println(userid);
+        System.out.println(userid);
         MemberVO mvo = ms.getMember(userid);
-        // System.out.println(mvo);
+        System.out.println(mvo);
 
         HashMap<String, Object> result = new HashMap<>();
         if( mvo == null ){

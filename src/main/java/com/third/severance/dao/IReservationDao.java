@@ -30,4 +30,8 @@ public interface IReservationDao {
     List<ReservationResultVO> reserveListByRseq(Integer rseq);
 
     void cancelreservation(int rseq);
+
+    void updateMember(MemberVO membervo);
+
+    void deleteMember(String userid);
 }
