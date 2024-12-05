@@ -20,3 +20,4 @@ public class MemberVO {
     @NotEmpty
     private String phone;
     private Timestamp indate;
+}
