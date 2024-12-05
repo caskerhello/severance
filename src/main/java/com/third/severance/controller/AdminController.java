@@ -34,6 +34,16 @@ public class AdminController {
         return "reservation/reservationList";
     }
 
+    @GetMapping("/memberList")
+    public String memberList(Model model) {
+        return "member/memberList";
+    }
+
+    @GetMapping("/qnaList")
+    public String qnaList(Model model) {
+        return "qna/qnaList";
+    }
+
 
 
     @PostMapping("/adminLogin")
