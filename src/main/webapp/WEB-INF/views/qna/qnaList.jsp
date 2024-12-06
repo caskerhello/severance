@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
- <%@ include file="../header.jsp" %>
+<%@ include file="../header.jsp" %>
 <section>
 	<article>
 		<form>
@@ -13,14 +13,14 @@
 			<!-- QnA 게시판 시작 -->
 			<div class="board">
 				<div class="rowtitle">
-					<div class="coltitle">No.</div>
-					<div class="coltitle">작성자</div>
-					<div class="coltitle" style="flex:4">제목</div>
-					<div class="coltitle">작성일</div>
-					<div class="coltitle">답변</div>
+					<div class="qboard-title">No.</div>
+					<div class="qboard-title">작성자</div>
+					<div class="qboard-title">제목</div>
+					<div class="qboard-title">작성일</div>
+					<div class="qboard-title">답변</div>
 				</div>
 				<c:forEach items="${qnaList}" var="qnaVO" >
-					<div class="row" onClick="qnaView('${qnaVO.qseq}')">
+					<div class="rowQ" onClick="qnaView('${qnaVO.qseq}')">
 						<div class="colline">${qnaVO.qseq}</div>
 						<div class="colline">${qnaVO.userid}</div>
 						<div class="colline" style="flex:4">${qnaVO.subject}</div>
@@ -36,7 +36,7 @@
 				<!-- QnA 게시판 끝 -->
 
 				<!-- paging 시작 -->
-				<div class="row">
+				<div class="rowQ">
 					<div class="coltitle" style="font-size:120%; font-weight:bold;">
 						<c:if test="${paging.prev}" >
 							<a href="qnaList?page=${paging.beginPage-1}">◀</a>
@@ -59,6 +59,7 @@
 					</div>
 				</div>
 				<!-- paging 끝 -->
+
 			</div>
 		</form>
 	</article>
