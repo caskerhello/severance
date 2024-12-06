@@ -1,4 +1,4 @@
-package com.third.severance.dao;
+package com.third.severance.dao.admin;
 
 import com.third.severance.dto.AdminVO;
 import com.third.severance.dto.MemberVO;
