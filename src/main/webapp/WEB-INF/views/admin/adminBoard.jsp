@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@page import="org.json.JSONObject"%>
+
+
 <html>
 <head>
     <title>Title</title>
@@ -12,6 +15,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <script src="/admin/script/admin.js"></script>
+
+
+
+
 
     <script>
         $(document).ready(function() {
@@ -129,6 +136,163 @@
 
 
 
+    <script type="text/javascript">
+
+        function fn_go_page(pageNo) {
+
+            var submitObj = new Object();
+
+            submitObj.pageIndex= pageNo;
+            submitObj.searchWrd= $("#searchWrd").val();
+
+            $.ajax({
+                url: path+"/gnb01/lnb06/snb03/areaListAjax.do",
+                type: "POST",
+                contentType: "application/json;charset=UTF-8",
+                data:JSON.stringify(submitObj),
+                dataType : "json",
+                progress: true
+            })
+                .done(function(data) {
+
+                    var  result = new Array;
+                    result = data.resultList;
+                    var searchVO = data.searchVO;
+                    var realEnd = searchVO.realEnd;
+                    var startDate = searchVO.startDate;
+                    var startButtonDate = startDate - 1;
+                    var endDate = searchVO.endDate;
+                    var endButtonDate = endDate + 1;
+                    var pageIndex = searchVO.pageIndex;
+                    var resultCnt = data.resultCnt;
+                    var totalPageCnt = data.totalPageCnt;
+                    var recordCountPerPage = searchVO.recordCountPerPage;
+
+
+                    var ii = (resultCnt - (pageIndex - 1) * recordCountPerPage);
+
+                    var content = '';
+                    var content2 = '';
+
+                    $.each(result, function(key, value) {
+
+                        content +=    '<tr class="memList">';
+                        content +=    '<td class="t_c">' + ii + '</td>';
+                        content +=    '<td class="t_c">' + value.me_sido + '</td>';
+                        content +=    '<td>' + value.me_gugun + '<button type="button" class="btnInfo fr"></button></td>';
+                        content +=    '<td class="t_c">' + value.me_biz_name + '</td>';
+                        content +=    '<td class="t_c">' +  value.me_name  +'</td>';
+                        content +=    '<td class="t_c">' +  value.me_biz_tel + '</td>';
+                        content +=    '</tr>';
+                        ii--;
+                    });
+
+                    $(".listData").html(content);
+
+                    content2 = '<input type="hidden" id="pageIndex" name="pageIndex" value="1">';
+                    content2 +=    '<ol class="pagination" id="pagination">';
+
+                    if(searchVO.prev){
+                        content2 +=    '<li class="prev_end"><a href="javascript:void(0);" onclick="fn_go_page(1); return false;" ></a></li>';
+                        content2 +=    '<li class="prev"><a href="javascript:void(0);"  onclick="fn_go_page(' + startButtonDate + '); return false;" ></a></li>';
+                    }
+
+                    for (var num=startDate; num<=endDate; num++) {
+                        if (num == pageIndex) {
+                            content2 +=    '<li><a href="javascript:void(0);" onclick="fn_go_page(' + num + '); return false;" title="' + num + '"  class="num on">' + num + '</a></li>';
+                        } else {
+                            content2 +=    '<li><a href="javascript:void(0);" onclick="fn_go_page(' + num + '); return false;" title="' + num + '" class="num">' + num + '</a></li>';
+                        }
+                    }
+
+                    if(searchVO.next){
+                        content2 +=    '<li class="next"><a href="javascript:void(0);"  onclick="fn_go_page(' + endButtonDate + '); return false;" ></a></li>';
+                        content2 +=    '<li class="next_end"><a href="javascript:void(0);" onclick="fn_go_page(' + searchVO.realEnd +'); return false;"></a></li>';
+                    }
+
+                    content2 +=    '</ol>';
+                    content2 +=    '</div>';
+
+                    $(".board-list-paging").html(content2);
+
+                })
+                .fail(function(e) {
+                    alert("검색에 실패하였습니다.");
+                })
+                .always(function() {
+
+                });
+        }
+
+    </script>
+
+
+
+
+
+
+
+<%--    <script>--%>
+
+
+
+<%--        function generatePagination(pagingData) {--%>
+<%--            let paginationHTML = '';--%>
+
+<%--            // 이전 페이지 버튼--%>
+<%--            if (pagingData.prev) {--%>
+<%--                paginationHTML += `<button class="prev">Prev</button>`;--%>
+<%--            }--%>
+
+<%--            // 페이지 번호 버튼--%>
+<%--            for (let i = pagingData.beginPage; i <= pagingData.endPage; i++) {--%>
+<%--                paginationHTML += `<button class="page" data-page="${i}">${i}</button>`;--%>
+<%--            }--%>
+
+<%--            // 다음 페이지 버튼--%>
+<%--            if (pagingData.next) {--%>
+<%--                paginationHTML += `<button class="next">Next</button>`;--%>
+<%--            }--%>
+
+<%--            // 페이징 영역에 추가--%>
+<%--            document.getElementById('pagination').innerHTML = paginationHTML;--%>
+<%--        }--%>
+
+
+<%--        $(document).on('click', '.page', function() {--%>
+<%--            let page = $(this).data('page'); // 클릭한 페이지 번호--%>
+
+<%--            $.ajax({--%>
+<%--                url: '/your-api-endpoint', // API 엔드포인트--%>
+<%--                type: 'GET',--%>
+<%--                data: {--%>
+<%--                    page: page,--%>
+<%--                    rows: pagingData.displayRow--%>
+<%--                },--%>
+<%--                success: function(response) {--%>
+<%--                    // 응답으로 받은 데이터를 처리하여 화면에 출력--%>
+<%--                    displayData(response.data);--%>
+
+<%--                    // 페이징 데이터 업데이트--%>
+<%--                    pagingData = response.paging;--%>
+<%--                    generatePagination(pagingData);--%>
+<%--                }--%>
+<%--            });--%>
+<%--        });--%>
+
+<%--        function displayData(data) {--%>
+<%--            // 받은 데이터를 화면에 표시하는 로직 (예: 테이블에 추가)--%>
+<%--            let html = '';--%>
+<%--            data.forEach(item => {--%>
+<%--                html += `<div>${item.name}</div>`; // 데이터 표시--%>
+<%--            });--%>
+<%--            $('#dataContainer').html(html);--%>
+<%--        }--%>
+<%--    </script>--%>
+
+
+
+
 
 
 </head>
@@ -216,6 +380,28 @@
 
 
         </div>
+
+        <div>
+<%--            <div class="row">--%>
+<%--                <div class="col" style="font-size:120%; font-weight:bold;">--%>
+<%--                    <span id="paging"></span>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+
+
+        <div id="paging">
+            <button onclick="loadPage(1)">1</button>
+            <button onclick="loadPage(2)">2</button>
+            <button onclick="loadPage(3)">3</button>
+        </div>
+            111
+<%--            <div id="dataContainer">--%>
+
+<%--            </div>--%>
+
+        </div>
+
+
     </div>
 </div>
 </body>

@@ -1,8 +1,11 @@
 package com.third.severance.controller.admin;
 
 import com.third.severance.dto.DoctorVO;
+import com.third.severance.dto.Paging;
+import com.third.severance.dto.ReservationVO;
 import com.third.severance.service.admin.*;
 import jakarta.servlet.http.HttpServletRequest;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -53,7 +56,45 @@ public class AdminDoctorController {
         mav.setViewName("admin/adminDoctorList");
 
 
+        System.out.println(result.get("paging"));
+
+
+
+        JSONObject jasonresult =  convertPagingToJSON((Paging) result.get("paging"));
+
+        System.out.println("jasonresult:"+jasonresult);
+
+        request.setAttribute( "paging2", jasonresult );
 
         return mav;
     }
+
+
+
+
+
+    public JSONObject convertPagingToJSON(Paging paging) {
+        JSONObject jsonObj = new JSONObject();
+
+
+        jsonObj.put("page", paging.getPage());
+        jsonObj.put("totalCount", paging.getTotalCount());
+        jsonObj.put("displayRow", paging.getDisplayRow());
+        jsonObj.put("displayPage", paging.getDisplayPage());
+        jsonObj.put("beginPage", paging.getBeginPage());
+        jsonObj.put("endPage", paging.getEndPage());
+        jsonObj.put("prev", paging.isPrev());
+        jsonObj.put("next", paging.isNext());
+        jsonObj.put("startNum", paging.getStartNum());
+        jsonObj.put("endNum", paging.getEndNum());
+
+        // Return the JSON object with all the fields
+        return jsonObj;
+
+    }
+
+
+
+
+
 }

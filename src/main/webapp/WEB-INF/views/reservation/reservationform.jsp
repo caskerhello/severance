@@ -6,9 +6,6 @@
 
 <%@page import="org.json.JSONArray"%>
 <%@page import="com.third.severance.dto.DoctorVO"%>
-<%@page import="com.third.severance.dto.Doctor_TimeVO"%>
-<%@page import="com.third.severance.dto.ReservationResponse"%>
-<%@page import="java.util.ArrayList"%>
 
 
 
