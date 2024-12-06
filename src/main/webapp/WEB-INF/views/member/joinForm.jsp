@@ -16,7 +16,8 @@
         <form action="join" method="post" name="joinForm" id="joinFrm">
             <h3>기본정보입력</h3>
             <hr> <br />
-
+    <div class="form-row">
+        <div class="form-column">
             <div class="form-group">
                 <label for="username">이름</label>
                 <input type="text" id="username" name="name" value="${dto.name}" placeholder="이름을 입력하세요" required>
@@ -67,14 +68,11 @@
                     });
                 });
             </script>
-            <div class="form-group">
-                <label for="userid">아이디</label>
-                <input type="text" id="userid" name="userid" value="${dto.userid}" placeholder="6자 이상, 20자 이내" required>
 
-                <button type="button" id="idCheckButton">중복확인</button>
-                <div id="idmessage"></div>
-                <input type="hidden" name="reid" id="reid" value="${reid}">
-                <div class="info">※ 6자 이상, 20자 이내로 설정이 가능합니다.<br>※ 한글/특수문자는 입력이 불가능합니다.</div>
+            <div class="form-group">
+                <label for="phone">연락처</label>
+                <input type="text" id="phone" name="phone" value="${dto.phone}" placeholder="010-1234-5678" required>
+                <div class="info">예약 관련정보는 수신동의 여부와 관계없이 발송됩니다.</div>
             </div>
 
             <div class="form-group">
@@ -84,34 +82,47 @@
                     ※ 영문(대/소문자), 숫자, 특수문자를 모두 포함해주세요.<br>
                     ※ 비밀번호 예시: password!121</div>
             </div>
+        </div>
+
+        <div class="form-column">
+
+            <div class="form-group">
+            <div class="ididid">
+                <label for="userid">아이디</label>
+                <div id="idmessage"></div>
+            </div>
+                <div class="input-container">
+                    <input type="text" id="userid" name="userid" value="${dto.userid}" placeholder="6자 이상, 20자 이내" required>
+                    <button type="button" id="idCheckButton">중복확인</button>
+                </div>
+
+
+                <input type="hidden" name="reid" id="reid" value="${reid}">
+                <div class="info">※ 6자 이상, 20자 이내로 설정이 가능합니다.<br>※ 한글/특수문자는 입력이 불가능합니다.</div>
+
+            </div>
+
+
+
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="text" id="email" name="email" value="${dto.email}">
+                <div class="info">※ 회원가입 완료 및 예약 관련정보는 수신 동의 여부와 관계없이 발송됩니다.</div>
+            </div>
 
             <div class="form-group">
                 <label for="pwdCheck">비밀번호 확인</label>
                 <input type="password" id="pwdCheck" name="pwdCheck" placeholder="비밀번호 재입력" required>
             </div>
 
-            <div class="form-group">
-                <label for="phone">연락처</label>
-                <div>
-                    <input type="text" id="phone" name="phone" value="${dto.phone}" placeholder="010-1234-5678" required>
-                </div>
-                <div class="info">예약 관련정보는 수신동의 여부와 관계없이 발송됩니다.</div>
-            </div>
-
-            <div class="form-group">
-                <label for="email">E-mail</label>
-                <div>
-                    <input type="text" id="email" name="email" value="${dto.email}">
-                </div>
-                <div class="info">※ 회원가입 완료 및 예약 관련정보는 수신 동의 여부와 관계없이 발송됩니다.</div>
-            </div>
-
+        </div>
+    </div>
             <h3>선택정보입력</h3>
             <hr> <br />
 
             <div class="form-group">
                 <label for="zip_num">우편번호</label>
-                <div>
+                <div class="input-container">
                     <input type="text" id="zip_num" name="zip_num" value="${dto.zip_num}" placeholder="우편번호" readonly required>
                     <button type="button" id="addressSearchButton" onclick="sample6_execDaumPostcode()">주소찾기</button>
                 </div>
