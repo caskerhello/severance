@@ -1,8 +1,9 @@
-package com.third.severance.service;
+package com.third.severance.service.admin;
 
-import com.third.severance.dao.IAdminDoctorDao;
-import com.third.severance.dao.IAdminReservationDao;
+import com.third.severance.dao.admin.IAdminDoctorDao;
+import com.third.severance.dao.admin.IAdminMemberDao;
 import com.third.severance.dto.DoctorVO;
+import com.third.severance.dto.MemberVO;
 import com.third.severance.dto.Paging;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -13,17 +14,25 @@ import java.util.HashMap;
 import java.util.List;
 
 @Service
-public class AdminReservationService {
+public class AdminMemberService {
 
     @Autowired
     IAdminDoctorDao addao;
 
     @Autowired
-    IAdminReservationDao ardao;
+    IAdminMemberDao amdao;
 
-    public HashMap<String, Object> getAdminReservationList(HttpServletRequest request) {
-
+    public HashMap<String, Object> getAdminMemberList(HttpServletRequest request) {
+        HashMap<String, Object> result = new HashMap<>();
         HttpSession session = request.getSession();
+
+        if( request.getParameter("first") != null ) {
+            session.removeAttribute("page");
+            session.removeAttribute("key");
+        }
+
+
+
 
         int page=1;
         if( request.getParameter("page") != null) {
@@ -34,6 +43,7 @@ public class AdminReservationService {
         }else {
             session.removeAttribute("page");
         }
+
         String key = "";
         if( request.getParameter("key") != null ) {
             key = request.getParameter("key");
@@ -46,16 +56,14 @@ public class AdminReservationService {
 
         Paging paging = new Paging();
         paging.setPage(page);
-        int count = addao.getAllCount( "reserve", "bookdate", key);
-        System.out.println("count : "+count);
-
-
         paging.setDisplayPage(10);
         paging.setDisplayRow(5);
 
+        int count = addao.getAllCount( "member", "name", key);
+        System.out.println("count : "+count);
+
         paging.setTotalCount(count);
         paging.calPaging();
-
         paging.setStartNum( paging.getStartNum());
 
 
@@ -63,12 +71,12 @@ public class AdminReservationService {
         System.out.println("paging : " + paging);
         System.out.println("key : " + key);
 
-        List<DoctorVO> list = ardao.getReservationList( paging, key );
-        System.out.println("list : " + list);
-        System.out.println("레코드 갯수 : " + list.size() );
+        List<MemberVO> list = amdao.getMemberList( paging, key );
+        System.out.println("받아온 list (서비스 내부) : " + list);
+        System.out.println("받아온 레코드 갯수 (서비스 내부) : " + list.size() );
 
-        HashMap<String, Object> result = new HashMap<String, Object>();
-        result.put("reservationList", list);
+
+        result.put("memberList", list);
 
 //        System.out.println("doctorList : " +list);
 

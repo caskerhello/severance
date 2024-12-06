@@ -11,21 +11,21 @@
         <div class="table">
             <div class="heading">
                 <h2>Admin Reservation List</h2>
-                <div class="search">
-                    <input type="text" name="search" placeholder="Search here">
-                    <lavel for="search"><i class="ri-search-line"></i></lavel>
-                </div>
+
             </div>
             <table class="Admin Reservation List">
                 <thead>
 
                 <tr>
                     <th>번호</th>
+                    <th>접수자성명</th>
+                    <th>접수자연락처</th>
                     <th>접수일</th>
+                    <th>의사성명</th>
                     <th>결과</th>
                     <th>예약일</th>
                     <th>예약시간</th>
-                    <th>수정</th>
+                    <th>상세설정</th>
                 </tr>
 
                 <c:if test="${empty reservationList}">
@@ -33,11 +33,28 @@
                 </c:if>
 
 
+
+
                 <c:forEach items="${reservationList}" var="reservationList1">
                     <tr>
                         <th>${reservationList1.rseq}</th>
+                        <th>${reservationList1.membername}</th>
+                        <th>${reservationList1.phone}</th>
                         <th>${reservationList1.indate}</th>
-                        <th>${reservationList1.result}</th>
+                        <th>${reservationList1.doctorname}</th>
+                        <th><c:choose>
+                            <c:when test="${reservationList1.result == 4}">진료 완료</c:when>
+
+                            <c:when test="${reservationList1.result == 3}">예약 완료<div><input type="button" value="예약취소" onclick="admincancelreservation(${reservationList1.rseq})"/></div></c:when>
+
+                            <c:when test="${reservationList1.result == 2}">예약 접수 완료<div><input type="button" value="예약취소" onclick="admincancelreservation(${reservationList1.rseq})"/></div></c:when>
+
+                            <c:otherwise>예약 접수 중<div><input type="button" value="예약취소" onclick="admincancelreservation(${reservationList1.rseq})"/></div></c:otherwise>
+                        </c:choose>
+
+
+
+                               </th>
                         <th>${reservationList1.bookdate}</th>
                         <th>${reservationList1.time}</th>
                             <%--                    <th><input type="button" value="의사정보수정" onclick="href='adminUpdateDoctor'"><input type="button" value="의사정보삭제" onclick="href='adminDeleteDoctor'"></th>--%>
@@ -55,8 +72,6 @@
                         </jsp:include>
                     </td>
                 </tr>
-
-
 
                 </thead>
                 <tbody>
