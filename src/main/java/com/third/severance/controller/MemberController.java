@@ -230,7 +230,7 @@ public class MemberController {
             model.addAttribute("msg", "오류가 발생되었습니다.");
         }
 
-        // 결과 페이지 반환
+        // 결과 페이지  반환
         return "member/search_id_page";
     }
 
