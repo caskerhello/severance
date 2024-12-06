@@ -11,13 +11,13 @@
 			</div>
 
 			<!-- QnA 게시판 시작 -->
-			<div class="tb">
+			<div class="board">
 				<div class="rowtitle">
 					<div class="coltitle">No.</div>
 					<div class="coltitle">작성자</div>
 					<div class="coltitle" style="flex:4">제목</div>
 					<div class="coltitle">작성일</div>
-					<div class="coltitle">답변여부</div>
+					<div class="coltitle">답변</div>
 				</div>
 				<c:forEach items="${qnaList}" var="qnaVO" >
 					<div class="row" onClick="qnaView('${qnaVO.qseq}')">
@@ -59,7 +59,6 @@
 					</div>
 				</div>
 				<!-- paging 끝 -->
-
 			</div>
 		</form>
 	</article>

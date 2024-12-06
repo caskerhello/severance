@@ -13,39 +13,71 @@ form h2 {
     font-weight: normal;
 }
 
+/* 공통 버튼 스타일 */
+.btn {
+    display: flex;
+    margin: 10px 3px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    background-color: #2faaff;
+    color: #fff;
+    font-weight: bold;
+}
+
+.btn input[type=button],
+.btn input[type=submit] {
+    flex: 1;
+    font-weight: bold;
+    color: inherit;
+    border: none;
+    outline: none;
+    background-color: inherit;
+    cursor: pointer;
+}
+
 /* QnA 게시판 상단 영역 */
 .qna_top {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 80px;
+    height: 60px;
 }
 
 .qna_top .btn {
-    display: flex;
     margin: 10px 3px;
     padding: 10px 20px;
     background-color: #2faaff;
-    border-radius: 5px;
     cursor: pointer;
+}
+
+/* board */
+.board {
     justify-content: center;
     align-items: center;
-    color: #fff;
-    font-weight: bold;
-    border: none;
 }
 
 /* QnA List, QnA View의 Title */
 .rowtitle {
     display: flex;
+    justify-content: center;
+    align-items: center;
     background: #0054d1;
     color: #fff;
     border-radius: 5px 5px 0 0;
 }
 
+.rowtitle:nth-child(1), .rowtitle:nth-child(4) {
+    font-size: 0.875rem;
+}
+
 .row {
     border-bottom: 1px dotted #0054d1;
     display: flex;
+    font-size: 0.875rem;
 }
 
 .row:first-child {
@@ -88,14 +120,19 @@ form h2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1rem;
+    font-size: 0.875rem;
     padding: 10px 0;
     cursor: pointer;
 }
 
-.error-message{
+.colline:nth-child(1), .colline:nth-child(4) {
+    font-size: 0.75rem;
+}
+
+/* 질문하기 error-message 스타일 */
+.error-message {
     margin-left: 10px;
-    color:red;
+    color: red;
     font-size: 11px;
 }
 
@@ -112,57 +149,33 @@ pre {
     white-space: pre-wrap;
 }
 
-/* 공통 버튼 스타일 */
-.btn {
-    display: flex;
-    margin: 10px 3px;
-    border-radius: 5px;
-    cursor: pointer;
-    justify-content: center;
-    align-items: center;
-    height: 40px;
-    background-color: #0054d1;
-    color: #fff;
-    font-weight: bold;
-}
-
-.btn input[type=button],
-.btn input[type=submit] {
-    flex: 1;
-    font-weight: bold;
-    color: inherit;
-    border: none;
-    outline: none;
-    background-color: inherit;
-    cursor: pointer;
-}
-
-
-
 /* 반응형 디자인 */
 @media (max-width: 768px) {
-
     article form {
         flex-direction: column;
-        min-width: 25em;
-        max-width:25em;
+        width: 85vw;
+        min-width: 340px;
     }
 
     /* 공통 */
     .qna_top {
-        flex-direction: column;
-        height: auto;
+        flex-direction: row;
+        height: 60px;
     }
 
-    .row{
-        flex-direction: column;
+    .board {
+        flex-direction: row;
+    }
+
+    .row {
+        flex-direction: row;
         align-items: stretch;
     }
 
-    .tb .row .colline{
+    .colline {
         flex: 1;
         display: flex;
-        font-size: 1rem;
+        font-size: 0.875rem;
         padding: 10px 0;
         white-space: none;
         cursor: pointer;
@@ -174,7 +187,7 @@ pre {
         background-color: #0054d1;
         color: #fff;
         font-weight: bold;
-        min-height:40px;
+        min-height: 40px;
     }
 
     .field {
