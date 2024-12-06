@@ -9,14 +9,19 @@
     </div>
 
     <div class="rowQ">
-        <div class="field"><label>작성자</label></div>
         <div class="field">
-            <div><input type="text" name="userid" value="${userid}" /></div>
-            <c:if test="${not empty errorMessage1}">
-              <div class="error-message" >${errorMessage1}</div>
-            </c:if>
+            <div class="colline">
+                <label>작성자</label>
+                <input type="text" name="userid" value="${userid}" />
+            </div>
+            <div class="error-message">
+                <c:if test="${not empty errorMessage1}">
+                ${errorMessage1}
+                </c:if>
+            </div>
         </div>
     </div>
+
 
     <div class="rowQ">
         <div class="field"><label>제&nbsp;&nbsp;&nbsp;목</label></div>
@@ -45,10 +50,10 @@
 
     <div class="rowQ">
         <div class="btn" style="flex:1; background-color: #0054d1;">
-            <input type="button" value="목록으로" onClick="location.href='qnaList'" />
+            <label><input type="button" value="목록으로" onClick="location.href='qnaList'" /></label>
         </div>
         <div class="btn" style="flex:1; background-color: #2faaff;">
-            <input type="submit" value="작성완료" />
+            <label><input type="submit" value="작성완료" /></label>
         </div>
     </div>
 </form>

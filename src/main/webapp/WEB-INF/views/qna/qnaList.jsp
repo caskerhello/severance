@@ -6,7 +6,7 @@
 			<div class="qna_top">
 				<h2> 고객센터 ( Q&A ) </h2>
 				<div class="btn">
-					<input type="button" value="질문하기" onClick="location.href='writeQnaForm'"/>
+					<label><input type="button" value="질문하기" onClick="location.href='writeQnaForm'"/></label>
 				</div>
 			</div>
 
@@ -15,7 +15,7 @@
 				<div class="rowtitle">
 					<div class="qboard-title">No.</div>
 					<div class="qboard-title">작성자</div>
-					<div class="qboard-title">제목</div>
+					<div class="qboard-sub">제목</div>
 					<div class="qboard-title">작성일</div>
 					<div class="qboard-title">답변</div>
 				</div>

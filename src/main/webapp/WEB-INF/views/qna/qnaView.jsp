@@ -8,22 +8,22 @@
 			</div>
 			<div class="rowtitle">
 				<div class="qboard-title">No. ${qnaVO.qseq}</div>
-				<div class="qboard-title" id="subjectQ" style="flex:4">${qnaVO.subject}</div>
+				<div class="qboard-sub" id="subjectQ">${qnaVO.subject}</div>
 				<div class="qboard-title">${qnaVO.userid}</div>
 				<div class="qboard-title"><fmt:formatDate value="${qnaVO.indate}" type="date"/></div>
 			</div>
-			<div class="field">
+			<div class="colline">
 				<pre>${qnaVO.content}</pre>
 			</div>
 			<div class="rowtitle" >
 				<label class="qboard-title" style="width:100%; padding:5px;">답변</label>
 			</div>
-			<div class="field">
+			<div class="colline">
 				${qnaVO.reply}&nbsp; 관리자 답변 내용
 			</div>
 
 			<div class="btn" style="background-color: #2faaff;" >
-				<input type="button" value="목록으로" onClick="location.href='qnaList'">
+				<label><input type="button" value="목록으로" onClick="location.href='qnaList'"></label>
 			</div>
 
 		</form>
