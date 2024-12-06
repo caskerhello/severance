@@ -26,16 +26,17 @@
                     <i class='bx bxs-lock' ></i>
                 </div>
                 <div class="forgot-link">
-                    <a href="#">아이디 찾기</a>
+                    <a href="search_id">아이디 찾기 | </a>
+                    <a href="search_pwd">비밀번호 찾기</a>
                 </div>
                 <button type="submit" class="btn">로그인</button>
                 <p>or login with social platforms</p>
                 <div class="social-icons">
-                    <a href="https://kauth.kakao.com/oauth/authorize?client_id=7f54d0fdaa5df081339a616842e2b48e&redirect_uri=http://localhost:8070/kakaoLogin&response_type=code">
+                    <a href="https://kauth.kakao.com/oauth/authorize?client_id=7f54d0fdaa5df081339a616842e2b48e&redirect_uri=http://localhost:8070/kakaoLogin&response_type=code"></a>
                         <img src="images/login/kakao.png" style="width: 50px; height: auto;"/>
-                        <a href="#"></a>
+                    <a href="#"></a>
                         <img src="images/login/google.png" style="width: 50px; height: auto; margin-left: 5px;"/>
-                        <a href="#"></a>
+                    <a href="<%--https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=S47rRsBpq6TMX_2ZCIgx&state=1234&redirect_uri=http://localhost:8070/naver-login"--%>"></a>
                         <img src="images/login/naver.png" style="width: 60px; height: auto;"/>
                 </div>
 
@@ -50,7 +51,6 @@
             </div>
         </div>
     </div>
-
 </div>
 
 

@@ -11,7 +11,4 @@ import java.util.List;
 public interface IAdminDao {
     AdminVO getAdmin(String adminid);
 
-    int getAllCount(String product, String name, String key);
-
-    List<MemberVO> getMemberList(Paging paging, String key);
 }
