@@ -1,8 +1,12 @@
-package com.third.severance.service;
+package com.third.severance.service.admin;
 
-import com.third.severance.dao.IAdminDoctorDao;
+import com.third.severance.dao.IReservationDao;
+import com.third.severance.dao.IReserveDao;
+import com.third.severance.dao.admin.IAdminDoctorDao;
+import com.third.severance.dao.admin.IAdminReservationDao;
 import com.third.severance.dto.DoctorVO;
 import com.third.severance.dto.Paging;
+import com.third.severance.dto.ReservationResultVO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +16,19 @@ import java.util.HashMap;
 import java.util.List;
 
 @Service
-public class AdminDoctorService {
+public class AdminReservationService {
 
     @Autowired
     IAdminDoctorDao addao;
 
-    public HashMap<String, Object> getAdminDoctorList(HttpServletRequest request) {
+    @Autowired
+    IAdminReservationDao ardao;
+
+    @Autowired
+    IReservationDao rdao;
+
+    public HashMap<String, Object> getAdminReservationList(HttpServletRequest request) {
+
         HttpSession session = request.getSession();
 
         int page=1;
@@ -41,7 +52,7 @@ public class AdminDoctorService {
 
         Paging paging = new Paging();
         paging.setPage(page);
-        int count = addao.getAllCount( "doctor", "name", key);
+        int count = addao.getAllCount( "reserve", "bookdate", key);
         System.out.println("count : "+count);
 
 
@@ -58,12 +69,12 @@ public class AdminDoctorService {
         System.out.println("paging : " + paging);
         System.out.println("key : " + key);
 
-        List<DoctorVO> list = addao.getDoctorList( paging, key );
+        List<ReservationResultVO> list = ardao.getReservationList( paging, key );
         System.out.println("list : " + list);
         System.out.println("레코드 갯수 : " + list.size() );
 
         HashMap<String, Object> result = new HashMap<String, Object>();
-        result.put("doctorList", list);
+        result.put("reservationList", list);
 
 //        System.out.println("doctorList : " +list);
 
@@ -73,9 +84,7 @@ public class AdminDoctorService {
         return result;
     }
 
-
-
-//    public List<DoctorVO> getAllDoctor() {
-//    return addao.getAllDoctor();
-//    }
+    public void cancelreservation(int rseq) {
+        rdao.cancelreservation(rseq);
+    }
 }

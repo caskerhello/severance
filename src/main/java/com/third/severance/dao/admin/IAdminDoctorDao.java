@@ -1,4 +1,4 @@
-package com.third.severance.dao;
+package com.third.severance.dao.admin;
 
 import com.third.severance.dto.DoctorVO;
 import com.third.severance.dto.Paging;

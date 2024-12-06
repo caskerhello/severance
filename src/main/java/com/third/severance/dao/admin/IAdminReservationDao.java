@@ -1,12 +1,13 @@
-package com.third.severance.dao;
+package com.third.severance.dao.admin;
 
 import com.third.severance.dto.DoctorVO;
 import com.third.severance.dto.Paging;
+import com.third.severance.dto.ReservationResultVO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
 @Mapper
 public interface IAdminReservationDao {
-    List<DoctorVO> getReservationList(Paging paging, String key);
+    List<ReservationResultVO> getReservationList(Paging paging, String key);
 }
