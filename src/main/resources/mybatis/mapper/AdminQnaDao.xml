@@ -3,7 +3,7 @@
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.third.severance.dao.admin.IAdminMemberDao">
+<mapper namespace="com.third.severance.dao.admin.IAdminQnaDao">
     <!--    <select id="getAllDoctor" resultType="com.third.severance.dto.DoctorVO" >-->
     <!--        select * from doctor-->
     <!--    </select>-->
@@ -13,8 +13,8 @@
     <!--        select count(*) from ${param1} where ${param2} like concat('%' , #{param3}, '%')-->
     <!--    </select>-->
 
-    <select id="getMemberList" resultType="com.third.severance.dto.MemberVO">
-        select * from member where name like concat('%' , #{param2}, '%')  order by mseq desc limit #{param1.displayRow} offset #{param1.startNum}
+    <select id="getQnaList" resultType="com.third.severance.dto.QnaVO">
+        select * from qna where subject like concat('%' , #{param2}, '%')  order by qseq desc limit #{param1.displayRow} offset #{param1.startNum}
     </select>
 
     <!--    <insert id="insertProduct" parameterType="com.third.severance.dto.DoctorVO">-->

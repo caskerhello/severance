@@ -17,5 +17,6 @@ public class ReservationResultVO {
     private LocalDate bookdate;
     private int time;
     private int result;
+    private LocalDate indate;
 
 }

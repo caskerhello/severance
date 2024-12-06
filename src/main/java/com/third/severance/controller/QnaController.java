@@ -37,11 +37,11 @@ public class QnaController {
         return mav;
     }
 
+
     @GetMapping("/writeQnaForm")
     public String writeQnaForm() {
         return "qna/writeQna";
     }
-
 
     @PostMapping("/writeQna")
     public ModelAndView writeQna(
@@ -51,27 +51,33 @@ public class QnaController {
     ) {
         ModelAndView mav = new ModelAndView();
 
+        // 오류 메시지 변수 선언
+        String errorMessage1 = null;
+        String errorMessage2 = null;
+        String errorMessage3 = null;
+
         // 입력값 검증
         if (userid == null || userid.trim().isEmpty()) {
-            mav.addObject("errorMessage1", "작성자명을 입력하세요.");
+            errorMessage1 = "작성자명을 입력하세요.";
+        }
+        if (subject == null || subject.trim().isEmpty()) {
+            errorMessage2 = "제목을 입력하세요.";
+        }
+        if (content == null || content.trim().isEmpty()) {
+            errorMessage3 = "질문 내용을 입력하세요.";
+        }
+
+        // 오류 메시지가 있으면 ModelAndView에 추가하고 다시 폼으로 이동
+        if (errorMessage1 != null || errorMessage2 != null || errorMessage3 != null) {
+            mav.addObject("errorMessage1", errorMessage1);
+            mav.addObject("errorMessage2", errorMessage2);
+            mav.addObject("errorMessage3", errorMessage3);
             mav.addObject("userid", userid); // 입력값 유지
             mav.addObject("subject", subject);
             mav.addObject("content", content);
             mav.setViewName("qna/writeQna");
-        } else if (subject == null || subject.trim().isEmpty()) {
-            mav.addObject("errorMessage2", "제목을 입력하세요.");
-            mav.addObject("userid", userid);
-            mav.addObject("subject", subject); // 입력값 유지
-            mav.addObject("content", content);
-            mav.setViewName("qna/writeQna");
-        } else if (content == null || content.trim().isEmpty()) {
-            mav.addObject("errorMessage3", "질문 내용을 입력하세요.");
-            mav.addObject("userid", userid);
-            mav.addObject("subject", subject);
-            mav.addObject("content", content); // 입력값 유지
-            mav.setViewName("qna/writeQna");
         } else {
-            // 데이터 저장
+            // 모든 입력값이 유효하면 데이터 저장
             QnaVO qvo = new QnaVO();
             qvo.setUserid(userid);
             qvo.setSubject(subject);
@@ -81,9 +87,8 @@ public class QnaController {
             // 성공 시 목록 페이지로 리다이렉트
             mav.setViewName("redirect:/qnaList");
         }
+
         return mav;
     }
-
-
 
 }
