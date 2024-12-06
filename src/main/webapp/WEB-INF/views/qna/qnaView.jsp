@@ -6,7 +6,7 @@
 			<div class="qna_top">
 			<h2> 고객센터 ( Q&A ) </h2>
 			</div>
-			<div class="rowtitle" style="border-bottom: 2px dotted #0054d1;">
+			<div class="rowtitle">
 				<div class="coltitle">No. ${qnaVO.qseq}</div>
 				<div class="coltitle" style="flex:4">${qnaVO.subject}</div>
 				<div class="coltitle">${qnaVO.userid}</div>
