@@ -13,12 +13,12 @@ import java.util.List;
 public class ReserveService {
 
     @Autowired
-    IReserveDao rdao;
+    IReserveDao rdao2;
 
     public void updateMember(MemberVO membervo) {
-        rdao.updateMember(membervo);
+        rdao2.updateMember(membervo);
     }
     public void deleteMember(String userid) {
-        rdao.deleteMember(userid);
+        rdao2.deleteMember(userid);
     }
 }

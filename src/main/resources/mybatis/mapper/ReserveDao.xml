@@ -7,7 +7,7 @@
 
     <update id="updateMember" parameterType="com.third.severance.dto.MemberVO">
         update member set pwd=#{pwd}, name=#{name}, phone=#{phone}, email=#{email},
-        zip_num=#{zip_num}, address1=#{address1}
+        zip_num=#{zip_num}, address=#{address}
         where userid=#{userid}
     </update>
 
