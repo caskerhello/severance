@@ -24,7 +24,7 @@
     </delete>
 
     <select id="memberIdSearch" parameterType="com.third.severance.dto.MemberVO" resultType="com.third.severance.dto.MemberVO">
-    <![CDATA[
+     <![CDATA[
         SELECT
             userid AS me_id,
             name AS me_name,

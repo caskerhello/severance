@@ -29,7 +29,7 @@ public class MemberVO {
 
     private Timestamp indate;
 
-    // 아이디 찾기 관련 필드
+     // 아이디 찾기 관련 필드
     private String me_name;
     private String me_tel; // 필드명 수정 (me_phone -> me_tel)
     private String me_id;

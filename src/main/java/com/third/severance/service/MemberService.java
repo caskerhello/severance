@@ -10,7 +10,7 @@ public class MemberService {
     @Autowired
     IMemberDao mdao;
 
-    public MemberVO memberIdSearch(MemberVO searchVO) {
+     public MemberVO memberIdSearch(MemberVO searchVO) {
         return mdao.memberIdSearch(searchVO);
     }
 
