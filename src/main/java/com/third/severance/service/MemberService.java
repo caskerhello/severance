@@ -10,9 +10,16 @@ public class MemberService {
     @Autowired
     IMemberDao mdao;
 
+    public MemberVO memberIdSearch(MemberVO searchVO) {
+        return mdao.memberIdSearch(searchVO);
+    }
+
+    // -------------------------------------------------------------------------------
+
     public MemberVO getMember(String userid) {
         return mdao.getMember(userid);
     }
+
     public void insertMember(MemberVO mvo) {
         mdao.insertMember(mvo);
     }

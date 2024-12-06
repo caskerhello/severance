@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.third.severance.dao.IAdminMemberDao">
+
+    <select id="getAllCount" resultType="_int">
+        select count(*) from ${param1} where ${param2} like concat('%' , #{param3}, '%')
+    </select>
+
+
+    <select id="getMemberList" resultType="com.third.severance.dto.MemberVO">
+        SELECT mseq, userid, name, email, zip_num, address, phone, indate
+        FROM member
+    </select>
+</mapper>
