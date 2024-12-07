@@ -64,4 +64,20 @@
         delete from reserve where rseq=#{param1}
     </delete>
 
+
+
+    <select id="getAllCount" resultType="_int">
+        select count(*) from ${param1}
+        where ${param2} like concat('%' , #{param3}, '%')
+          AND mseq = #{param4}
+    </select>
+
+
+    <select id="getReservationResultList" resultType="com.third.severance.dto.ReservationResultVO">
+        select * from memberreservationhistory
+         where bookdate like concat('%' , #{param2}, '%')
+           AND mseq = #{param3}
+        order by rseq desc limit #{param1.displayRow} offset #{param1.startNum}
+    </select>
+
 </mapper>

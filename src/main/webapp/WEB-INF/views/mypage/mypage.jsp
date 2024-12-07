@@ -23,7 +23,7 @@
 	 </section>
 
 	 <c:choose>
-				<c:when test="${reserveList.size()==0}">
+				<c:when test="${reservationResultList.size()==0}">
 					<h3>예약 내역이 없습니다</h3>
 				</c:when>
 
@@ -41,7 +41,7 @@
 	 </section>
 
 	 <div class="list">
-		<c:forEach items="${reserveList}" var="rvo">
+		<c:forEach items="${reservationResultList}" var="rvo">
 							<div class="mypagerow">
 								<div class="col">${rvo.rseq}</div>
 								<div class="col">${rvo.membername}</div>
@@ -85,6 +85,12 @@
 		 </c:choose>
 
 	 </div>
+
+	<div class="pagination">
+		 <jsp:include page="../admin/paging/paging.jsp" >
+				<jsp:param value="mypage" name="address"/>
+		</jsp:include>
+	</div>
  </main>
 </div>
 

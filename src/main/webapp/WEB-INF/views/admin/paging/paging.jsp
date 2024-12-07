@@ -2,8 +2,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <c:url var="action" value="${param.address}" />
-<div class="row">
-		<div class="col" style="font-size:120%; font-weight:bold;">
+<div class="paginationrow">
+		<div class="paginationcol"
+			 style="display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;font-size:120%; font-weight:bold;">
 							
 				<c:if test="${paging.prev}">
 					<a href="${action}?page=${paging.beginPage-1}">◀</a>&nbsp;
