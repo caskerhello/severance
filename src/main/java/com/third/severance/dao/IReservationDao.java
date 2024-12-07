@@ -1,6 +1,7 @@
 package com.third.severance.dao;
 
 import com.third.severance.dto.MemberVO;
+import com.third.severance.dto.Paging;
 import com.third.severance.dto.ReservationResultVO;
 import com.third.severance.dto.ReservationVO;
 import org.apache.ibatis.annotations.Mapper;
@@ -34,4 +35,8 @@ public interface IReservationDao {
     void updateMember(MemberVO membervo);
 
     void deleteMember(String userid);
+
+    List<ReservationResultVO> getReservationResultList(Paging paging, String key, int mseq);
+
+    int getAllCount(String reserve, String bookdate, String key, int mseq);
 }

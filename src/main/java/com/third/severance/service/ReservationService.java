@@ -3,8 +3,11 @@ package com.third.severance.service;
 
 import com.third.severance.dao.IDoctorTimeDao;
 import com.third.severance.dao.IReservationDao;
+import com.third.severance.dao.admin.IAdminDoctorDao;
 import com.third.severance.dto.*;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
 import org.json.JSONArray;
@@ -18,13 +21,14 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @Service
 public class ReservationService {
 
     @Autowired
-    private IDoctorTimeDao dtdao;
+    private IAdminDoctorDao addao;
 
     @Autowired
     private IReservationDao rdao;
@@ -151,38 +155,82 @@ public class ReservationService {
     public MemberVO getMember(String one) { return rdao.getMember(one);
     }
 
-    public List<ReservationResultVO> reserveIng(String userid) {
-
-        ArrayList<ReservationResultVO> reserveList = new ArrayList<ReservationResultVO>();
-
-
-        // 아이디로 주문 번호(oseq)들을 조회
-        List<Integer> rseqList = rdao.getRseqListIng( userid );
-        System.out.println( rseqList.size() );
-
-        // 조회된 주문번호별로  최종 리스트 구성
-        for( Integer rseq : rseqList){
-            List<ReservationResultVO> list = rdao.reserveListByRseq( rseq );
-
-            ReservationResultVO temp = list.get(0);
-//            temp.setPname( temp.getPname() + " 포함 " + list.size() + "건" );
-//            int totalPrice = 0;
+//    public List<ReservationResultVO> reserveIng(String userid) {
 //
-//            int cnt = 0;
-
-//            for( OrderVO ovo : list) {
-//                totalPrice += ovo.getPrice2() * ovo.getQuantity();
-//                if( ovo.getResult() == 4 ) cnt++;
-//            }
-//            if( list.size() == cnt ) temp.setResult(4);
-//            else temp.setResult(1);
-
-//            temp.setPrice2(totalPrice);
-
-            reserveList.add(temp);
-        }
-        return reserveList;
-    }
+//
+//
+//        HttpSession session = request.getSession();
+//
+//        int page=1;
+//        if( request.getParameter("page") != null) {
+//            page = Integer.parseInt(request.getParameter("page"));
+//            session.setAttribute("page", page);
+//        }else if( session.getAttribute("page") != null ) {
+//            page = (Integer)session.getAttribute("page");
+//        }else {
+//            session.removeAttribute("page");
+//        }
+//        String key = "";
+//        if( request.getParameter("key") != null ) {
+//            key = request.getParameter("key");
+//            session.setAttribute("key", key);
+//        } else if( session.getAttribute("key")!= null ) {
+//            key = (String)session.getAttribute("key");
+//        } else {
+//            session.removeAttribute("key");
+//        }
+//
+//        Paging paging = new Paging();
+//        paging.setPage(page);
+//        int count = adao.getAllCount( "product", "name", key);
+//        paging.setTotalCount(count);
+//        paging.calPaging();
+//        paging.setStartNum( paging.getStartNum()-1 );
+//
+//        List<ProductVO> list = adao.getProductList( paging, key );
+//        System.out.println("레코드 갯수 : " + list.size() );
+//
+//        HashMap<String, Object> result = new HashMap<String, Object>();
+//        result.put("productList", list);
+//        result.put("paging", paging);
+//        result.put("key", key);
+//
+//        return result;
+//
+//
+//
+//
+//
+//        ArrayList<ReservationResultVO> reserveList = new ArrayList<ReservationResultVO>();
+//
+//
+//        // 아이디로 주문 번호(oseq)들을 조회
+//        List<Integer> rseqList = rdao.getRseqListIng( userid );
+//        System.out.println( rseqList.size() );
+//
+//        // 조회된 주문번호별로  최종 리스트 구성
+//        for( Integer rseq : rseqList){
+//            List<ReservationResultVO> list = rdao.reserveListByRseq( rseq );
+//
+//            ReservationResultVO temp = list.get(0);
+////            temp.setPname( temp.getPname() + " 포함 " + list.size() + "건" );
+////            int totalPrice = 0;
+////
+////            int cnt = 0;
+//
+////            for( OrderVO ovo : list) {
+////                totalPrice += ovo.getPrice2() * ovo.getQuantity();
+////                if( ovo.getResult() == 4 ) cnt++;
+////            }
+////            if( list.size() == cnt ) temp.setResult(4);
+////            else temp.setResult(1);
+//
+////            temp.setPrice2(totalPrice);
+//
+//            reserveList.add(temp);
+//        }
+//        return reserveList;
+//    }
 
     public void cancelreservation(int rseq) {
     rdao.cancelreservation(rseq);}
@@ -193,6 +241,64 @@ public class ReservationService {
 
     public void deleteMember(String userid) {
         rdao.deleteMember(userid);
+    }
+
+
+
+    public HashMap<String, Object> getReseveIng(HttpServletRequest request) {
+
+
+        HttpSession session = request.getSession();
+        MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
+
+        int page=1;
+        if( request.getParameter("page") != null) {
+            page = Integer.parseInt(request.getParameter("page"));
+            session.setAttribute("page", page);
+        }else if( session.getAttribute("page") != null ) {
+            page = (Integer)session.getAttribute("page");
+        }else {
+            session.removeAttribute("page");
+        }
+        String key = "";
+        if( request.getParameter("key") != null ) {
+            key = request.getParameter("key");
+            session.setAttribute("key", key);
+        } else if( session.getAttribute("key")!= null ) {
+            key = (String)session.getAttribute("key");
+        } else {
+            session.removeAttribute("key");
+        }
+
+
+        Paging paging = new Paging();
+        paging.setPage(page);
+        paging.setDisplayPage(10);
+        paging.setDisplayRow(7);
+
+        int mseq = loginUser.getMseq();
+
+        int count = rdao.getAllCount( "reserve", "bookdate", key, mseq);
+
+        System.out.println("mseq 로 제한한 갯수:"+count);
+
+        paging.setTotalCount(count);
+        paging.calPaging();
+        paging.setStartNum( paging.getStartNum());
+
+
+
+        List<ReservationResultVO> list = rdao.getReservationResultList( paging, key, mseq );
+        System.out.println("getReservationResultList 레코드 갯수 : " + list.size() );
+
+        HashMap<String, Object> result = new HashMap<String, Object>();
+        result.put("reservationResultList", list);
+        result.put("paging", paging);
+        result.put("key", key);
+
+        return result;
+
+
     }
 }
 
