@@ -7,8 +7,8 @@
 <html>
 <head>
     <title>Title</title>
-    <link rel="stylesheet" href="/css/adminboard.css"/>
-    <link rel="stylesheet" href="/css/doctorList.css"/>
+    <link rel="stylesheet" href="/css/admin/adminboard.css"/>
+    <link rel="stylesheet" href="/css/admin/adminList.css"/>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -389,12 +389,12 @@
 <%--            </div>--%>
 
 
-        <div id="paging">
-            <button onclick="loadPage(1)">1</button>
-            <button onclick="loadPage(2)">2</button>
-            <button onclick="loadPage(3)">3</button>
-        </div>
-            111
+<%--        <div id="paging">--%>
+<%--            <button onclick="loadPage(1)">1</button>--%>
+<%--            <button onclick="loadPage(2)">2</button>--%>
+<%--            <button onclick="loadPage(3)">3</button>--%>
+<%--        </div>--%>
+<%--            111--%>
 <%--            <div id="dataContainer">--%>
 
 <%--            </div>--%>
