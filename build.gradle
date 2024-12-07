@@ -41,6 +41,10 @@ dependencies {
     implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
     implementation 'org.json:json:20230618'
 
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.0'  // 최신 버전
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.14.0'  // 최신 버전
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.14.0'  // 최신 버전
+
     implementation group: 'commons-fileupload', name: 'commons-fileupload', version: '1.4'
     implementation 'com.google.code.gson:gson:2.9.0'
 }

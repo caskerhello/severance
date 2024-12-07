@@ -64,15 +64,15 @@
 <script type="text/javascript">
 
 		//예약이 가득찬 날들의 배열
-		var thisMonthFullDateList = new Array();
-		<c:forEach items="${thisMonthFullDateList}" var = "date">
-		thisMonthFullDateList.push(${date});
-		</c:forEach>
+		<%--var thisMonthFullDateList = new Array();--%>
+		<%--<c:forEach items="${thisMonthFullDateList}" var = "date">--%>
+		<%--thisMonthFullDateList.push(${date});--%>
+		<%--</c:forEach>--%>
 
-		var nextMonthFullDateList = new Array();
-		<c:forEach items="${nextMonthFullDateList}" var = "date">
-		nextMonthFullDateList.push(${date});
-		</c:forEach>
+		<%--var nextMonthFullDateList = new Array();--%>
+		<%--<c:forEach items="${nextMonthFullDateList}" var = "date">--%>
+		<%--nextMonthFullDateList.push(${date});--%>
+		<%--</c:forEach>--%>
                 //---------------- calendar --------------------------
 
                 //date객체 획득. 가변
