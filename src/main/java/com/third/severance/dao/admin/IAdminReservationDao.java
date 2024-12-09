@@ -10,4 +10,10 @@ import java.util.List;
 @Mapper
 public interface IAdminReservationDao {
     List<ReservationResultVO> getReservationList(Paging paging, String key);
+
+    void adminSetReservationResultUp(int rseq);
+
+    void adminSetReservationResultDown(int rseq);
+
+    int adminSetReservationResult(int rseq);
 }

@@ -9,4 +9,8 @@ import java.util.List;
 @Mapper
 public interface IAdminQnaDao {
     List<QnaVO> getQnaList(Paging paging, String key);
+
+    QnaVO getQnaDetail(int qseq);
+
+    void adminQnaReplyUpdate(int qseq, String reply);
 }

@@ -67,19 +67,43 @@
                         content +=    '<td>' +  value.bookdate  +'</td>';
                         content +=    '<td>' +  value.time  +'</td>';
 
+
                         content += '<td>';
 
                         if (value.result == 4) {
                             content += '진료 완료';
-                        } else if (value.result == 3 ) {
-                            content += '예약 완료<div><input type="button" value="예약취소" onclick="admincancelreservation(' + value.rseq + ')"/></div>';
-                        } else if (value.result == 2 ) {
-                            content += '예약 접수 완료<div><input type="button" value="예약취소" onclick="admincancelreservation(' + value.rseq + ')"/></div>';
-                        }else {
-                            content += '예약 접수 중<div><input type="button" value="예약취소" onclick="admincancelreservation(' + value.rseq + ')"/></div>';
+                            content += '<div><input type="button" value="결과변경(하락)" onclick="adminSetReservationResultDown(' + value.rseq + ',' + paging2.page + ')"/></div>';
+                        } else if (value.result == 3) {
+                            content += '예약 완료';
+                            content += '<div><input type="button" value="예약취소" onclick="admincancelreservation(' + value.rseq + ')"/></div>';
+                            content += '<div><input type="button" value="결과변경(상승)" onclick="adminSetReservationResultUp(' + value.rseq + ',' + paging2.page + ')"/></div>';
+                            content += '<div><input type="button" value="결과변경(하락)" onclick="adminSetReservationResultDown(' + value.rseq + ',' + paging2.page + ')"/></div>';
+                        } else if (value.result == 2) {
+                            content += '예약 접수 완료';
+                            content += '<div><input type="button" value="예약취소" onclick="admincancelreservation(' + value.rseq + ')"/></div>';
+                            content += '<div><input type="button" value="결과변경(상승)" onclick="adminSetReservationResultUp(' + value.rseq + ',' + paging2.page + ')"/></div>';
+                            content += '<div><input type="button" value="결과변경(하락)" onclick="adminSetReservationResultDown(' + value.rseq + ',' + paging2.page + ')"/></div>';
+                        } else if (value.result == 1){
+                            content += '예약 접수 중';
+                            content += '<div><input type="button" value="예약취소" onclick="admincancelreservation(' + value.rseq +')"/></div>';
+                            content += '<div><input type="button" value="결과변경(상승)" onclick="adminSetReservationResultUp(' + value.rseq + ',' + paging2.page + ')"/></div>';
                         }
 
                         content += '</td>';
+
+                        // content += '<td>';
+                        //
+                        // if (value.result == 4) {
+                        //     content += '진료 완료';
+                        // } else if (value.result == 3 ) {
+                        //     content += '예약 완료<div><input type="button" value="예약취소" onclick="admincancelreservation(' + value.rseq + ')"/></div>';
+                        // } else if (value.result == 2 ) {
+                        //     content += '예약 접수 완료<div><input type="button" value="예약취소" onclick="admincancelreservation(' + value.rseq + ')"/></div>';
+                        // }else {
+                        //     content += '예약 접수 중<div><input type="button" value="예약취소" onclick="admincancelreservation(' + value.rseq + ')"/></div>';
+                        // }
+                        //
+                        // content += '</td>';
 
 
 
@@ -108,11 +132,11 @@
                         content2 +=    '<li class="prev"><a href="javascript:void(0);"  onclick="fn_go_page(' + startButtonDate + '); return false;" >◀</a></li>';
                     }
 
-                    for (var num=startDate; num<=endDate; num++) {
+                    for (var num = startDate; num <= endDate; num++) {
                         if (num == pageIndex) {
-                            content2 +=    '<li><a href="javascript:void(0);" onclick="fn_go_page(' + num + '); return false;" title="' + num + '"  class="num on">' + num + '</a></li>';
+                            content2 += '<li><a href="javascript:void(0);" onclick="fn_go_page(' + num + '); return false;" title="' + num + '"  class="num on"><span style="color:red">' + num + '</span></a></li>';
                         } else {
-                            content2 +=    '<li><a href="javascript:void(0);" onclick="fn_go_page(' + num + '); return false;" title="' + num + '" class="num">' + num + '</a></li>';
+                            content2 += '<li><a href="javascript:void(0);" onclick="fn_go_page(' + num + '); return false;" title="' + num + '" class="num">' + num + '</a></li>';
                         }
                     }
 
@@ -142,6 +166,101 @@
         }
 
     </script>
+
+
+    <script type="text/javascript">
+
+        function adminSetReservationResultUp(rseq,page) {
+            console.log(rseq);
+            console.log(page);
+
+            $.ajax({
+                url: "adminSetReservationResultUp",
+                type: "POST",
+
+                data: {rseq:rseq},
+                dataType : "JSON",
+                progress: true
+            })
+                .done(function(responseData) {
+                    // console.log(responseData);
+                    // console.log(responseData.reservationResult);
+
+                    fn_go_page(page);
+
+                //  var content ="";
+                //
+                //     content="처리완료"
+                //
+                //
+                //
+                // $("#reservationresult"+rseq).html(content);
+
+
+                })
+                .fail(function(e) {
+                    alert("검색에 실패하였습니다.");
+                    console.log("AJAX Error:", status, error);
+                    console.log("Response:", xhr.responseText);
+                })
+                .fail(function(e) {
+                    console.log("AJAX 요청 실패:", e);
+                })
+                .always(function() {
+
+                });
+        }
+
+    </script>
+
+
+    <script type="text/javascript">
+
+        function adminSetReservationResultDown(rseq,page) {
+            console.log(rseq);
+            console.log(page);
+
+            $.ajax({
+                url: "adminSetReservationResultDown",
+                type: "POST",
+
+                data: {rseq:rseq},
+                dataType : "JSON",
+                progress: true
+            })
+                .done(function(responseData) {
+
+                    fn_go_page(page);
+
+                    // console.log(responseData);
+                    // console.log(responseData.reservationResult);
+                    //
+                    //
+                    //
+                    // var content ="";
+                    //
+                    // content="처리완료"
+                    //
+                    // $("#reservationresult"+rseq).html(content);
+                })
+                .fail(function(e) {
+                    alert("검색에 실패하였습니다.");
+                    console.log("AJAX Error:", status, error);
+                    console.log("Response:", xhr.responseText);
+                })
+                .fail(function(e) {
+                    console.log("AJAX 요청 실패:", e);
+                })
+                .always(function() {
+
+                });
+        }
+
+    </script>
+
+
+
+
 </head>
 <body>
 <form method="post" name="frm">
@@ -194,17 +313,36 @@
                         <td>${reservationList1.doctorname}</td>
                         <td>${reservationList1.bookdate}</td>
                         <td>${reservationList1.time}</td>
-                        <td><c:choose>
-                            <c:when test="${reservationList1.result == 4}">진료 완료</c:when>
 
-                            <c:when test="${reservationList1.result == 3}">예약 완료<div><input type="button" value="예약취소" onclick="admincancelreservation(${reservationList1.rseq})"/></div></c:when>
+                        <td id="reservationresult${reservationList1.rseq}">
+                            <c:choose>
+                            <c:when test="${reservationList1.result == 4}">진료 완료
 
-                            <c:when test="${reservationList1.result == 2}">예약 접수 완료<div><input type="button" value="예약취소" onclick="admincancelreservation(${reservationList1.rseq})"/></div></c:when>
+                                <div><input type="button" value="결과변경(하락)" onclick="adminSetReservationResultDown(${reservationList1.rseq},${paging.page})"/></div></c:when>
 
-                            <c:otherwise>예약 접수 중<div><input type="button" value="예약취소" onclick="admincancelreservation(${reservationList1.rseq})"/></div></c:otherwise>
+                            <c:when test="${reservationList1.result == 3}">예약 완료
+                                <div><input type="button" value="예약취소" onclick="admincancelreservation(${reservationList1.rseq})"/></div>
+                                <div><input type="button" value="결과변경(상승)" onclick="adminSetReservationResultUp(${reservationList1.rseq},${paging.page})"/></div>
+                                <div><input type="button" value="결과변경(하락)" onclick="adminSetReservationResultDown(${reservationList1.rseq},${paging.page})"/></div></c:when>
+
+                            <c:when test="${reservationList1.result == 2}">예약 접수 완료
+                                <div><input type="button" value="예약취소" onclick="admincancelreservation(${reservationList1.rseq})"/></div>
+                                <div><input type="button" value="결과변경(상승)" onclick="adminSetReservationResultUp(${reservationList1.rseq},${paging.page})"/></div>
+                                <div><input type="button" value="결과변경(하락)" onclick="adminSetReservationResultDown(${reservationList1.rseq},${paging.page})"/></div>
+
+                            </c:when>
+
+                            <c:when test="${reservationList1.result == 1}">예약 접수 중
+                            <div><input type="button" value="예약취소" onclick="admincancelreservation(${reservationList1.rseq})"/></div>
+
+                            <div><input type="button" value="결과변경(상승)" onclick="adminSetReservationResultUp(${reservationList1.rseq},${paging.page})"/></div>
+
+
+
+                            </c:when>
+
+
                         </c:choose>
-
-
 
                         </td>
 
@@ -236,32 +374,41 @@
     <c:set var="pageIndex" value="1"/>
 
     <ol class="pagination" id="pagination">
-                <c:if test="${paging.prev}">
-                    <li class="prev_end">
-                        <a href="javascript:void(0);" onclick="fn_go_page(1); return false;" >▶</a>
-                    </li>
-                    <li class="prev">
-                        <a href="javascript:void(0);"  onclick="fn_go_page(${paging.beginPage - 1}); return false;" >▶</a>
-                    </li>
-                </c:if>
+
+        <c:if test="${paging.prev}">
+            <li class="prev_end">
+                <a href="javascript:void(0);" onclick="fn_go_page(1); return false;" >◀</a>
+            </li>
+            <li class="prev">
+                <a href="javascript:void(0);"  onclick="fn_go_page(${paging.beginPage - 1}); return false;" >◀</a>
+            </li>
+        </c:if>
 
 
         <c:forEach var="num" begin="${paging.beginPage}" end="${paging.endPage}">
             <li>
-                <a href="javascript:void(0);" onclick="fn_go_page(${num}); return false;" class="num ${page eq num ? 'on':'' }" title="${num}">${num}</a>
+                <c:if test="${num==paging.page}">
+                    <span style="color:red">${num}&nbsp;</span>
+                </c:if>
+                <c:if test="${num!=paging.page}">
+                    <a href="javascript:void(0);" onclick="fn_go_page(${num}); return false;" class="num ${page eq num ? 'on':'' }" title="${num}">${num}</a>
+                </c:if>
+
+
+
             </li>
         </c:forEach>
 
 
-                <c:if test="${paging.next}">
-                    <li class="next">
-                        <a href="javascript:void(0);"  onclick="fn_go_page(${paging.endPage + 1}); return false;" >▶</a>
-                    </li>
+        <c:if test="${paging.next}">
+            <li class="next">
+                <a href="javascript:void(0);"  onclick="fn_go_page(${paging.endPage + 1}); return false;" >▶</a>
+            </li>
 
-                    <li class="next_end">
-                        <a href="javascript:void(0);" onclick="fn_go_page(${paging.totalPages }); return false;">▶</a>
-                    </li>
-                </c:if>
+            <li class="next_end">
+                <a href="javascript:void(0);" onclick="fn_go_page(${paging.totalPages }); return false;">▶</a>
+            </li>
+        </c:if>
     </ol>
 </div>
 <!-- Paging[e] -->
