@@ -2,20 +2,28 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="../header.jsp" %>
 
-<link rel="stylesheet" href="/css/search_id.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/script/search.js"></script>
+
+<link rel="stylesheet" href="/css/search_id_page.css"/>
 
 <section>
     <article>
-        <h3>아이디 찾기 결과</h3>
-        <c:choose>
-            <c:when test="${not empty MemberVO}">
-                <p>찾으신 아이디: ${MemberVO.me_id}</p>
-            </c:when>
-            <c:otherwise>
-                <p>${msg}</p>
-            </c:otherwise>
-        </c:choose>
-        <a href="/search_id" class="btn btn-primary">다시 검색</a>
+        <div class="box">
+            <h1>아이디 찾기 결과</h1>
+            <br />
+            <c:choose>
+                <c:when test="${not empty MemberVO}">
+                    <p>찾으신 아이디: ${MemberVO.me_id}</p>
+                </c:when>
+                <c:otherwise>
+                    <p>${msg}</p>
+                </c:otherwise>
+            </c:choose>
+            <a href="/search_id" class="btn btn-primary">다시 검색</a>
+            <a href="/search_pwd" class="btn btn-primary">비밀번호 찾기</a>
+            <a href="/loginForm" class="btn btn-primary">로그인</a>
+        </div>
     </article>
 </section>
 

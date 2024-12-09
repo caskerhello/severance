@@ -2,28 +2,29 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="../header.jsp" %>
 
-<link rel="stylesheet" href="/css/search_id.css"/>
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="/script/search.js"></script>
 
-<div class="container">
-    <div class="container1">
-        <div class="form-box">
+<link rel="stylesheet" href="/css/search_id.css"/>
+
+<section>
+    <article>
+        <div class="box">
+            <h1>아이디 찾기</h1>
+            <p>회원가입 시 작성한 이름과 핸드폰번호를 입력하세요 ☺</p>
             <form action="/search_id_page" method="post">
-                <h3>아이디 찾기</h3>
-                <div class="input-box">
-                    <label for="me_name">이름</label>
-                    <input type="text" id="me_name" name="me_name" class="form-control" placeholder="홍길동" required/>
-                </div>
-                <div class="input-box">
-                    <label for="me_tel">전화번호</label>
-                    <input type="text" id="me_tel" name="me_tel" class="form-control" placeholder="010-1234-5678" required/>
-                </div>
-                <button type="submit" class="btn btn-primary">Search ID</button>
+                <br />
+
+                <p for="me_name">이름</p>
+                <input type="text" id="me_name" name="me_name" class="form-control" placeholder="홍길동" required/>
+
+                <p for="me_tel">핸드폰번호</p>
+                <input type="text" id="me_tel" name="me_tel" class="form-control" placeholder="010-1234-5678" required/>
+
+                <button type="submit" class="btn btn-primary">아이디 찾기</button>
             </form>
         </div>
-    </div>
-</div>
+    </article>
+</section>
 
 <%@ include file="../footer.jsp" %>

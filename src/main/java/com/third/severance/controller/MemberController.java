@@ -10,6 +10,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -232,6 +234,62 @@ public class MemberController {
 
          // 결과 페이지  반환
         return "member/search_id_page";
+    }
+
+    @Autowired
+    private JavaMailSender mailSender; // JavaMailSender 이메일 전송 기능을 제공하는 인터페이스
+
+    @GetMapping("/search_pwd")
+    public String search_pwd(Model model) {
+        return "member/search_pwd";
+    }
+
+    @PostMapping("/search_pwd_page")
+    public String search_pwd_page(@RequestParam String email, @RequestParam String name, Model model) {
+        // 사용자 존재 확인 및 임시 비밀번호 처리
+        System.out.println("Email: " + email + ", Name: " + name);
+        System.out.println("User exists: " + ms.isUserExist(email, name));
+
+        if (ms.isUserExist(email, name)) {
+            String tempPassword = ms.generateTempPassword();
+            System.out.println("Temporary password: " + tempPassword);
+            ms.updatePassword(email, tempPassword, name);
+            sendEmail(email, tempPassword);
+            model.addAttribute("successMessage", "임시 비밀번호가 발급되었습니다. 이메일을 확인하세요."); // 성공 시 안내팝업
+            return "member/search_pwd_success"; // 메인 페이지로 리다이렉트
+        } else {
+            model.addAttribute("error", "이메일 또는 이름을 확인해주세요");
+            return "member/search_pwd"; // 오류 시 다시 비밀번호 찾기 페이지로
+        }
+    }
+    @GetMapping("/search_pwd_success")
+    public String search_pwd_success() {
+        return "member/search_pwd_success";
+    }
+
+    @GetMapping("/search_pwd_page")
+    public String handleGetRequest(Model model) {
+        model.addAttribute("error", "잘못된 접근입니다. 비밀번호 찾기를 다시 시도해주세요.");
+        return "member/search_pwd";
+    }
+
+//   하단 코드 메일 발송 양식
+    private void sendEmail(String email, String tempPassword) {
+        try {
+            if (mailSender == null) {
+                System.out.println("JavaMailSender is null");
+                throw new RuntimeException("JavaMailSender not initialized");
+            }
+            SimpleMailMessage message = new SimpleMailMessage();
+            message.setTo(email);
+            message.setSubject("임시 비밀번호 발급 안내");
+            message.setText("귀하의 임시 비밀번호는 " + tempPassword + " 입니다.");
+            mailSender.send(message);
+            System.out.println("Email sent to " + email);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("이메일 전송에 실패했습니다.");
+        }
     }
 
 }

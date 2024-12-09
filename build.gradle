@@ -43,6 +43,11 @@ dependencies {
 
     implementation group: 'commons-fileupload', name: 'commons-fileupload', version: '1.4'
     implementation 'com.google.code.gson:gson:2.9.0'
+
+    implementation 'org.springframework.boot:spring-boot-starter-mail' // 비밀번호 찾기 이메일 전송
+//    implementation 'org.springframework.boot:spring-boot-starter-security'
+
+
 }
 
 tasks.named('test') {
