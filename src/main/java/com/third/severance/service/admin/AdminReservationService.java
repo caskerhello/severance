@@ -153,4 +153,16 @@ public class AdminReservationService {
 
         return result;
     }
+
+    public void adminSetReservationResultUp(int rseq) {
+        ardao.adminSetReservationResultUp(rseq);
+    }
+
+    public void adminSetReservationResultDown(int rseq) {
+        ardao.adminSetReservationResultDown(rseq);
+    }
+
+    public int adminSetReservationResult(int rseq) {
+        return ardao.adminSetReservationResult(rseq);
+    }
 }

@@ -13,4 +13,6 @@ public interface IAdminDoctorDao {
     int getAllCount(String doctor, String name, String key);
 
     List<DoctorVO> getDoctorList(Paging paging, String key);
+
+    DoctorVO getAdminDoctor(int dseq);
 }

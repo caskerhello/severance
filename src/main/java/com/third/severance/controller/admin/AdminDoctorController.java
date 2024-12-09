@@ -18,10 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.io.PrintWriter;
@@ -220,6 +217,69 @@ public class AdminDoctorController {
         return jsonObj;
 
     }
+
+
+
+    @PostMapping("/adminDoctorUpdateForm")
+    @ResponseBody
+    public HashMap<String, Object> adminDoctorUpdateForm(@RequestParam("dseq") int dseq, HttpServletRequest request) {
+
+        HashMap<String, Object> responseData = new HashMap<>();
+
+        DoctorVO doctor = ads.getAdminDoctor(dseq);
+
+        responseData.put("doctor", doctor);
+
+
+        return responseData;
+    }
+
+
+//    @PostMapping("/adminDoctorDelete")
+//    @ResponseBody
+//    public HashMap<String, Object> adminDoctorDelete(@RequestParam("dseq") int dseq, HttpServletRequest request) {
+//        JSONObject response = new JSONObject();
+//        HashMap<String, Object> responseData = new HashMap<>();
+//
+//        try {
+//
+//            HashMap<String, Object> result = ads.getAdminDoctorListPaging(page,request);
+//
+//            List<DoctorVO> doctorList = (List<DoctorVO>) result.get("doctorList");
+//            Paging paging = (Paging) result.get("paging");
+//
+//            // JSON 변환
+////            JSONArray doctorListJson = convertListToJsonArray(doctorList);
+////            JSONObject pagingJson = convertPagingToJSON(paging);
+//
+//            // JSON 응답 객체 생성
+////            response.put("doctorList2", doctorListJson);
+////            System.out.println("doctorList2 Paging:"+doctorListJson);
+//
+////            response.put("paging2", pagingJson);
+////            System.out.println("paging2 Paging:"+pagingJson);
+//
+////            HashMap<String, Object> responseData = new HashMap<>();
+//            responseData.put("doctorList2", doctorList);
+//            responseData.put("paging2", paging);
+//
+//
+//            System.out.println("responseData:"+responseData);
+//            // HashMap을 JSONObject로 변환하여 반환
+////            response = new JSONObject(responseData);
+//
+//
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            response.put("error", "JSON 파싱 오류 발생");
+//        }
+//
+//        return responseData;
+//    }
+//
+
+
 
 
 

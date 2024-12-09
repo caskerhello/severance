@@ -9,7 +9,20 @@
     <select id="getReservationList" resultType="com.third.severance.dto.ReservationResultVO">
         select * from memberreservationhistory where bookdate like concat('%' , #{param2}, '%')  order by rseq desc limit #{param1.displayRow} offset #{param1.startNum}
     </select>
-    
+
+
+    <update id="adminSetReservationResultUp" >
+        update reserve set result = result+1 where rseq=#{param1}
+    </update>
+
+
+    <update id="adminSetReservationResultDown" >
+        update reserve set result = result-1 where rseq=#{param1}
+    </update>
+
+    <select id="adminSetReservationResult" resultType="_int">
+        select result from reserve where rseq=#{param1}
+    </select>
 
 
     

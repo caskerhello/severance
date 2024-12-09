@@ -91,13 +91,13 @@
                     content2 +=    '<li class="prev"><a href="javascript:void(0);"  onclick="fn_go_page(' + startButtonDate + '); return false;" >◀</a></li>';
                 }
 
-                for (var num=startDate; num<=endDate; num++) {
-                  if (num == pageIndex) {
-                    content2 +=    '<li><a href="javascript:void(0);" onclick="fn_go_page(' + num + '); return false;" title="' + num + '"  class="num on">' + num + '</a></li>';
-                  } else {
-                    content2 +=    '<li><a href="javascript:void(0);" onclick="fn_go_page(' + num + '); return false;" title="' + num + '" class="num">' + num + '</a></li>';
+                  for (var num = startDate; num <= endDate; num++) {
+                      if (num == pageIndex) {
+                          content2 += '<li><a href="javascript:void(0);" onclick="fn_go_page(' + num + '); return false;" title="' + num + '"  class="num on"><span style="color:red">' + num + '</span></a></li>';
+                      } else {
+                          content2 += '<li><a href="javascript:void(0);" onclick="fn_go_page(' + num + '); return false;" title="' + num + '" class="num">' + num + '</a></li>';
+                      }
                   }
-                }
 
                 if(paging2.next){
                     content2 +=    '<li class="next"><a href="javascript:void(0);"  onclick="fn_go_page(' + endButtonDate + '); return false;" >▶</a></li>';
@@ -207,36 +207,45 @@
 <!-- Paging[s] -->
 <div>페이지 넘기기</div>
 <div class="board-list-paging">
-  <c:set var="pageIndex" value="1"/>
+    <c:set var="pageIndex" value="1"/>
 
-  <ol class="pagination" id="pagination">
-            <c:if test="${paging.prev}">
-                <li class="prev_end">
-                    <a href="javascript:void(0);" onclick="fn_go_page(1); return false;" >◀</a>
-                </li>
-                <li class="prev">
-                    <a href="javascript:void(0);"  onclick="fn_go_page(${paging.beginPage - 1}); return false;" >◀</a>
-                </li>
-            </c:if>
+    <ol class="pagination" id="pagination">
 
-
-    <c:forEach var="num" begin="${paging.beginPage}" end="${paging.endPage}">
-      <li>
-        <a href="javascript:void(0);" onclick="fn_go_page(${num}); return false;" class="num ${page eq num ? 'on':'' }" title="${num}">${num}</a>
-      </li>
-    </c:forEach>
+        <c:if test="${paging.prev}">
+            <li class="prev_end">
+                <a href="javascript:void(0);" onclick="fn_go_page(1); return false;" >◀</a>
+            </li>
+            <li class="prev">
+                <a href="javascript:void(0);"  onclick="fn_go_page(${paging.beginPage - 1}); return false;" >◀</a>
+            </li>
+        </c:if>
 
 
-            <c:if test="${paging.next}">
-                <li class="next">
-                    <a href="javascript:void(0);"  onclick="fn_go_page(${paging.endPage + 1}); return false;" >▶</a>
-                </li>
+        <c:forEach var="num" begin="${paging.beginPage}" end="${paging.endPage}">
+            <li>
+                <c:if test="${num==paging.page}">
+                    <span style="color:red">${num}&nbsp;</span>
+                </c:if>
+                <c:if test="${num!=paging.page}">
+                    <a href="javascript:void(0);" onclick="fn_go_page(${num}); return false;" class="num ${page eq num ? 'on':'' }" title="${num}">${num}</a>
+                </c:if>
 
-                <li class="next_end">
-                    <a href="javascript:void(0);" onclick="fn_go_page(${paging2.totalPages }); return false;">▶</a>
-                </li>
-            </c:if>
-  </ol>
+
+
+            </li>
+        </c:forEach>
+
+
+        <c:if test="${paging.next}">
+            <li class="next">
+                <a href="javascript:void(0);"  onclick="fn_go_page(${paging.endPage + 1}); return false;" >▶</a>
+            </li>
+
+            <li class="next_end">
+                <a href="javascript:void(0);" onclick="fn_go_page(${paging.totalPages }); return false;">▶</a>
+            </li>
+        </c:if>
+    </ol>
 </div>
 <!-- Paging[e] -->
 

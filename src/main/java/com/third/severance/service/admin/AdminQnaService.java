@@ -155,4 +155,23 @@ public class AdminQnaService {
 
 
     }
+
+    public HashMap<String, Object> getAdminQnaDetail(int qseq) {
+        HashMap<String, Object> result = new HashMap<>();
+        System.out.println("서비스 qseq: " + qseq);
+
+        QnaVO qvo = aqdao.getQnaDetail( qseq );
+
+        System.out.println("qvo : " + qvo);
+
+
+
+        result.put("qvo", qvo);
+
+        return result;
+    }
+
+    public void adminQnaReplyUpdate(int qseq, String reply) {
+        aqdao.adminQnaReplyUpdate( qseq, reply );
+    }
 }

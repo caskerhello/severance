@@ -150,4 +150,41 @@ public class AdminReservationController {
 
         return responseData;
     }
+
+
+
+
+    @PostMapping("/adminSetReservationResultUp")
+    @ResponseBody
+    public HashMap<String, Object> adminSetReservationResultUP(@RequestParam("rseq") int rseq)
+    {   HashMap<String, Object> result = new HashMap<>();
+//        System.out.println("adminSetReservationResultUp 호출");
+        ars.adminSetReservationResultUp(rseq);
+//        System.out.println("adminSetReservationResultUp 완료");
+        int reservationResult = ars.adminSetReservationResult(rseq);
+        System.out.println("adminSetReservationResult"+reservationResult);
+        result.put("reservationResult",reservationResult);
+
+        return result;
+    }
+
+    @PostMapping("/adminSetReservationResultDown")
+    @ResponseBody
+    public HashMap<String, Object> adminSetReservationResultDown(@RequestParam("rseq") int rseq, HttpServletRequest request)
+    {HashMap<String, Object> result = new HashMap<>();
+        ars.adminSetReservationResultDown(rseq);
+
+        int reservationResult = ars.adminSetReservationResult(rseq);
+        System.out.println("adminSetReservationResult"+reservationResult);
+        result.put("reservationResult",reservationResult);
+
+        return result;
+    }
+
+
+
+
+
+
+
 }
