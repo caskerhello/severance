@@ -87,10 +87,10 @@
                     content2 = '<input type="hidden" id="pageIndex" name="pageIndex" value="1">';
                     content2 +=    '<ol class="pagination" id="pagination">';
 
-                    // if(paging2.prev){
-                    //     content2 +=    '<li class="prev_end"><a href="javascript:void(0);" onclick="fn_go_page(1); return false;" ></a></li>';
-                    //     content2 +=    '<li class="prev"><a href="javascript:void(0);"  onclick="fn_go_page(' + startButtonDate + '); return false;" ></a></li>';
-                    // }
+                    if(paging2.prev){
+                        content2 +=    '<li class="prev_end"><a href="javascript:void(0);" onclick="fn_go_page(1); return false;" >▶</a></li>';
+                        content2 +=    '<li class="prev"><a href="javascript:void(0);"  onclick="fn_go_page(' + startButtonDate + '); return false;" >▶</a></li>';
+                    }
 
                     for (var num=startDate; num<=endDate; num++) {
                         if (num == pageIndex) {
@@ -100,11 +100,11 @@
                         }
                     }
 
-                    // if(paging2.next){
-                    //     content2 +=    '<li class="next"><a href="javascript:void(0);"  onclick="fn_go_page(' + endButtonDate + '); return false;" ></a></li>';
-                    //
-                    //     content2 +=    '<li class="next_end"><a href="javascript:void(0);" onclick="fn_go_page(' + paging2.realEnd +'); return false;"></a></li>';
-                    // }
+                    if(paging2.next){
+                        content2 +=    '<li class="next"><a href="javascript:void(0);"  onclick="fn_go_page(' + endButtonDate + '); return false;" >▶</a></li>';
+
+                        content2 +=    '<li class="next_end"><a href="javascript:void(0);" onclick="fn_go_page(' + paging2.totalPages +'); return false;">▶</a></li>';
+                    }
 
                     content2 +=    '</ol>';
                     content2 +=    '</div>';
@@ -200,14 +200,14 @@
     <c:set var="pageIndex" value="1"/>
 
     <ol class="pagination" id="pagination">
-<%--        <c:if test="${paging.prev}">--%>
-<%--            <li class="prev_end">--%>
-<%--                <a href="javascript:void(0);" onclick="fn_go_page(1); return false;" ></a>--%>
-<%--            </li>--%>
-<%--            <li class="prev">--%>
-<%--                <a href="javascript:void(0);"  onclick="fn_go_page(${paging.beginPage - 1}); return false;" ></a>--%>
-<%--            </li>--%>
-<%--        </c:if>--%>
+        <c:if test="${paging.prev}">
+            <li class="prev_end">
+                <a href="javascript:void(0);" onclick="fn_go_page(1); return false;" >◀</a>
+            </li>
+            <li class="prev">
+                <a href="javascript:void(0);"  onclick="fn_go_page(${paging.beginPage - 1}); return false;" >◀</a>
+            </li>
+        </c:if>
 
 
         <c:forEach var="num" begin="${paging.beginPage}" end="${paging.endPage}">
@@ -217,15 +217,15 @@
         </c:forEach>
 
 
-<%--        <c:if test="${paging.next}">--%>
-<%--            <li class="next">--%>
-<%--                <a href="javascript:void(0);"  onclick="fn_go_page(${paging.endPage + 1}); return false;" ></a>--%>
-<%--            </li>--%>
-<%--            --%>
-<%--            <li class="next_end">--%>
-<%--                <a href="javascript:void(0);" onclick="fn_go_page(${paging2.realEnd }); return false;"></a>--%>
-<%--            </li>--%>
-<%--        </c:if>--%>
+        <c:if test="${paging.next}">
+            <li class="next">
+                <a href="javascript:void(0);"  onclick="fn_go_page(${paging.endPage + 1}); return false;" >▶</a>
+            </li>
+
+            <li class="next_end">
+                <a href="javascript:void(0);" onclick="fn_go_page(${paging.totalPages }); return false;"></a>
+            </li>
+        </c:if>
     </ol>
 </div>
 <!-- Paging[e] -->

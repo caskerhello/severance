@@ -153,21 +153,6 @@ public class AdminDoctorService {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //    public List<DoctorVO> getAllDoctor() {
 //    return addao.getAllDoctor();
 //    }
