@@ -1,31 +1,43 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
-<section>
-	<article>
-		<form>
-			<div class="qna_top">
-				<h2> 고객센터 ( Q&A ) </h2>
-				<div class="btn">
-					<label><input type="button" value="질문하기" onClick="location.href='writeQnaForm'"/></label>
-				</div>
-			</div>
 
-			<!-- QnA 게시판 시작 -->
-			<div class="board">
-				<div class="rowtitle">
-					<div class="qboard-title">No.</div>
-					<div class="qboard-title">작성자</div>
-					<div class="qboard-sub">제목</div>
-					<div class="qboard-title">작성일</div>
-					<div class="qboard-title">답변</div>
-				</div>
-				<c:forEach items="${qnaList}" var="qnaVO" >
-					<div class="rowQ" onClick="qnaView('${qnaVO.qseq}')">
-						<div class="colline">${qnaVO.qseq}</div>
-						<div class="colline">${qnaVO.userid}</div>
-						<div class="colline" style="flex:4">${qnaVO.subject}</div>
-						<div class="colline"><fmt:formatDate value="${qnaVO.indate}" type="date"/></div>
-						<div class="colline">
+<html>
+<head>
+	<link rel="stylesheet" href="/css/qnaList.css"/>
+</head>
+
+
+<body>
+<div class="container">
+ <main class="table">
+	 <section class="table_header">
+
+		<h1>Q & A 게시판</h1>
+
+		<nav class="sub_menu">
+			<div><a href="writeQnaForm">질문하기</a></div>
+		</nav>
+
+	 </section>
+
+	 <section class="table_body">
+		 <div class="mypagerow">
+			 <div class="coltitle" style="flex:0.8">번호</div>
+			 <div class="coltitle" style="flex:1.3">작성자</div>
+			 <div class="coltitle" style="flex:4">제목</div>
+			 <div class="coltitle" style="flex:1.3">작성일</div>
+			 <div class="coltitle" style="flex:0.8">답변</div>
+		 </div>
+	 </section>
+
+	 <div class="list">
+		<c:forEach items="${qnaList}" var="qnaVO" >
+					<div class="mypagerow" onClick="qnaView('${qnaVO.qseq}')">
+						<div class="col">${qnaVO.qseq}</div>
+						<div class="col">${qnaVO.userid}</div>
+						<div class="col" style="flex:4">${qnaVO.subject}</div>
+						<div class="col"><fmt:formatDate value="${qnaVO.indate}" type="date"/></div>
+						<div class="col">
 							<c:choose>
 								<c:when test="${empty qnaVO.reply }">N</c:when>
 								<c:otherwise>Y</c:otherwise>
@@ -33,10 +45,9 @@
 						</div>
 					</div>
 				</c:forEach>
-				<!-- QnA 게시판 끝 -->
+	 </div>
 
-				<!-- paging 시작 -->
-				<div class="rowQ">
+	<div class="rowQ">
 					<div class="coltitle" style="font-size:120%; font-weight:bold;">
 						<c:if test="${paging.prev}" >
 							<a href="qnaList?page=${paging.beginPage-1}">◀</a>
@@ -58,10 +69,10 @@
 						</c:if>
 					</div>
 				</div>
-				<!-- paging 끝 -->
+ </main>
+</div>
 
-			</div>
-		</form>
-	</article>
-</section>
- <%@ include file="../footer.jsp" %>
+</body>
+
+</html>
+<%@ include file="../footer.jsp" %>

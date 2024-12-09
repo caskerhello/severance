@@ -31,7 +31,7 @@ public class QnaService {
         Paging paging = new Paging();
         paging.setPage(page);
         paging.setDisplayPage(10);
-        paging.setDisplayRow(5);
+        paging.setDisplayRow(10);
         int count = qdao.getAllCount();
         paging.setTotalCount(count);
         paging.calPaging();
