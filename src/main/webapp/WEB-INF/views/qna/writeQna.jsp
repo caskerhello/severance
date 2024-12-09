@@ -1,63 +1,52 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
 
-<section>
-  <article>
-    <form action="writeQna" method="post">
-    <div class="qna_top">
-        <h2>고객센터 ( Q&A )</h2>
-    </div>
+<html>
+<head>
+	<link rel="stylesheet" href="/css/writeQna.css"/>
+</head>
 
-    <div class="rowQ">
-        <div class="field">
-            <div class="colline">
-                <label>작성자</label>
-                <input type="text" name="userid" value="${userid}" />
+
+<body>
+<form action="writeQna" method="post">
+    <div class="qnacontainer">
+        <div class="contact-box">
+            <div class="left"></div>
+
+            <div class="right">
+                <h2>Q & A 작성</h2>
+                <div class="abc">
+                    <input type="text" class="field" name="userid" value="${userid}" placeholder="작성자" />
+                    <span class="error-message"><c:if test="${not empty errorMessage1}">${errorMessage1}</c:if></span>
+                </div>
+
+            <div class="abc">
+                    <input type="text" class="field" id="subjectQ" name="subject" value="${subject}" maxlength="300" onkeyup="counter();" placeholder="제목">
+                    <span class="error-message"><c:if test="${not empty errorMessage2}">${errorMessage2}</c:if></span>
             </div>
-            <div class="error-message">
-                <c:if test="${not empty errorMessage1}">
-                ${errorMessage1}
-                </c:if>
+
+                <div class="abc">
+                        <div class="textarea-container">
+                            <textarea class="field area" id="contentQ" name="content" onkeyup="counter();" rows="10" maxlength="3000" placeholder="문의 내용">${content}</textarea>
+                            <span id="textCount">(0/3000)</span> <!-- 글자 수 카운트 -->
+
+                            <!-- 에러 메시지 -->
+                            <span class="error-message">
+                                <c:if test="${not empty errorMessage3}">${errorMessage3}</c:if>
+                            </span>
+                        </div>
+                </div>
+
+                <div class="buttons">
+                    <input type="button" class="btn" value="목록으로" onClick="location.href='qnaList'">
+                    <input type="submit" class="btn" value="작성완료">
+                </div>
             </div>
-        </div>
-    </div>
-
-
-    <div class="rowQ">
-        <div class="field"><label>제&nbsp;&nbsp;&nbsp;목</label></div>
-        <div class="field">
-            <div>
-              <input type="text" id="subjectQ" name="subject" value="${subject}" maxlength="300" onkeyup="counter();" />
-            </div>
-            <c:if test="${not empty errorMessage2}">
-                <div class="error-message">${errorMessage2}</div>
-            </c:if>
-        </div>
-    </div>
-
-    <div class="rowQ">
-        <div class="field"><label>내&nbsp;&nbsp;&nbsp;용</label></div>
-        <div class="field">
-            <textarea id="contentQ" name="content" rows="10" maxlength="3000" style="width:100%; resize:none;" placeholder="질문 내용을 입력하세요." onkeyup="counter();">${content}</textarea>
-        </div>
-        <div>
-          <div class="colline"><span id="textCount">(0/3000)</span></div>
-          <c:if test="${not empty errorMessage3}">
-              <div class="error-message">${errorMessage3}</div>
-          </c:if>
-        </div>
-    </div>
-
-    <div class="rowQ">
-        <div class="btn" style="flex:1; background-color: #0054d1;">
-            <label><input type="button" value="목록으로" onClick="location.href='qnaList'" /></label>
-        </div>
-        <div class="btn" style="flex:1; background-color: #2faaff;">
-            <label><input type="submit" value="작성완료" /></label>
         </div>
     </div>
 </form>
 
-  </article>
-</section>
+</body>
+
+</html>
 <%@ include file="../footer.jsp" %>
