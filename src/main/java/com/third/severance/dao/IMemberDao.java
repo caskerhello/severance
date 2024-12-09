@@ -13,4 +13,8 @@ public interface IMemberDao {
     void insertMember(MemberVO mvo);
 
     MemberVO memberIdSearch(MemberVO searchVO);
+
+    int isUserExist(String email, String name);
+
+    void updatePassword(@Param("email") String email, @Param("pwd") String pwd, @Param("name") String name);
 }

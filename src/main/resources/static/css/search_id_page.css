@@ -1,0 +1,70 @@
+/* 전체 컨테이너 설정 */
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* 카드 스타일 */
+article {
+    width: 100%;
+    max-width: 1000px; /* 최대 크기를 제한 */
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; /* 패딩 포함 크기 계산 */
+    text-align: left;
+}
+
+/* 입력 필드 */
+article input[type="text"] {
+    width: 100%; /* 입력 필드가 부모 요소에 맞게 늘어나도록 설정 */
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    outline: none;
+}
+
+/* 버튼 */
+article button {
+    width: 100%; /* 버튼이 부모 요소 크기를 따르도록 설정 */
+    padding: 10px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+article button:hover {
+    background-color: #0056b3;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 800px) {
+    article {
+        padding: 10px; /* 작은 화면에서는 패딩을 줄임 */
+    }
+
+    article h3 {
+        font-size: 20px; /* 제목 크기를 줄임 */
+    }
+
+    article p {
+        font-size: 12px; /* 설명 크기를 줄임 */
+    }
+
+    article input[type="text"],
+    article button {
+        font-size: 14px; /* 버튼과 입력 필드의 글꼴 크기를 줄임 */
+    }
+}

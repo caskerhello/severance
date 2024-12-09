@@ -35,7 +35,18 @@
             name = #{me_name}
           AND phone = #{me_tel}
         ]]>
-</select>
+     </select>
 
+    <select id="isUserExist" resultType="int">
+        SELECT COUNT(*)
+        FROM member
+        WHERE email = #{email} AND name = #{name}
+    </select>
+
+    <update id="updatePassword">
+        UPDATE member
+        SET pwd = #{pwd}
+        WHERE email = #{email} AND name = #{name}
+    </update>
 
 </mapper>
