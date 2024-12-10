@@ -49,7 +49,7 @@ public class AdminDoctorService {
         Paging paging = new Paging();
         paging.setPage(page);
         paging.setDisplayPage(10);
-        paging.setDisplayRow(3);
+        paging.setDisplayRow(2);
 
         int count = addao.getAllCount( "doctor", "name", key);
         System.out.println("count : "+count);
@@ -120,7 +120,7 @@ public class AdminDoctorService {
         Paging paging = new Paging();
         paging.setPage(page);
         paging.setDisplayPage(10);
-        paging.setDisplayRow(3);
+        paging.setDisplayRow(2);
 
         int count = addao.getAllCount( "doctor", "name", key);
         System.out.println("count : "+count);
@@ -153,6 +153,18 @@ public class AdminDoctorService {
 
     public DoctorVO getAdminDoctor(int dseq) {
     return addao.getAdminDoctor(dseq);
+    }
+
+    public void updateAdminDoctor(DoctorVO dvo) {
+    addao.updateAdminDoctor(dvo);
+    }
+
+    public void adminDoctorDelete(int dseq) {
+        addao.adminDoctorDelete(dseq);
+    }
+
+    public void insertAdminDoctor(DoctorVO dvo) {
+        addao.insertAdminDoctor(dvo);
     }
 
 

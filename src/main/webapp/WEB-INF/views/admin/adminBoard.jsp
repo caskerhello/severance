@@ -18,15 +18,46 @@
 
 
 
+    <script type="text/javascript">
+
+
+        // function update_image(){
+        //     console.log("clicked");
+        //     var formselect = $('#fileupForm')[0];   // 지목된 폼을 변수에 저장
+        //     var formData = new FormData( formselect );
+        //     $.ajax(
+        //         {
+        //             url:"/fileup" ,
+        //             type:"POST",
+        //             enctype:"multipart/form-data",
+        //             data: formData,
+        //             timeout: 10000,
+        //             contentType : false,
+        //             processData : false,
+        //
+        //             success: function( data ){
+        //                 $('#filename').html("<div>" + data.image + "</div>" );
+        //                 $("#filename").append("<img src='doctor_images/" + data.savefilename + "' height='150'/>");
+        //                 $('#image').val( data.image );
+        //                 $('#savefilename').val( data.savefilename );
+        //             },
+        //             error:function(){  alert("실패"); },
+        //         }
+        //     );
+        // }
+
+
+    </script>
+
 
 
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             // 기본 페이지는 doctorList로 설정
             $(".admin-content").load("/adminDoctorList"); // 컨트롤러에서 설정한 경로로 수정
 
             // 메뉴 클릭 시 동적으로 페이지를 로드
-            $(".sidebar ul li a").click(function(e) {
+            $(".sidebar ul li a").click(function (e) {
                 e.preventDefault();  // 기본 링크 이동을 방지
                 var targetPage = $(this).attr("href");  // 클릭된 메뉴의 href 속성에서 타겟 페이지를 가져옴
 
@@ -381,25 +412,7 @@
 
         </div>
 
-        <div>
-<%--            <div class="row">--%>
-<%--                <div class="col" style="font-size:120%; font-weight:bold;">--%>
-<%--                    <span id="paging"></span>--%>
-<%--                </div>--%>
-<%--            </div>--%>
 
-
-<%--        <div id="paging">--%>
-<%--            <button onclick="loadPage(1)">1</button>--%>
-<%--            <button onclick="loadPage(2)">2</button>--%>
-<%--            <button onclick="loadPage(3)">3</button>--%>
-<%--        </div>--%>
-<%--            111--%>
-<%--            <div id="dataContainer">--%>
-
-<%--            </div>--%>
-
-        </div>
 
 
     </div>

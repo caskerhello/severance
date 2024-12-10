@@ -20,7 +20,7 @@
 
   <div class="main">
     <div class="container">
-      <img src="images/Doctor_image/${dvo.savefilename}" />
+      <img src="doctor_images/${dvo.savefilename}" />
     </div>
 
     <div class="about-text">
@@ -35,7 +35,7 @@
 
   <section class="history">
     <div class="mark">
-      <img src="images/${dvo.univlogo}" />
+      <img src="doctor_images/${dvo.univlogo}" />
     </div>
 
     <div class="profile-text">
