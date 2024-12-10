@@ -10,6 +10,7 @@ import com.third.severance.dto.DoctorVO;
 import com.third.severance.dto.Paging;
 import com.third.severance.dto.ReservationVO;
 import com.third.severance.service.admin.*;
+import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.json.JSONArray;
@@ -19,9 +20,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
@@ -219,6 +224,37 @@ public class AdminDoctorController {
     }
 
 
+    @PostMapping("/adminDoctorInsertForm")
+    @ResponseBody
+    public HashMap<String, Object> adminDoctorInsertForm(@RequestParam("dseq") int dseq, HttpServletRequest request) {
+
+        System.out.println("adminDoctorInsertForm");
+
+        HashMap<String, Object> responseData = new HashMap<>();
+
+        DoctorVO doctor = ads.getAdminDoctor(dseq);
+
+        responseData.put("doctor", doctor);
+
+
+        return responseData;
+    }
+
+
+    @PostMapping("/adminDoctorInsert")
+    @ResponseBody
+    public void adminDoctorInsert(@RequestBody DoctorVO dvo, HttpServletRequest request) {
+
+        System.out.println("adminDoctorInsert");
+        System.out.println(dvo);
+
+        ads.insertAdminDoctor(dvo);
+
+
+
+    }
+
+
 
     @PostMapping("/adminDoctorUpdateForm")
     @ResponseBody
@@ -235,52 +271,78 @@ public class AdminDoctorController {
     }
 
 
-//    @PostMapping("/adminDoctorDelete")
-//    @ResponseBody
-//    public HashMap<String, Object> adminDoctorDelete(@RequestParam("dseq") int dseq, HttpServletRequest request) {
-//        JSONObject response = new JSONObject();
-//        HashMap<String, Object> responseData = new HashMap<>();
-//
-//        try {
-//
-//            HashMap<String, Object> result = ads.getAdminDoctorListPaging(page,request);
-//
-//            List<DoctorVO> doctorList = (List<DoctorVO>) result.get("doctorList");
-//            Paging paging = (Paging) result.get("paging");
-//
-//            // JSON 변환
-////            JSONArray doctorListJson = convertListToJsonArray(doctorList);
-////            JSONObject pagingJson = convertPagingToJSON(paging);
-//
-//            // JSON 응답 객체 생성
-////            response.put("doctorList2", doctorListJson);
-////            System.out.println("doctorList2 Paging:"+doctorListJson);
-//
-////            response.put("paging2", pagingJson);
-////            System.out.println("paging2 Paging:"+pagingJson);
-//
-////            HashMap<String, Object> responseData = new HashMap<>();
-//            responseData.put("doctorList2", doctorList);
-//            responseData.put("paging2", paging);
-//
-//
-//            System.out.println("responseData:"+responseData);
-//            // HashMap을 JSONObject로 변환하여 반환
-////            response = new JSONObject(responseData);
-//
-//
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            response.put("error", "JSON 파싱 오류 발생");
-//        }
-//
-//        return responseData;
-//    }
-//
+    @PostMapping("/adminDoctorUpdate")
+    @ResponseBody
+    public void adminDoctorUpdate(@RequestBody DoctorVO dvo, HttpServletRequest request) {
+
+        System.out.println("adminDoctorUpdate");
+        System.out.println(dvo);
+
+        ads.updateAdminDoctor(dvo);
 
 
 
+    }
+
+
+
+
+
+
+
+
+@Autowired
+ServletContext context;
+
+@PostMapping("/fileup")
+@ResponseBody
+public HashMap<String, Object> fileup(    @RequestParam("fileimage") MultipartFile file        ){
+    System.out.println("fileup");
+
+
+    String path = context.getRealPath("/doctor_images");
+
+    Calendar today = Calendar.getInstance();
+    long t = today.getTimeInMillis();
+    String filename = file.getOriginalFilename();
+    String fn1 = filename.substring(0, filename.indexOf(".") );  // 파일이름과 확장자 분리
+    String fn2 = filename.substring(filename.indexOf(".") );
+    String savefilename = fn1 + t + fn2;
+    String uploadPath = path + "/" + savefilename;
+
+    HashMap<String, Object> result = new HashMap<String, Object>();
+    try {
+        file.transferTo( new File(uploadPath) );  // 파일의 업로드 + 저장
+        result.put("image", filename );
+        result.put("savefilename", savefilename );
+
+        System.out.println(filename);
+        System.out.println(savefilename);
+
+
+
+    } catch (IllegalStateException e) {         e.printStackTrace();
+    } catch (IOException e) {       e.printStackTrace();
+    }
+    return result;
+}
+
+
+
+
+
+
+
+
+
+    @GetMapping("/adminDoctorDelete")
+    @ResponseBody
+    public void adminDoctorDelete(@RequestParam("dseq") int dseq, HttpServletRequest request) {
+        System.out.println("adminDoctorDelete");
+        ads.adminDoctorDelete(dseq);
+
+
+    }
 
 
 

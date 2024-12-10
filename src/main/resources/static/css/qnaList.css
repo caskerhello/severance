@@ -27,7 +27,7 @@ main{
     display: flex;
     flex-direction: column; /* 세로로 나열 */
     width: 100%; /* 화면 너비에 맞게 설정 */
-    max-width: 1600px; /* 최대 너비 제한 */
+    max-width: 1200px; /* 최대 너비 제한 */
     flex-grow: 0; /* 남은 공간을 채우도록 설정 */
     background-color: #fff5;
     box-shadow: 0.4rem .8rem #0005;
@@ -38,7 +38,7 @@ main{
 }
 
 main.table{
-    width: 1600px;
+    width: 1024px;
     background-color: #fff5;
     box-shadow: 0.4rem .8rem #0005;
     border-radius: .8rem;
@@ -54,21 +54,22 @@ main.table{
     align-items: center;
 }
 
-.list .mypagerow {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
-
-
-
 .coltitle{
     display: flex;
     justify-content: center; /* 항목 텍스트 중앙 정렬 */
     align-items: center; /* 항목 세로 중앙 정렬 */
     font-size: 20px;
     font-weight: bold;
+    flex: 1; /* 균등하게 너비 분배 */
+    text-align: center;
+    padding: 10px;
+}
+
+.col {
+    display: flex;
+    justify-content: center; /* 항목 텍스트 중앙 정렬 */
+    align-items: center; /* 항목 세로 중앙 정렬 */
+    font-size: 1rem;
     flex: 1; /* 균등하게 너비 분배 */
     text-align: center;
     padding: 10px;
@@ -130,32 +131,17 @@ main.table{
     height: 0;
     background-color: #fffb;
     border-radius: .6rem;
-    margin: 0 auto;
-    margin-top: 30px;
-    padding: 20px;
+    margin: 30px auto 0 ;
 
 }
 
 .list{
     display: flex;
-    flex-direction: column;
     width: 90%;
-    margin: 0 auto;
-    margin-top: 30px;
-    margin-bottom: 10px;
+    margin: 20px auto;
     background-color: #fffb;
     border-radius: .6rem;
-
-}
-
-.coltitle, .col {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 18px;
-    font-weight: bold;
-    text-align: center;
-    padding: 10px;
+    cursor:pointer;
 }
 
 .list .mypagerow:nth-child(even) {
@@ -197,8 +183,24 @@ main.table{
     align-items: center;
     justify-content: center;
 
-
 }
 
+/* paging */
+.paging {
+    background-color:#7494ec;
+    border-radius : 0 0 .8rem .8rem;
+}
 
+.paging a{
+    color:white;
+}
+
+.paging .use{
+    background-color:#fff4;
+    border-radius: 8rem;
+    color:red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 

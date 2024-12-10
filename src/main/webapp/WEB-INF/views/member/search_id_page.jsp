@@ -20,8 +20,11 @@
                     <p>${msg}</p>
                 </c:otherwise>
             </c:choose>
+            <br>
             <a href="/search_id" class="btn btn-primary">다시 검색</a>
+            <hr />
             <a href="/search_pwd" class="btn btn-primary">비밀번호 찾기</a>
+            <hr />
             <a href="/loginForm" class="btn btn-primary">로그인</a>
         </div>
     </article>

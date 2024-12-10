@@ -15,4 +15,10 @@ public interface IAdminDoctorDao {
     List<DoctorVO> getDoctorList(Paging paging, String key);
 
     DoctorVO getAdminDoctor(int dseq);
+
+    void updateAdminDoctor(DoctorVO dvo);
+
+    void adminDoctorDelete(int dseq);
+
+    void insertAdminDoctor(DoctorVO dvo);
 }

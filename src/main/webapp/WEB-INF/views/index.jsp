@@ -56,7 +56,7 @@
         <c:forEach items="${doctorList}" var="dVO" >
             <div class="col" onClick="location.href='doctorDetail?dseq=${dVO.dseq}'">
                 <div class="col-img">
-                    <img src="/images/Doctor_image/${dVO.savefilename}" />
+                    <img src="doctor_images/${dVO.savefilename}" />
                 </div>
 
                 <div class="col-text" >
