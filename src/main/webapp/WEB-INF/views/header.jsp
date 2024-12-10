@@ -74,7 +74,7 @@
             </c:when>
             <c:otherwise>
 			    <label> 환영합니다. ${loginUser.name}(${loginUser.userid}) 님 </label>
-                <a href="logout"><i class="ri-user-line"></i><span class="tooltip right">로그아웃</span></a> <!--로그인, 로그아웃-->
+                <a href="logout"><i class="ri-logout-box-r-line"></i><span class="tooltip right">로그아웃</span></a> <!--로그인, 로그아웃-->
             </c:otherwise>
         </c:choose>
       <div class="bx bx-menu" id="menu-icon"></div>
