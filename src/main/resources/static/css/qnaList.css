@@ -27,7 +27,7 @@ main{
     display: flex;
     flex-direction: column; /* 세로로 나열 */
     width: 100%; /* 화면 너비에 맞게 설정 */
-    max-width: 1600px; /* 최대 너비 제한 */
+    max-width: 1200px; /* 최대 너비 제한 */
     flex-grow: 0; /* 남은 공간을 채우도록 설정 */
     background-color: #fff5;
     box-shadow: 0.4rem .8rem #0005;
@@ -38,7 +38,7 @@ main{
 }
 
 main.table{
-    width: 1600px;
+    width: 1024px;
     background-color: #fff5;
     box-shadow: 0.4rem .8rem #0005;
     border-radius: .8rem;
@@ -52,6 +52,7 @@ main.table{
     justify-content: space-between; /* 항목들 간 균등한 간격 배치 */
     width: 100%; /* 전체 너비 사용 */
     align-items: center;
+    cursor: pointer;
 }
 
 .list .mypagerow {
