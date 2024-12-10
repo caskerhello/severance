@@ -39,17 +39,17 @@ public class MemberController {
     public String login(@ModelAttribute("dto") @Valid MemberVO membervo, BindingResult result,
                         HttpServletRequest request, Model model) {
         String url = "member/loginForm";
-        if (result.getFieldError("userid") != null)
+        if (result.getFieldError("userid") != null) {
             model.addAttribute("message", "아이디를 입력하세요");
-        else if (result.getFieldError("pwd") != null)
+        } else if (result.getFieldError("pwd") != null) {
             model.addAttribute("message", "패스워드를 입력하세요");
-        else {
+        } else {
             MemberVO mvo = ms.getMember(membervo.getUserid());
-            if (mvo == null)
-                model.addAttribute("message", "아이디 비밀번호를 확인하세요. ");
-            else if (!mvo.getPwd().equals(membervo.getPwd()))
-                model.addAttribute("message", "아이디 비밀번호를 확인하세요. ");
-            else if (mvo.getPwd().equals(membervo.getPwd())) {
+            if (mvo == null) {
+                model.addAttribute("message", "아이디 또는 비밀번호를 확인하세요.");
+            } else if (!mvo.getPwd().equals(membervo.getPwd())) {
+                model.addAttribute("message", "아이디 또는 비밀번호를 확인하세요.");
+            } else if (mvo.getPwd().equals(membervo.getPwd())) {
                 HttpSession session = request.getSession();
                 session.setAttribute("loginUser", mvo);
                 url = "redirect:/";
@@ -57,6 +57,7 @@ public class MemberController {
         }
         return url;
     }
+
 
     @GetMapping("/logout")
     public String logout(HttpSession session) {
@@ -146,8 +147,10 @@ public class MemberController {
     @PostMapping("/contractAgree")
     public String contractAgree(@RequestParam(value = "termsService", required = true) boolean termsService,
                                 @RequestParam(value = "privacyPolicy", required = true) boolean privacyPolicy,
-                                @RequestParam(value = "marketingConsent", required = false) boolean marketingConsent) {
+                                @RequestParam(value = "marketingConsent", required = false) boolean marketingConsent,
+                                HttpSession session) {
         if (termsService && privacyPolicy) {
+            session.setAttribute("agreedToTerms", true);
             return "redirect:/joinForm"; // 리다이렉트
         } else {
             return "member/contract"; // 약관 동의 페이지로 돌아감
@@ -155,7 +158,11 @@ public class MemberController {
     }
 
     @GetMapping("/joinForm")
-    public String joinForm(Model model) {
+    public String joinForm(HttpSession session, Model model) {
+        // 세션에 'agreedToTerms' 속성이 없으면, 즉 약관 동의를 하지 않았으면
+        if (session.getAttribute("agreedToTerms") == null || !(boolean) session.getAttribute("agreedToTerms")) {
+            return "redirect:/contract"; // 약관 동의 페이지로 리다이렉트
+        }
         return "member/joinForm";
     }
 

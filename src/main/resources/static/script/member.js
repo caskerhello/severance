@@ -23,6 +23,26 @@ function go_save() {
         alert('아이디 중복 검사를 실행하세요.');
         return;
     }
+    // 연락처 입력 확인
+    if (!form.phone.value.trim()) {
+        alert('연락처를 입력하세요.');
+        form.phone.focus();
+        return;
+    }
+    // 이메일 입력 확인 및 도메인 확인
+    const email = form.email.value.trim();
+    if (!email) {
+        alert('이메일을 입력하세요.');
+        form.email.focus();
+        return;
+    }
+    // 이메일 도메인 존재 여부 확인
+    const emailDomainRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailDomainRegex.test(email)) {
+        alert('이메일 도메인을 확인하세요. 예: example@domain.com');
+        form.email.focus();
+        return;
+    }
     // 비밀번호 검증: 8~20자, 영문(대소문자), 숫자, 특수문자 포함
     const pwdRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_+|~\-=`{}:";'<>?,./]).{8,20}$/;
     if (!form.pwd.value.trim()) {
@@ -38,12 +58,6 @@ function go_save() {
     if (form.pwd.value !== form.pwdCheck.value) {
         alert('비밀번호가 일치하지 않습니다.');
         form.pwdCheck.focus();
-        return;
-    }
-    // 연락처 입력 확인
-    if (!form.phone.value.trim()) {
-        alert('연락처를 입력하세요.');
-        form.phone.focus();
         return;
     }
     // // 우편번호 입력 확인

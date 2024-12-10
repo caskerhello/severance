@@ -23,8 +23,22 @@
         delete from member where userid=#{param1}
     </delete>
 
+<!--    <select id="memberIdSearch" parameterType="com.third.severance.dto.MemberVO" resultType="com.third.severance.dto.MemberVO">-->
+<!--     <![CDATA[-->
+<!--        SELECT-->
+<!--            userid AS me_id,-->
+<!--            name AS me_name,-->
+<!--            phone AS me_tel-->
+<!--        FROM-->
+<!--            member-->
+<!--        WHERE-->
+<!--            name = #{me_name}-->
+<!--          AND phone = #{me_tel}-->
+<!--        ]]>-->
+<!--     </select>-->
+
     <select id="memberIdSearch" parameterType="com.third.severance.dto.MemberVO" resultType="com.third.severance.dto.MemberVO">
-     <![CDATA[
+    <![CDATA[
         SELECT
             userid AS me_id,
             name AS me_name,
@@ -34,8 +48,10 @@
         WHERE
             name = #{me_name}
           AND phone = #{me_tel}
+            LIMIT 1
         ]]>
-     </select>
+    </select>
+
 
     <select id="isUserExist" resultType="int">
         SELECT COUNT(*)

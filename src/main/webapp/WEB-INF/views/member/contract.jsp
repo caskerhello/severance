@@ -2,7 +2,7 @@
 <%@ include file="../header.jsp" %>
 
 <link rel="stylesheet" href="/css/header_footer.css"/>
-<link rel="stylesheet" href="/css/main.css"/>
+<%--<link rel="stylesheet" href="/css/main.css"/>--%>
 <link rel="stylesheet" href="/css/contractForm.css"/>
 
 <style>
@@ -25,7 +25,7 @@
 						<label for="terms-service">연세메모리의 이용약관(필수)</label>
 						<textarea readonly>
 제 1조 목적
-본 약관은 회사명이 제공하는 [서비스명] 서비스(이하 "서비스")의 이용 조건 및 절차, 이용자와 회사 간의 권리와 의무를 규정하는 것을 목적으로 합니다.
+본 약관은 하이미디어 병원이 제공하는 [진료예약] 서비스(이하 "서비스")의 이용 조건 및 절차, 이용자와 회사 간의 권리와 의무를 규정하는 것을 목적으로 합니다.
 
 제 2조 용어의 정의
 "서비스"란 회사가 제공하는 모든 온라인 및 오프라인 서비스를 의미합니다.
@@ -48,8 +48,8 @@
 						<label for="privacy-policy">개인정보 수집·이용(필수)</label>
 						<textarea readonly>
 1. 수집하는 개인정보 항목
-필수정보: 이름, 휴대폰 번호, 아이디/비밀번호
-선택정보: 주소, 이메일
+필수정보: 휴대폰 번호, 아이디/비밀번호, 이름, 이메일
+선택정보: 주소
 
 2. 개인정보의 수집 및 이용 목적
 서비스 제공 및 계약 이행
