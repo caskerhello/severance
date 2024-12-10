@@ -20,6 +20,9 @@
 
     <script type="text/javascript">
 
+        // 초기 로딩 시 placeholder 설정
+        window.onload = updatePlaceholder;
+
 
         // function update_image(){
         //     console.log("clicked");
@@ -54,7 +57,13 @@
     <script>
         $(document).ready(function () {
             // 기본 페이지는 doctorList로 설정
-            $(".admin-content").load("/adminDoctorList"); // 컨트롤러에서 설정한 경로로 수정
+            $(".admin-content").load("/adminDoctorList", function() {
+                fn_go_page(1);  $('#key').val(''); document.getElementById("searchCategory").value = "adminDoctorList"; go_search() // doctorList 페이지 로드 후 페이지 번호를 1로 설정
+            }); // 컨트롤러에서 설정한 경로로 수정
+
+
+
+
 
             // 메뉴 클릭 시 동적으로 페이지를 로드
             $(".sidebar ul li a").click(function (e) {
@@ -66,19 +75,29 @@
                 // 로드할 페이지가 doctorList인지 reservationList인지 확인하고 동적으로 로드
                 if (targetPage === "../admin/adminDoctorList") {
                     console.log("Loading adminDoctorList...");
-                    $(".admin-content").load("/adminDoctorList");  // /doctorList 경로로 페이지 로드
+                    $(".admin-content").load("/adminDoctorList", function() {
+                        fn_go_page(1);  $('#key').val(''); document.getElementById("searchCategory").value = "adminDoctorList"; go_search() ;updatePlaceholder();// doctorList 페이지를 로드하고, 페이지 번호를 1로 설정
+                    });  // /doctorList 경로로 페이지 로드
 
                 } else if (targetPage === "../admin/adminReservationList") {
                     console.log("Loading adminReservationList...");
-                    $(".admin-content").load("/adminReservationList");  // /reservationList 경로로 페이지 로드
+                    $(".admin-content").load("/adminReservationList", function() {
+                        fn_go_page(1);  $('#key').val(''); document.getElementById("searchCategory").value = "adminReservationList"; go_search(); updatePlaceholder(); // reservationList 페이지를 로드하고, 페이지 번호를 1로 설정
+                    });  // /reservationList 경로로 페이지 로드
 
                 } else if (targetPage === "../admin/adminMemberList") {
                     console.log("Loading adminMemberList...");
-                    $(".admin-content").load("/adminMemberList");  // /reservationList 경로로 페이지 로드
+                    $(".admin-content").load("/adminMemberList", function() {
+                        // fn_go_page(1); $('#key').val(''); document.getElementById("searchCategory").value = "adminMemberList"; go_search()
+                        fn_go_page(1);  $('#key').val(''); document.getElementById("searchCategory").value = "adminMemberList"; go_search() ; updatePlaceholder();
+                        // memberList 페이지를 로드하고, 페이지 번호를 1로 설정
+                    });  // /reservationList 경로로 페이지 로드
 
                 } else if (targetPage === "../admin/adminQnaList") {
                     console.log("Loading adminQnaList...");
-                    $(".admin-content").load("/adminQnaList");  // /reservationList 경로로 페이지 로드
+                    $(".admin-content").load("/adminQnaList", function() {
+                        fn_go_page(1); $('#key').val(''); document.getElementById("searchCategory").value = "adminQnaList"; go_search() ; updatePlaceholder();// qnaList 페이지를 로드하고, 페이지 번호를 1로 설정
+                    });  // /reservationList 경로로 페이지 로드
                 }
             });
         });
@@ -117,12 +136,16 @@
 
             // AJAX 요청
             $.ajax({
-                url: 'adminDoctorList',   // 서버의 URL
+                url: url,   // 서버의 URL
                 method: 'GET',            // GET 방식
-                data: { key: key },       // 파라미터로 검색어 전송
+                data: { key: key, page: 1 },       // 파라미터로 검색어 전송
                 success: function(response) {
 
-                    $(".admin-content").load(url);
+                    // 페이지를 1번으로 초기화하고, 검색 결과를 로드
+                    $(".admin-content").load(url, function() {
+                        // 페이지가 로드된 후 초기화
+                        $('#key').val(''); // 검색어 입력창을 공백으로 초기화
+                    });
 
                 },
                 error: function() {
@@ -376,7 +399,7 @@
 
 
                 <div class="search-menu">
-                    <select id="searchCategory">
+                    <select id="searchCategory" onchange="updatePlaceholder()">
                         <option value="adminDoctorList">의사리스트</option>
                         <option value="adminReservationList">예약리스트</option>
                         <option value="adminMemberList">맴버리스트</option>

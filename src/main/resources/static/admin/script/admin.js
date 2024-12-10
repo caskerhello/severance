@@ -124,22 +124,11 @@ function adminDoctorDelete(dseq, page) {
 }
 
 
-
-
-
-
-
 function adminDoctorInsertForm() {
 
 
+    var content = "";
 
-
-   var content = "";
-
-    
-
-
-    
 
     content += '<tr>';
 
@@ -172,50 +161,47 @@ function adminDoctorInsertForm() {
     content += '<td>' + '사진/로고' + '</td>';
 
     content += '<td>' +
-    '<div class="field" >' +
+        '<div class="field" >' +
 
-    '<label>의사사진</label>' +
-    '<div>' +
-    '<input type="hidden" name="image"  id="image" value=""/>' +
-    '<input type="hidden" name="savefilename" id="savefilename" value="" >' +
+        '<label>의사사진</label>' +
+        '<div>' +
+        '<input type="hidden" name="image"  id="image" value=""/>' +
+        '<input type="hidden" name="savefilename" id="savefilename" value="" >' +
 
-    '<div id="filename">' +
+        '<div id="filename">' +
 
-    '</div>'+
-    '</div>'+
-    '</div>'+
+        '</div>' +
+        '</div>' +
+        '</div>' +
 
-    '<div>'+
-    '<form name="fromm" id="fileupForm" method="post" enctype="multipart/form-data">' +
-    '<input type="file" name="fileimage"/>' +
-    '<input type="button" id="imageAddBtn" value="추가" onclick="update_docimage()" />' +
-    '</form>' +
-    '</div></td>;'
-
-
-
+        '<div>' +
+        '<form name="fromm" id="fileupForm" method="post" enctype="multipart/form-data">' +
+        '<input type="file" name="fileimage"/>' +
+        '<input type="button" id="imageAddBtn" value="추가" onclick="update_docimage()" />' +
+        '</form>' +
+        '</div></td>;'
 
 
     content += '<td>' +
-    '<div class="field" >' +
+        '<div class="field" >' +
 
-    '<label>로고</label>' +
-    '<div>' +
-    '<input type="hidden" name="image2"  id="image2" value=""/>' +
-    '<input type="hidden" name="savefilename2" id="savefilename2" value="" >' +
+        '<label>로고</label>' +
+        '<div>' +
+        '<input type="hidden" name="image2"  id="image2" value=""/>' +
+        '<input type="hidden" name="savefilename2" id="savefilename2" value="" >' +
 
-    '<div id="filename2">' +
+        '<div id="filename2">' +
 
-    '</div>'+
-    '</div>'+
-    '</div>'+
+        '</div>' +
+        '</div>' +
+        '</div>' +
 
-    '<div>'+
-    '<form name="fromm" id="fileupForm2" method="post" enctype="multipart/form-data">' +
-    '<input type="file" name="fileimage"/>' +
-    '<input type="button" id="imageAddBtn" value="추가" onclick="update_logimage()" />' +
-    '</form>' +
-    '</div></td>;'
+        '<div>' +
+        '<form name="fromm" id="fileupForm2" method="post" enctype="multipart/form-data">' +
+        '<input type="file" name="fileimage"/>' +
+        '<input type="button" id="imageAddBtn" value="추가" onclick="update_logimage()" />' +
+        '</form>' +
+        '</div></td>;'
 
 
     content += '<td>' + '<input type="button" id="DoctorAddBtn" onclick="insert_doc()" value="정보입력"/>' + '</td>';
@@ -226,10 +212,7 @@ function adminDoctorInsertForm() {
     $(".listData2").html(content);
 
 
-
 }
-
-
 
 
 function insert_doc() {
@@ -275,6 +258,25 @@ function insert_doc() {
         }
     });
 
+}
+
+
+
+    function updatePlaceholder() {
+    var select = document.getElementById('searchCategory');
+    var input = document.getElementById('key');
+    var selectedValue = select.value;
+
+    // value 값에 따라 placeholder를 다르게 설정
+    if (selectedValue === 'adminDoctorList') {
+    input.placeholder = '의사 성명검색';
+} else if (selectedValue === 'adminReservationList') {
+    input.placeholder = '예약 날짜검색';
+} else if (selectedValue === 'adminMemberList') {
+    input.placeholder = '회원 이름 검색';
+} else if (selectedValue === 'adminQnaList') {
+    input.placeholder = 'QnA 제목 검색';
+}
 }
 
 
