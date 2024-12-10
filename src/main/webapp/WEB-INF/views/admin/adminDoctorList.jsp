@@ -71,8 +71,14 @@
 
                         content +=    '<td>' + value.dseq + '</td>';
                         content +=    '<td>' + value.name + '</td>';
+                        content +=    '<td>' + value.image + '</td>';
                         content +=    '<td>' + value.doctorsection + '</td>';
                         content +=    '<td>' +  value.daylimit  +'</td>';
+
+                        content += '<td>'+
+                            '<input type="button" value="의사정보수정" onclick="adminDoctorUpdateForm('+value.dseq+','+paging2.page+')">'+
+                                '<input type="button" value="의사정보삭제" onclick="adminDoctorDelete('+value.dseq+','+paging2.page+')">'+
+                        '</td>'
 
                         content +=    '</tr>';
                         // ii--;
@@ -143,79 +149,133 @@
                 progress: true
             })
                 .done(function(data) {
-                    var  result = new Array;
+                    var result = new Array;
                     result = data.doctor;
 
 
-                    var content="";
+                    var content = "";
 
-                    content +=    '<tr>';
-
-
-                    content +=    '<td>' + result.dseq + '</td>';
-                    content +=    '<td>' + result.name + '</td>';
-                    content +=    '<td>' + result.doctorsection + '</td>';
-                    content +=    '<td>' + result.content + '</td>';
-                    content +=    '<td>' +  result.bachd  +'</td>';
-                    content +=    '<td>' +  result.mastd  +'</td>';
-                    content +=    '<td>' +  result.doctd  +'</td>';
-                    content +=    '<td>' +  result.resume  +'</td>';
-                    content +=    '<td>' +  result.univlogo  +'</td>';
-
-                    content +=    '</tr>';
-
-                    content +=    '<tr>';
+                    content += '<tr>';
 
 
-                    content +=    '<td>' + result.dseq + '</td>';
-                    content +=    '<td><input type="text" id="admindoctorupdatename" placeholder="이름"></td>';
-                    content +=    '<td><input type="text" id="admindoctorupdatedoctorsection" placeholder="진료과"></td>';
-                    content +=    '<td><textarea id="admindoctorupdatecontent" placeholder="과 설명"></td>';
-                    content +=    '<td><input type="text" id="admindoctorupdatedaylimit" placeholder="출근일"></td>';
+                    content += '<td id="admindoctorupdatedseq">' + result.dseq + '</td>';
+                    // content +=    '<td>' + result.name + '</td>';
+                    // content +=    '<td>' + result.doctorsection + '</td>';
+                    content += '<td colspan="3">' + result.content + '</td>';
+                    // content +=    '<td>' +  result.bachd  +'</td>';
+                    // content +=    '<td>' +  result.mastd  +'</td>';
+                    // content +=    '<td>' +  result.doctd  +'</td>';
+                    // content +=    '<td>' +  result.resume  +'</td>';
+                    content += '<td>' + result.univlogo + '</td>';
 
-                    content +=    '</tr>';
+                    content += '</tr>';
 
 
+                    content += '<tr>';
 
 
-                    content +=    '<tr>';
+                    // content +=    '<td>' + result.dseq + '</td>';
+                    // content +=    '<td>' + result.name + '</td>';
+                    // content +=    '<td>' + result.doctorsection + '</td>';
+                    // content +=    '<td colspan="3">' + result.content + '</td>';
+                    content += '<td>' + '약력' + '</td>';
+                    content += '<td>' + '[학부]' + result.bachd + '<br>' + '[석사]' + result.mastd + '</td>';
 
+                    content += '<td>' + '[박사]' + result.doctd + '<br>' + '[경력]' + result.resume + '</td>';
 
-                    content +=    '<td>' + result.name + '</td>';
-
-                    content +=    '<td><input type="text" id="admindoctorupdatebachd" placeholder="학부"></td>';
-                    content +=    '<td><input type="text" id="admindoctorupdatemastd" placeholder="석사"></td>';
-                    content +=    '<td><input type="text" id="admindoctorupdatedoctd" placeholder="박사"></td>';
-                    content +=    '<td><input type="text" id="admindoctorupdateresume" placeholder="이력"></td>';
                     // content +=    '<td>' +  result.univlogo  +'</td>';
 
-                    content +=    '</tr>';
+                    content += '</tr>';
 
-                    content +=    '<tr>';
+                    content += '<tr>';
 
 
-                    content +=    '<td>' + result.dseq + '</td>';
-                    content +=    '<td>' + result.name + '</td>';
-                    content +=    '<td>' + result.doctorsection + '</td>';
-                    content +=    '<td>' +  result.bachd  +'</td>';
-                    content +=    '<td>' +  result.mastd  +'</td>';
-                    content +=    '<td>' +  result.doctd  +'</td>';
-                    content +=    '<td>' +  result.resume  +'</td>';
-                    content +=    '<td>' +  result.univlogo  +'</td>';
+                    content += '<td>' + result.name + '</td>';
+                    content += '<td><input type="text" id="admindoctorupdatename" placeholder="이름"/></td>';
+                    content += '<td><input type="text" id="admindoctorupdatedoctorsection" placeholder="진료과"/></td>';
 
-                    content +=    '</tr>';
+                    content += '<td><input type="text" id="admindoctorupdatedaylimit" placeholder="출근일"/></td>';
 
+                    content += '</tr>';
+
+                    content += '<tr>';
+                    content += '<td colspan="5"><textarea id="admindoctorupdatecontent" placeholder="과 설명" rows="4" cols="200"/></td>';
+                    content += '</tr>';
+
+
+                    content += '<tr>';
+
+
+                    content += '<td>' + '약력' + '</td>';
+
+                    content += '<td colspan="4"><input type="text" style="width: 300px;" id="admindoctorupdatebachd" placeholder="학부"/><input type="text" style="width: 300px;" id="admindoctorupdatemastd" placeholder="석사"/><input type="text" style="width: 300px;" id="admindoctorupdatedoctd" placeholder="박사"/><input type="text" style="width: 300px;" id="admindoctorupdateresume" placeholder="이력"/></td>';
+
+                    // content +=    '<td>' +  result.univlogo  +'</td>';
+
+                    content += '</tr>';
+
+
+                    content += '<td>' + '사진/로고' + '</td>';
+
+                    content += '<td>' +
+                    '<div class="field" >' +
+
+                        '<label>의사사진</label>' +
+                        '<div>' +
+                            '<input type="hidden" name="image"  id="image" value="'+result.image+'"/>' +
+                            '<input type="hidden" name="savefilename" id="savefilename" value="'+result.savefilename+'" >' +
+
+                            '<div id="filename">' +
+                             result.image +
+                            '<img src="/doctor_images/'+result.savefilename+'" width="50" />'+
+                            '</div>'+
+                        '</div>'+
+                    '</div>'+
+
+                    '<div>'+
+                    '<form name="fromm" id="fileupForm" method="post" enctype="multipart/form-data">' +
+                    '<input type="file" name="fileimage"/>' +
+                    '<input type="button" id="imageAddBtn" value="추가" onclick="update_docimage()" />' +
+                    '</form>' +
+                    '</div></td>;'
+
+
+
+
+
+                    content += '<td>' +
+                        '<div class="field" >' +
+
+                        '<label>로고</label>' +
+                        '<div>' +
+                        '<input type="hidden" name="image2"  id="image2" value="'+result.univlogo+'"/>' +
+                        '<input type="hidden" name="savefilename2" id="savefilename2" value="'+result.univlogofilename+'" >' +
+
+                        '<div id="filename2">' +
+                        result.univlogo +
+                        '<img src="/doctor_images/'+result.univlogofilename+'" width="50" />'+
+                        '</div>'+
+                        '</div>'+
+                        '</div>'+
+
+                        '<div>'+
+                        '<form name="fromm" id="fileupForm2" method="post" enctype="multipart/form-data">' +
+                        '<input type="file" name="fileimage"/>' +
+                        '<input type="button" id="imageAddBtn" value="추가" onclick="update_logimage()" />' +
+                        '</form>' +
+                        '</div></td>;'
+
+
+                    content += '<td>' + '<input type="button" id="DoctorAddBtn" onclick="update_doc()" value="정보수정"/>' + '</td>';
+
+                    content += '</tr>';
 
 
                     $(".listData2").html(content);
 
 
-
-
-
-
                 })
-                .fail(function(e) {
+                .fail(function (e) {
                     alert("검색에 실패하였습니다.");
                     console.log("AJAX Error:", status, error);
                     console.log("Response:", xhr.responseText);
@@ -227,48 +287,7 @@
 
                 });
         }
-
-
     </script>
-
-
-    </script>
-
-<%--    <script type="text/javascript">--%>
-
-<%--        function adminDoctorDelete(dseq,page) {--%>
-
-
-
-<%--            $.ajax({--%>
-<%--                url: "adminDoctorDelete",--%>
-<%--                type: "POST",--%>
-
-<%--                data: {dseq:dseq},--%>
-<%--                dataType : "JSON",--%>
-<%--                progress: true--%>
-<%--            })--%>
-<%--                .done(function(responseData) {--%>
-
-
-
-<%--                })--%>
-<%--                .fail(function(e) {--%>
-<%--                    alert("검색에 실패하였습니다.");--%>
-<%--                    console.log("AJAX Error:", status, error);--%>
-<%--                    console.log("Response:", xhr.responseText);--%>
-<%--                })--%>
-<%--                .fail(function(e) {--%>
-<%--                    console.log("AJAX 요청 실패:", e);--%>
-<%--                })--%>
-<%--                .always(function() {--%>
-
-<%--                });--%>
-<%--        }--%>
-
-
-<%--    </script>--%>
-
 
 </head>
 <body>
@@ -278,7 +297,7 @@
         <div class="table">
             <div class="heading">
                 <h2>Admin Doctor List</h2>
-                <input type="button" value="의사정보입력" onclick="adminDoctorInsert()">
+                <input type="button" value="의사정보입력양식" onclick="adminDoctorInsertForm()">
 
             </div>
             <thead></thead>
@@ -309,38 +328,39 @@
                         <td>${doctorList1.doctorsection}</td>
                         <th>${doctorList1.image}</th>
                         <td>${doctorList1.daylimit}</td>
-                        <th>
+                        <td>
                             <input type="button" value="의사정보수정" onclick="adminDoctorUpdateForm(${doctorList1.dseq},${paging.page})">
                             <input type="button" value="의사정보삭제" onclick="adminDoctorDelete(${doctorList1.dseq},${paging.page})">
-                        </th>
+                        </td>
                     </tr>
                 </c:forEach>
 
             </tbody>
+            </table>
+        </div>
+<br>
 
+        <div class="table">
+            <table>
             <tbody class="listData2">
+
                 <tr>
-<%--                    <td>${doctorList1.dseq}</td>--%>
-<%--                    <td>${doctorList1.name}</td>--%>
-<%--                    <td>${doctorList1.doctorsection}</td>--%>
-<%--                    <td>${doctorList1.daylimit}</td>--%>
-                    <%--                    <th><input type="button" value="의사정보수정" onclick="href='adminUpdateDoctor'"><input type="button" value="의사정보삭제" onclick="href='adminDeleteDoctor'"></th>--%>
+
                 </tr>
 
-
-
             </tbody>
-
-
-
-
-
-
-                </table>
-
-
-
+            </table>
         </div>
+
+
+
+
+
+
+
+
+
+
     </div>
 
     <input type="hidden" id="pageIndex" name="pageIndex" val="" />

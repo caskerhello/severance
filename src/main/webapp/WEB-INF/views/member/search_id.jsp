@@ -21,6 +21,7 @@
                 <p for="me_tel">핸드폰번호</p>
                 <input type="text" id="me_tel" name="me_tel" class="form-control" placeholder="010-1234-5678" required/>
 
+                <hr />
                 <button type="submit" class="btn btn-primary">아이디 찾기</button>
             </form>
         </div>

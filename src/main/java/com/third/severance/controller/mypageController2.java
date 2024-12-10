@@ -68,7 +68,12 @@ public class mypageController2 {
     @GetMapping("/deleteMember")
     public String deleteMember(HttpSession session, Model model) {
         MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
-        rs2.deleteMember(loginUser.getUserid());
+        if (loginUser != null) {
+            // 회원탈퇴 로직 실행
+            rs2.deleteMember(loginUser.getUserid());
+            // 세션에서 로그인 정보 제거
+            session.invalidate(); // 세션 완전히 무효화
+        }
         model.addAttribute("message", "회원탈퇴가 정상적으로 처리되었습니다. ");
         return "redirect:/";
     }

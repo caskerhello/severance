@@ -21,8 +21,24 @@
         select * from doctor where dseq=#{dseq}
     </select>
 
-<!--    <insert id="insertProduct" parameterType="com.third.severance.dto.DoctorVO">-->
-<!--        insert into doctor(name, doctorsection, content, image, savefilename, daylimit, bachd, mastd,doctd, resume, univlogo)values(#{name},#{doctorsection},#{content},#{image},#{savefilename},#{daylimit},#{bachd},#{mastd},#{doctd},#{resume},#{univlogo})-->
-<!--    </insert>-->
+    <update id="updateAdminDoctor" parameterType="com.third.severance.dto.DoctorVO">
+                update doctor set name=#{name}, doctorsection=#{doctorsection}, content=#{content}, image=#{image},savefilename=#{savefilename},
+                                  daylimit=#{daylimit}, bachd=#{bachd}, mastd=#{mastd}, doctd=#{doctd}, resume=#{resume}, univlogo=#{univlogo}, univlogofilename=#{univlogofilename}
+                where dseq=#{dseq}
+    </update>
+
+    <delete id="adminDoctorDelete">
+        delete from doctor where dseq=#{dseq}
+    </delete>
+
+
+
+
+
+
+
+    <insert id="insertAdminDoctor" parameterType="com.third.severance.dto.DoctorVO">
+        insert into doctor(name, doctorsection, content, image, savefilename, daylimit, bachd, mastd,doctd, resume, univlogo,univlogofilename)values(#{name},#{doctorsection},#{content},#{image},#{savefilename},#{daylimit},#{bachd},#{mastd},#{doctd},#{resume},#{univlogo},#{univlogofilename})
+    </insert>
 
 </mapper>
