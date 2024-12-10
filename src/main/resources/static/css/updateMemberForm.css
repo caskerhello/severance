@@ -49,6 +49,39 @@ label[for="userid"] {
 }
 
 
+/*.sub_menu {*/
+/*    display: flex; !* 메뉴 아이템들을 가로로 나열 *!*/
+/*    gap: 20px; !* 메뉴 항목 사이 간격 설정 *!*/
+/*    justify-content: flex-end;*/
+/*}*/
+
+/*.sub_menu div {*/
+/*    display: inline-block; !* 기본적인 블록으로 설정 *!*/
+/*}*/
+
+/*.sub_menu a {*/
+/*    text-decoration: none; !* 링크 밑줄 제거 *!*/
+/*    font-size: 16px; !* 폰트 크기 *!*/
+/*    background-color: #7494ec; !* 배경 *!*/
+/*    color: white; !* 글자색은 흰색 *!*/
+/*    padding: 10px 20px; !* 여백 *!*/
+/*    border-radius: 8px; !* 모서리 둥글게 *!*/
+/*    cursor: pointer; !* 마우스 커서 포인터 *!*/
+/*    transition: background-color 0.3s, transform 0.3s;*/
+/*    border: none;*/
+/*}*/
+
+/*!* 링크에 마우스 올릴 때 스타일 *!*/
+/*.sub_menu a:hover {*/
+/*    background-color: #007cfb; !* 마우스 올렸을 때 *!*/
+/*    transform: scale(1.1); !* 약간 커지는 효과 *!*/
+/*}*/
+
+/*.sub_menu a:active {*/
+/*    background-color: #2faaff; !* 클릭 시 배경색 변경 *!*/
+/*    transform: scale(1); !* 클릭 시 크기 리셋 *!*/
+/*}*/
+
 /* 헤더 및 제목 스타일 */
 h1, h3 {
     text-align: center;
@@ -58,7 +91,7 @@ h1, h3 {
 
 /* 폼 컨테이너 */
 form {
-    margin: 0 auto;
+    margin-top: 15px;
     padding: 25px;
     border: 1px solid #f4f4f4;
     border-radius: 10px;
