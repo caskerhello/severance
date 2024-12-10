@@ -158,19 +158,28 @@ textarea:focus {
 
 /* 에러 메시지 스타일 */
 .error-message {
-    color: red;
-    font-size: 0.9rem;
+    color: #d9534f; /* 에러 메시지 색상 */
+    font-size: 1rem;
     font-weight: bold;
     position: absolute;
-    top: 50%;  /* 텍스트 영역 세로 중앙에 맞추기 */
-    right: 10px; /* 텍스트 영역 오른쪽에 배치 */
+    right: 0; /* 텍스트 필드 오른쪽에 위치하도록 설정 */
+    top: 42%;  /* 텍스트 영역 세로 중앙에 맞추기 */
     transform: translateY(-50%); /* 세로 중앙 정렬 */
     white-space: nowrap;
+    padding: 5px 10px;
+    z-index: 10;
+    line-height: 1.4;
+    max-width: 200px;
+    display: none;
 }
 
 /* 입력 필드와 에러 메시지가 겹치지 않도록 하기 위해 */
 .abc {
     position: relative; /* 자식 요소들이 상대적인 위치를 가질 수 있도록 설정 */
+}
+
+.error-message.show {
+    display: block; /* show 클래스가 추가되면 보이도록 설정 */
 }
 
 .field {
