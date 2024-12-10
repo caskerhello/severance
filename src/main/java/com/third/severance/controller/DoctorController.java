@@ -18,33 +18,30 @@ public class DoctorController {
     @Autowired
     DoctorService ds = new DoctorService();
 
-    @GetMapping("/")
-    public ModelAndView index() {
-
-        int doctorsection=1;
-
-        ModelAndView mav = new ModelAndView();
-
-        List<DoctorVO> dvo = ds.selectSection( doctorsection );
-
-//        mav.addObject("doctorsection", doctorsection );
-
-
-        System.out.println("dvo 입력 전 "+dvo);
-
-        mav.addObject("doctorList", dvo );
-
-        System.out.println("dvo 입력 후 "+dvo);
-
-
-
-        mav.setViewName("index");
-        return mav;
-
-
-
-
-    }
+//    @GetMapping("/")
+//    public ModelAndView index() {
+//
+//        int doctorsection=1;
+//
+//        ModelAndView mav = new ModelAndView();
+//
+//        List<DoctorVO> dvo = ds.selectSection( doctorsection );
+//
+////        mav.addObject("doctorsection", doctorsection );
+//
+//
+//        System.out.println("dvo 입력 전 "+dvo);
+//
+//        mav.addObject("doctorList", dvo );
+//
+//        System.out.println("dvo 입력 후 "+dvo);
+//
+//
+//
+//        mav.setViewName("index");
+//        return mav;
+//
+//    }
 
     @GetMapping("/doctorsection")
     public ModelAndView doctorsection(@RequestParam("doctorsection") int doctorsection ){
