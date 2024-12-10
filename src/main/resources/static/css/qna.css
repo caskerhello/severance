@@ -1,146 +1,196 @@
-/* 기본 폼 스타일 */
-article form {
-    flex: 1;
+@charset "UTF-8";
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+
+.container{
     display: flex;
     flex-direction: column;
-    padding: 5px;
-}
-
-form h2 {
-    color: #343a40;
-    margin: 10px 0 20px;
-    line-height: 1;
-    font-weight: normal;
-}
-
-/* 공통 버튼 스타일 */
-.btn {
-    display: flex;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    justify-content: center;
+    min-height: 100vh;
+    width: 100%;
+    margin: 0 auto;
     align-items: center;
-    height: 40px;
-    background-color: #2faaff;
-    color: #fff;
+    border-top: 1px solid rgba(128, 128, 128, 0.5); /* 회색 반투명 경계선 */
+    background :#ffffff;
+    background: url("../images/bck.jpg") center center no-repeat;
+    background-position: bottom right;
+    overflow: hidden; /* container 안에서 넘치는 내용 숨김 */
+    /*overflow: auto;*/
 }
 
-.btn label {
+main{
     display: flex;
-    justify-content: center;
+    flex-direction: column; /* 세로로 나열 */
+    width: 100%; /* 화면 너비에 맞게 설정 */
+    max-width: 1200px; /* 최대 너비 제한 */
+    flex-grow: 0; /* 남은 공간을 채우도록 설정 */
+    background-color: #fff5;
+    box-shadow: 0.4rem .8rem #0005;
+    border-radius: .8rem;
+    backdrop-filter: blur(7px);
+    background: #c9d6ff;
+
+}
+
+main.table{
+    width: 1024px;
+    background-color: #fff5;
+    box-shadow: 0.4rem .8rem #0005;
+    border-radius: .8rem;
+    backdrop-filter: blur(7px);
+    background :#c9d6ff;
+    /*overflow-x: auto;*/
+}
+
+.mypagerow {
+    display: flex;
+    justify-content: space-between; /* 항목들 간 균등한 간격 배치 */
+    width: 100%; /* 전체 너비 사용 */
+    align-items: center;
+}
+
+
+
+.coltitle{
+    display: flex;
+    justify-content: center; /* 항목 텍스트 중앙 정렬 */
+    align-items: center; /* 항목 세로 중앙 정렬 */
+    font-size: 20px;
+    font-weight: bold;
+    flex: 1; /* 균등하게 너비 분배 */
+    text-align: center;
+    padding: 10px;
+}
+
+
+.table_header{
+    display: flex;
+    justify-content: space-between; /* h1과 nav 사이에 최대한의 공간을 배분 */
     align-items: center;
     width: 100%;
-    height: 100%;
-    cursor: pointer;
+    height: 65px;
+    background-color: #fff4;
+    padding: .6rem 2rem	;
+
 }
 
-.btn input[type=button],
-.btn input[type=submit] {
-    flex: 1;
-    color: inherit;
+.table_header h1 {
+    margin: 0; /* 기본 여백 제거 */
+}
+
+.sub_menu {
+    display: flex; /* 메뉴 아이템들을 가로로 나열 */
+    gap: 20px; /* 메뉴 항목 사이 간격 설정 */
+}
+
+.sub_menu div {
+    display: inline-block; /* 기본적인 블록으로 설정 */
+}
+
+.sub_menu a, .mypagerow a{
+    text-decoration: none; /* 링크 밑줄 제거 */
+    font-size: 16px; /* 폰트 크기 */
+    background-color: #7494ec; /* 배경 */
+    color: white; /* 글자색은 흰색 */
+    padding: 10px 20px; /* 여백 */
+    border-radius: 8px; /* 모서리 둥글게 */
+    cursor: pointer; /* 마우스 커서 포인터 */
+    transition: background-color 0.3s, transform 0.3s;
     border: none;
-    outline: none;
-    background-color: inherit;
-    cursor: pointer;
-    font-weight: bold;
 }
 
-/* QnA 게시판 상단 영역 */
-.qna_top {
+.mypagerow a{ /* 목록으로 버튼 */
     display: flex;
+    justify-content: center;
+    width: inherit; height: inherit;
+    margin-top: 15px;
+    border-radius: 0 0 8px 8px; /* 모서리 둥글게 */
+}
+
+/* 링크에 마우스 올릴 때 스타일 */
+.sub_menu a:hover, .mypagerow a:hover {
+    background-color: #007cfb; /* 마우스 올렸을 때 */
+}
+
+.sub_menu a:active, .mypagerow a:active {
+    background-color: #2faaff; /* 클릭 시 배경색 변경 */
+    transform: scale(1); /* 클릭 시 크기 리셋 */
+}
+
+.table_body{
+    display: flex;
+    align-items: center;
     justify-content: space-between;
+    width: 95%;
+    background-color: #fffb;
+    border-radius: .6rem;
+    margin: 0 auto;
+    margin-top: 30px;
+    padding: 20px;
+}
+
+.table_ans{
+    display: flex;
     align-items: center;
-    height: 60px;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 90%;
+    background-color: #fffb;
+    border-radius: .6rem;
+    margin: 0 auto;
+    margin-top: 15px;
+    padding: 20px;
 }
 
-/* 질문하기 버튼 */
-.qna_top .btn {
-    width : 120px;
-    margin: 10px 0;
-    background-color: #2faaff;
-    cursor: pointer;
-    box-sizing: border-box;
+.list{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    background-color: #fffb;
+    border-radius: .6rem;
+
 }
 
-/* board */
-.board {
-    justify-content: center;
-    align-items: center;
-}
-
-/* QnA List, QnA View의 Title */
-.rowtitle {
+.coltitle, .col {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #0054d1;
-    color: #fff;
-    border-radius: 5px 5px 0 0;
-    font-size: 0.875rem;
-}
-
-.rowQ {
-    border-bottom: 1px dotted #0054d1;
-    display: flex;
-    font-size: 0.875rem;
-}
-
-.rowQ:first-child {
-    border-bottom: 2px solid #0054d1;
-}
-
-.rowQ:last-child {
-    border-bottom: none;
-}
-
-.qboard-title {
-    flex: 1;
+    font-size: 18px;
     font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 0;
+    text-align: center;
+    padding: 10px;
 }
 
-.qboard-sub {
-    flex: 4;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 0;
+.list .mypagerow:nth-child(even) {
+    background-color: #0000000b; /* 짝수 행에 배경색 추가 */
 }
 
-.colline {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 0.875rem;
-    padding: 10px 0;
-    cursor: pointer;
+.table_ans .mypagerow:nth-child(even) {
+    background-color: #0000000b; /* 짝수 행에 배경색 추가 */
+    padding : 1rem 1.5rem;
 }
 
-/* qnaList 날짜 글자 크기 */
-.colline:nth-child(4) {
-    font-size: 0.75rem;
-}
+/* 버튼 스타일 */
 
-
-/* 입력 필드 */
-.field {
-    display: flex;
-    flex-direction: row;
-    margin: 10px;
-    word-break: break-all;
-    width: 100%;
-}
+/*html, body {*/
+/*	height: 100%; !* 페이지 높이를 100%로 설정 *!*/
+/*	margin: 0; !* 기본 여백 제거 *!*/
+/*	overflow: auto; !* 콘텐츠가 넘칠 때 스크롤을 표시 *!*/
+/*}*/
 
 /* 코드 블록 자동 개행 */
 pre {
     overflow: auto;
     white-space: pre-wrap;
+    word-break: break-all;
 }
 
 /* 반응형 디자인 */
@@ -151,43 +201,4 @@ pre {
         min-width: 340px;
     }
 
-    /* 공통 */
-    .qna_top {
-        flex-direction: row;
-        height: 60px;
-    }
-
-    .board {
-        flex-direction: row;
-    }
-
-    .rowQ {
-        flex-direction: row;
-        align-items: stretch;
-    }
-
-    .colline {
-        flex: 1;
-        display: flex;
-        font-size: 0.875rem;
-        padding: 10px 0;
-        white-space: none;
-        cursor: pointer;
-    }
-
-    .field .colline{
-    }
-
-    .rowQ .btn {
-        border-radius: 5px;
-        cursor: pointer;
-        background-color: #0054d1;
-        color: #fff;
-        font-weight: bold;
-        min-height: 40px;
-    }
-
-    .field {
-        flex-direction: column;
-    }
 }
