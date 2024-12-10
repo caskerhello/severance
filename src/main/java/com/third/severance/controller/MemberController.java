@@ -6,7 +6,9 @@ import com.third.severance.dto.KakaoProfile;
 import com.third.severance.dto.MemberVO;
 import com.third.severance.dto.OAuthToken;
 import com.third.severance.service.MemberService;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +32,35 @@ public class MemberController {
     @Autowired
     MemberService ms;
 
+    
+//    // 자동로그인 시작
+//    @GetMapping("/")
+//    public String index(HttpServletRequest request, HttpSession session) {
+//        // 쿠키에서 loginUser 정보를 가져옴
+//        Cookie[] cookies = request.getCookies();
+//        if (cookies != null) {
+//            for (Cookie cookie : cookies) {
+//                System.out.println("쿠키 이름: " + cookie.getName() + ", 쿠키 값: " + cookie.getValue()); // 쿠키 디버깅 로그
+//                if ("loginUser".equals(cookie.getName())) {
+//                    String userid = cookie.getValue();
+//                    System.out.println("로그인 사용자 ID: " + userid); // 쿠키에서 읽은 사용자 ID 로그
+//                    MemberVO mvo = ms.getMember(userid); // 사용자 정보 조회
+//                    if (mvo != null) {
+//                        session.setAttribute("loginUser", mvo); // 세션에 사용자 정보 저장
+//                        System.out.println("세션에 사용자 정보 저장 완료: " + mvo); // 세션 저장 로그
+//                    } else {
+//                        System.out.println("해당 ID로 사용자를 찾을 수 없습니다: " + userid); // 사용자 조회 실패 로그
+//                    }
+//                }
+//            }
+//        } else {
+//            System.out.println("쿠키가 존재하지 않습니다."); // 쿠키가 없는 경우 로그
+//        }
+//        return "index"; // 메인 페이지로 리다이렉트
+//    }
+//
+//    // 자동로그인 끝
+
     @GetMapping("/loginForm")
     public String loginForm() {
         return "member/loginForm";
@@ -37,7 +68,7 @@ public class MemberController {
 
     @PostMapping("/login")
     public String login(@ModelAttribute("dto") @Valid MemberVO membervo, BindingResult result,
-                        HttpServletRequest request, Model model) {
+                        HttpServletRequest request, HttpServletResponse response, Model model) {
         String url = "member/loginForm";
         if (result.getFieldError("userid") != null) {
             model.addAttribute("message", "아이디를 입력하세요");
@@ -52,6 +83,16 @@ public class MemberController {
             } else if (mvo.getPwd().equals(membervo.getPwd())) {
                 HttpSession session = request.getSession();
                 session.setAttribute("loginUser", mvo);
+                // 자동로그인 시작
+                // 자동 로그인 체크 시 쿠키 생성
+                if ("on".equals(request.getParameter("rememberMe"))) {
+                    // 쿠키 생성: 아이디를 쿠키에 저장
+                    Cookie userCookie = new Cookie("loginUser", mvo.getUserid());
+                    userCookie.setMaxAge(60 * 60 * 24 * 7); // 7일 동안 쿠키 유지
+                    userCookie.setPath("/"); // 모든 경로에서 접근 가능하도록 설정
+                    response.addCookie(userCookie);
+                }
+                // 자동로그인 끝
                 url = "redirect:/";
             }
         }
@@ -60,8 +101,15 @@ public class MemberController {
 
 
     @GetMapping("/logout")
-    public String logout(HttpSession session) {
+    public String logout(HttpSession session, HttpServletResponse response) {
         session.removeAttribute("loginUser");
+
+        // 쿠키 삭제
+        Cookie loginCookie = new Cookie("loginUser", null);
+        loginCookie.setMaxAge(0);  // 만료 시간을 0으로 설정하여 쿠키 삭제
+        loginCookie.setPath("/");   // 쿠키의 경로를 설정
+        response.addCookie(loginCookie);
+
         return "redirect:/";
     }
 

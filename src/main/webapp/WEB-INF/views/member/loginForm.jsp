@@ -23,6 +23,15 @@
                     <input type="password" name="pwd" placeholder="Password" required/>
                     <i class='bx bxs-lock'></i>
                 </div>
+
+                <%--자동 로그인 추가 시작--%>
+                <label class="remember-me-label">
+                    <input type="checkbox" name="rememberMe"> 자동 로그인
+                </label>
+                <br />
+                <br />
+                <%--자동 로그인 추가 끝--%>
+
                 <div class="forgot-link">
                     <a href="search_id">아이디 찾기 |</a>
                     <a href="search_pwd"> 비밀번호 찾기</a>
