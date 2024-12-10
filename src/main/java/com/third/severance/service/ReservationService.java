@@ -274,7 +274,7 @@ public class ReservationService {
         Paging paging = new Paging();
         paging.setPage(page);
         paging.setDisplayPage(10);
-        paging.setDisplayRow(7);
+        paging.setDisplayRow(6);
 
         int mseq = loginUser.getMseq();
 

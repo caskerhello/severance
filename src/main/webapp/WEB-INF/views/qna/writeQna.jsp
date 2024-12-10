@@ -17,24 +17,26 @@
                 <h2>Q & A 작성</h2>
                 <div class="abc">
                     <input type="text" class="field" name="userid" value="${userid}" placeholder="작성자" />
-                    <span class="error-message"><c:if test="${not empty errorMessage1}">${errorMessage1}</c:if></span>
+                    <span class="error-message <c:if test="${not empty errorMessage1}">show</c:if>">
+                        <c:if test="${not empty errorMessage1}">${errorMessage1}</c:if>
+                    </span>
                 </div>
 
             <div class="abc">
-                    <input type="text" class="field" id="subjectQ" name="subject" value="${subject}" maxlength="300" onkeyup="counter();" placeholder="제목">
-                    <span class="error-message"><c:if test="${not empty errorMessage2}">${errorMessage2}</c:if></span>
+                <input type="text" class="field" id="subjectQ" name="subject" value="${subject}" maxlength="300" onkeyup="counter();" placeholder="제목">
+                <span class="error-message <c:if test="${not empty errorMessage2}">show</c:if>">
+                    <c:if test="${not empty errorMessage2}">${errorMessage2}</c:if>
+                </span>
             </div>
 
                 <div class="abc">
-                        <div class="textarea-container">
-                            <textarea class="field area" id="contentQ" name="content" onkeyup="counter();" rows="10" maxlength="3000" placeholder="문의 내용">${content}</textarea>
-                            <span id="textCount">(0/3000)</span> <!-- 글자 수 카운트 -->
-
-                            <!-- 에러 메시지 -->
-                            <span class="error-message">
-                                <c:if test="${not empty errorMessage3}">${errorMessage3}</c:if>
-                            </span>
-                        </div>
+                    <div class="textarea-container">
+                        <textarea class="field area" id="contentQ" name="content" onkeyup="counter();" rows="10" maxlength="3000" placeholder="문의 내용">${content}</textarea>
+                        <span id="textCount">(0/3000)</span> <!-- 글자 수 카운트 -->
+                        <span class="error-message <c:if test="${not empty errorMessage3}">show</c:if>">
+                            <c:if test="${not empty errorMessage3}">${errorMessage3}</c:if>
+                        </span>
+                    </div>
                 </div>
 
                 <div class="buttons">

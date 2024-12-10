@@ -110,7 +110,7 @@ public class DoctorController {
         String resume = dvo.getResume();
         resume = resume.replaceAll("(?<=\\.)\\s*(?!<br>)", ".<br>").replaceAll("\\.\\.<br>", ".<br>");
         resume = resume.replaceAll("(?<=\\.<br>)", "<br>"); // 문장 뒤에 한 줄 띄우기
-        resume = resume.replaceAll("(^|<br>)([^<]+)", "$1<span style='font-size: 12px;'>●</span> $2");  // 각 문장 앞에 작은 ● 추가
+        resume = resume.replaceAll("(^|<br>)([^<]+)", "$1 $2");  // 각 문장 앞에 작은 ● 추가
 
          //dvo 객체에 처리된 content 값을 다시 설정
         dvo.setResume(resume);
