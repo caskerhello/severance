@@ -1,32 +1,56 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
-<section>
-	<article>
-		<form>
-			<div class="qna_top">
-				<h2> 고객센터 ( Q&A ) </h2>
-			</div>
-			<div class="rowtitle">
-				<div class="qboard-title">No. ${qnaVO.qseq}</div>
-				<div class="qboard-sub" id="subjectQ">${qnaVO.subject}</div>
-				<div class="qboard-title">${qnaVO.userid}</div>
-				<div class="qboard-title"><fmt:formatDate value="${qnaVO.indate}" type="date"/></div>
-			</div>
-			<div class="colline">
-				<pre>${qnaVO.content}</pre>
-			</div>
-			<div class="rowtitle" >
-				<label class="qboard-title" style="width:100%; padding:5px;">답변</label>
-			</div>
-			<div class="colline">
-				${qnaVO.reply}&nbsp; 관리자 답변 내용
-			</div>
 
-			<div class="btn" style="background-color: #2faaff;" >
-				<label><input type="button" value="목록으로" onClick="location.href='qnaList'"></label>
-			</div>
+<html>
+<head>
+	<link rel="stylesheet" href="/css/qnaView.css"/>
+</head>
 
-		</form>
-	</article>
-</section>
- <%@ include file="../footer.jsp" %>
+
+<body>
+<form>
+    <div class="qnacontainer1">
+        <div class="contact-box1">
+            <div class="left2"></div>
+
+            <div class="right2">
+                <h2>Q & A View</h2>
+                <div class="abc1">
+                    <input type="text" class="field1" name="userid" value="작성자 : ${qnaVO.userid}" readonly/>
+
+                </div>
+
+            <div class="abc1">
+                <input type="text" class="field1" name="subject" value="제목 : ${qnaVO.subject}" readonly/>
+            </div>
+
+                <div class="abc1">
+                    <input type="text" class="field1" name="datevo" value="등록일 : <fmt:formatDate value='${qnaVO.indate}' pattern='yyyy-MM-dd' />" readonly/>
+
+                </div>
+
+                <div class="abc1">
+                    <div class="textarea-container1">
+                        <textarea class="field1 area" name="content" readonly>내용 : ${qnaVO.content}</textarea>
+
+                    </div>
+                </div>
+
+                <div class="abc1">
+                    <div class="textarea-container1">
+                        <textarea class="field1 area" name="content" readonly>답변 : ${qnaVO.reply}</textarea>
+                    </div>
+                </div>
+
+                <div class="buttons">
+                    <input type="button" class="btn" value="목록으로" onClick="location.href='qnaList'">
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+</body>
+
+</html>
+<%@ include file="../footer.jsp" %>

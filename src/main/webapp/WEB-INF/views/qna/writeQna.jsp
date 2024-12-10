@@ -11,9 +11,9 @@
 <form action="writeQna" method="post">
     <div class="qnacontainer">
         <div class="contact-box">
-            <div class="left"></div>
+            <div class="left1"></div>
 
-            <div class="right">
+            <div class="right1">
                 <h2>Q & A 작성</h2>
                 <div class="abc">
                     <input type="text" class="field" name="userid" value="${userid}" placeholder="작성자" />
