@@ -26,7 +26,7 @@ public class HomeController {
     public ModelAndView index(HttpServletRequest request, HttpSession session) {
         ModelAndView mav = new ModelAndView();
 
-    // 쿠키에서 loginUser 정보를 가져옴
+    // 쿠키에서 loginUser 정보를 가져옴   ㅌ
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
             for (Cookie cookie : cookies) {
