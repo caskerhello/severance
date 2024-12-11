@@ -167,8 +167,9 @@
 
                         content +=    '<td>' + value.dseq + '</td>';
                         content +=    '<td>' + value.name + '</td>';
-                        content +=    '<td>' + value.image + '</td>';
                         content +=    '<td>' + value.doctorsection + '</td>';
+                        content +=    '<td>' + value.image + '</td>';
+
                         content +=    '<td>' +  value.daylimit  +'</td>';
 
                         content += '<td>'+
@@ -277,7 +278,7 @@
                         <td>${doctorList1.dseq}</td>
                         <td>${doctorList1.name}</td>
                         <td>${doctorList1.doctorsection}</td>
-                        <th>${doctorList1.image}</th>
+                        <td>${doctorList1.image}</td>
                         <td>${doctorList1.daylimit}</td>
                         <td>
                             <input type="button" class="adminmodal_btn" value="의사정보수정" onclick="adminDoctorUpdateForm(${doctorList1.dseq},${paging.page})">
