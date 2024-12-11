@@ -26,7 +26,7 @@ public class HomeController {
     public ModelAndView index(HttpServletRequest request, HttpSession session) {
         ModelAndView mav = new ModelAndView();
 
-    // 쿠키에서 loginUser 정보를 가져옴
+    // 쿠키에서 loginUser 정보를 가져옴   ㅌ
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
             for (Cookie cookie : cookies) {
@@ -50,9 +50,9 @@ public class HomeController {
         // 기존 DoctorController의 index 로직
         int doctorsection = 1;
         List<DoctorVO> dvo = ds.selectSection(doctorsection);
-        System.out.println("dvo 입력 전 "+dvo);
+//        System.out.println("dvo 입력 전 "+dvo);
         mav.addObject("doctorList", dvo);
-        System.out.println("dvo 입력 후 "+dvo);
+//        System.out.println("dvo 입력 후 "+dvo);
         mav.setViewName("index");
         return mav;
     }

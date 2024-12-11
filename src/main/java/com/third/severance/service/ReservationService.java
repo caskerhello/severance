@@ -248,9 +248,14 @@ public class ReservationService {
     public HashMap<String, Object> getReseveIng(HttpServletRequest request) {
 
 
+
+
         HttpSession session = request.getSession();
         MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
-
+        if( request.getParameter("first") != null ) {
+            session.removeAttribute("page");
+            session.removeAttribute("key");
+        }
         int page=1;
         if( request.getParameter("page") != null) {
             page = Integer.parseInt(request.getParameter("page"));
@@ -277,6 +282,7 @@ public class ReservationService {
         paging.setDisplayRow(6);
 
         int mseq = loginUser.getMseq();
+        System.out.println(mseq);
 
         int count = rdao.getAllCount( "reserve", "bookdate", key, mseq);
 
