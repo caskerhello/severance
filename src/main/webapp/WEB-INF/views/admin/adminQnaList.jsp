@@ -83,6 +83,8 @@
             padding: 20px;
             background: #ffffff;
             border-radius: 20px;
+            white-space: normal;
+            word-break: break-all;
         }
         .adminmodal .adminmodal_popup .adminclose_btn {
             display: block;
