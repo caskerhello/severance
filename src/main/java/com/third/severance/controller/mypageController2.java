@@ -58,7 +58,7 @@ public class mypageController2 {
             // 모든 유효성 검사를 통과했을 경우
             rs2.updateMember(membervo); // 회원정보 업데이트
             session.setAttribute("loginUser", membervo); // 세션 정보 갱신
-            url = "redirect:/mypage"; // 성공 시 마이페이지로 리다이렉트
+            url = "redirect:/"; // 성공 시 메인페이지(/) 리다이렉트
         }
 
         return url; // 실패 시 수정 페이지 반환
