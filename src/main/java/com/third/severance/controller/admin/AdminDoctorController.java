@@ -53,7 +53,7 @@ public class AdminDoctorController {
     {
         ModelAndView mav = new ModelAndView();
 
-        System.out.println("key 첫 수신 : "+request.getParameter("key"));
+//        System.out.println("key 첫 수신 : "+request.getParameter("key"));
 
         HashMap<String, Object> result = ads.getAdminDoctorList( request );
 //        System.out.println(result);
@@ -224,29 +224,29 @@ public class AdminDoctorController {
     }
 
 
-    @PostMapping("/adminDoctorInsertForm")
-    @ResponseBody
-    public HashMap<String, Object> adminDoctorInsertForm(@RequestParam("dseq") int dseq, HttpServletRequest request) {
-
-        System.out.println("adminDoctorInsertForm");
-
-        HashMap<String, Object> responseData = new HashMap<>();
-
-        DoctorVO doctor = ads.getAdminDoctor(dseq);
-
-        responseData.put("doctor", doctor);
-
-
-        return responseData;
-    }
+//    @PostMapping("/adminDoctorInsertForm")
+//    @ResponseBody
+//    public HashMap<String, Object> adminDoctorInsertForm(@RequestParam("dseq") int dseq, HttpServletRequest request) {
+//
+//        System.out.println("adminDoctorInsertForm");
+//
+//        HashMap<String, Object> responseData = new HashMap<>();
+//
+//        DoctorVO doctor = ads.getAdminDoctor(dseq);
+//
+//        responseData.put("doctor", doctor);
+//
+//
+//        return responseData;
+//    }
 
 
     @PostMapping("/adminDoctorInsert")
     @ResponseBody
     public void adminDoctorInsert(@RequestBody DoctorVO dvo, HttpServletRequest request) {
 
-        System.out.println("adminDoctorInsert");
-        System.out.println(dvo);
+//        System.out.println("adminDoctorInsert");
+//        System.out.println(dvo);
 
         ads.insertAdminDoctor(dvo);
 
@@ -316,8 +316,8 @@ public HashMap<String, Object> fileup(    @RequestParam("fileimage") MultipartFi
         result.put("image", filename );
         result.put("savefilename", savefilename );
 
-        System.out.println(filename);
-        System.out.println(savefilename);
+//        System.out.println(filename);
+//        System.out.println(savefilename);
 
 
 

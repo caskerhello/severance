@@ -50,9 +50,9 @@ public class HomeController {
         // 기존 DoctorController의 index 로직
         int doctorsection = 1;
         List<DoctorVO> dvo = ds.selectSection(doctorsection);
-        System.out.println("dvo 입력 전 "+dvo);
+//        System.out.println("dvo 입력 전 "+dvo);
         mav.addObject("doctorList", dvo);
-        System.out.println("dvo 입력 후 "+dvo);
+//        System.out.println("dvo 입력 후 "+dvo);
         mav.setViewName("index");
         return mav;
     }

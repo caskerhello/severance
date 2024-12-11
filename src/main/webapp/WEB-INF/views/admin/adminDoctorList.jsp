@@ -7,12 +7,108 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/admin/script/admin.js"></script>
 
     <style>
         .tbody td{text-align: center}
 
-    </style>
+        .adminmodal .on{
+            display: block;
+        }
 
+        .adminmodal_btn {
+            display: block;
+            margin: 0px auto;
+            padding: 0px 0px;
+            background-color: royalblue;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            transition: box-shadow 0.2s;
+        }
+        .adminmodal_btn:hover {
+            box-shadow: 3px 4px 11px 0px #00000040;
+        }
+
+
+        .adminmodal_btn2 {
+            display: block;
+            margin: 0px auto;
+            padding: 0px 0px;
+            background-color: royalblue;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            transition: box-shadow 0.2s;
+        }
+        .adminmodal_btn2:hover {
+            box-shadow: 3px 4px 11px 0px #00000040;
+        }
+
+        .adminmodal_btn3 {
+            display: block;
+            margin: 0px auto;
+            padding: 0px 0px;
+            background-color: crimson;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            transition: box-shadow 0.2s;
+        }
+        .adminmodal_btn2:hover {
+            box-shadow: 3px 4px 11px 0px #00000040;
+        }
+
+        /*모달 팝업 영역 스타일링*/
+        .adminmodal {
+            /*팝업 배경*/
+            display: none; /*평소에는 보이지 않도록*/
+            position: absolute;
+            top:0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            background: rgba(0,0,0,0.5);
+        }
+        .adminmodal .adminmodal_popup {
+            /*팝업*/
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 20px;
+        }
+        .adminmodal .adminmodal_popup .adminclose_btn {
+            display: block;
+            padding: 10px 20px;
+            background-color: royalblue;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            transition: box-shadow 0.2s;
+        }
+
+
+
+
+    </style>
+<script>
+    var adminmodal = document.querySelector('.adminmodal');
+    var adminmodalOpen = document.querySelector('.adminmodal_btn');
+    var adminmodalClose = document.querySelector('.adminclose_btn');
+
+    adminmodalClose.addEventListener('click',function(){
+        //display 속성을 none으로 변경
+        adminmodal.style.display = 'none';
+    });
+</script>
 
 
     <script type="text/javascript">
@@ -71,13 +167,14 @@
 
                         content +=    '<td>' + value.dseq + '</td>';
                         content +=    '<td>' + value.name + '</td>';
-                        content +=    '<td>' + value.image + '</td>';
                         content +=    '<td>' + value.doctorsection + '</td>';
+                        content +=    '<td>' + value.image + '</td>';
+
                         content +=    '<td>' +  value.daylimit  +'</td>';
 
                         content += '<td>'+
-                            '<input type="button" value="의사정보수정" onclick="adminDoctorUpdateForm('+value.dseq+','+paging2.page+')">'+
-                                '<input type="button" value="의사정보삭제" onclick="adminDoctorDelete('+value.dseq+','+paging2.page+')">'+
+                            '<input type="button" class="adminmodal_btn" value="의사정보수정" onclick="adminDoctorUpdateForm('+value.dseq+','+paging2.page+')">'+
+                                '<input type="button" class="adminmodal_btn3" value="의사정보삭제" onclick="adminDoctorDelete('+value.dseq+','+paging2.page+')">'+
                         '</td>'
 
                         content +=    '</tr>';
@@ -135,158 +232,13 @@
 
     <script type="text/javascript">
 
-        function adminDoctorUpdateForm(dseq,page) {
-            console.log(page)
 
 
+    </script>
 
-            $.ajax({
-                url: "adminDoctorUpdateForm",
-                type: "POST",
-
-                data: {dseq:dseq},
-                dataType : "JSON",
-                progress: true
-            })
-                .done(function(data) {
-                    var result = new Array;
-                    result = data.doctor;
+    <script type="text/javascript">
 
 
-                    var content = "";
-
-                    content += '<tr>';
-
-
-                    content += '<td id="admindoctorupdatedseq">' + result.dseq + '</td>';
-                    // content +=    '<td>' + result.name + '</td>';
-                    // content +=    '<td>' + result.doctorsection + '</td>';
-                    content += '<td colspan="3">' + result.content + '</td>';
-                    // content +=    '<td>' +  result.bachd  +'</td>';
-                    // content +=    '<td>' +  result.mastd  +'</td>';
-                    // content +=    '<td>' +  result.doctd  +'</td>';
-                    // content +=    '<td>' +  result.resume  +'</td>';
-                    content += '<td>' + result.univlogo + '</td>';
-
-                    content += '</tr>';
-
-
-                    content += '<tr>';
-
-
-                    // content +=    '<td>' + result.dseq + '</td>';
-                    // content +=    '<td>' + result.name + '</td>';
-                    // content +=    '<td>' + result.doctorsection + '</td>';
-                    // content +=    '<td colspan="3">' + result.content + '</td>';
-                    content += '<td>' + '약력' + '</td>';
-                    content += '<td>' + '[학부]' + result.bachd + '<br>' + '[석사]' + result.mastd + '</td>';
-
-                    content += '<td>' + '[박사]' + result.doctd + '<br>' + '[경력]' + result.resume + '</td>';
-
-                    // content +=    '<td>' +  result.univlogo  +'</td>';
-
-                    content += '</tr>';
-
-                    content += '<tr>';
-
-
-                    content += '<td>' + result.name + '</td>';
-                    content += '<td><input type="text" id="admindoctorupdatename" placeholder="이름"/></td>';
-                    content += '<td><input type="text" id="admindoctorupdatedoctorsection" placeholder="진료과"/></td>';
-
-                    content += '<td><input type="text" id="admindoctorupdatedaylimit" placeholder="출근일"/></td>';
-
-                    content += '</tr>';
-
-                    content += '<tr>';
-                    content += '<td colspan="5"><textarea id="admindoctorupdatecontent" placeholder="과 설명" rows="4" cols="200"/></td>';
-                    content += '</tr>';
-
-
-                    content += '<tr>';
-
-
-                    content += '<td>' + '약력' + '</td>';
-
-                    content += '<td colspan="4"><input type="text" style="width: 300px;" id="admindoctorupdatebachd" placeholder="학부"/><input type="text" style="width: 300px;" id="admindoctorupdatemastd" placeholder="석사"/><input type="text" style="width: 300px;" id="admindoctorupdatedoctd" placeholder="박사"/><input type="text" style="width: 300px;" id="admindoctorupdateresume" placeholder="이력"/></td>';
-
-                    // content +=    '<td>' +  result.univlogo  +'</td>';
-
-                    content += '</tr>';
-
-
-                    content += '<td>' + '사진/로고' + '</td>';
-
-                    content += '<td>' +
-                    '<div class="field" >' +
-
-                        '<label>의사사진</label>' +
-                        '<div>' +
-                            '<input type="hidden" name="image"  id="image" value="'+result.image+'"/>' +
-                            '<input type="hidden" name="savefilename" id="savefilename" value="'+result.savefilename+'" >' +
-
-                            '<div id="filename">' +
-                             result.image +
-                            '<img src="/doctor_images/'+result.savefilename+'" width="50" />'+
-                            '</div>'+
-                        '</div>'+
-                    '</div>'+
-
-                    '<div>'+
-                    '<form name="fromm" id="fileupForm" method="post" enctype="multipart/form-data">' +
-                    '<input type="file" name="fileimage"/>' +
-                    '<input type="button" id="imageAddBtn" value="추가" onclick="update_docimage()" />' +
-                    '</form>' +
-                    '</div></td>;'
-
-
-
-
-
-                    content += '<td>' +
-                        '<div class="field" >' +
-
-                        '<label>로고</label>' +
-                        '<div>' +
-                        '<input type="hidden" name="image2"  id="image2" value="'+result.univlogo+'"/>' +
-                        '<input type="hidden" name="savefilename2" id="savefilename2" value="'+result.univlogofilename+'" >' +
-
-                        '<div id="filename2">' +
-                        result.univlogo +
-                        '<img src="/doctor_images/'+result.univlogofilename+'" width="50" />'+
-                        '</div>'+
-                        '</div>'+
-                        '</div>'+
-
-                        '<div>'+
-                        '<form name="fromm" id="fileupForm2" method="post" enctype="multipart/form-data">' +
-                        '<input type="file" name="fileimage"/>' +
-                        '<input type="button" id="imageAddBtn" value="추가" onclick="update_logimage()" />' +
-                        '</form>' +
-                        '</div></td>;'
-
-
-                    content += '<td>' + '<input type="button" id="DoctorAddBtn" onclick="update_doc()" value="정보수정"/>' + '</td>';
-
-                    content += '</tr>';
-
-
-                    $(".listData2").html(content);
-
-
-                })
-                .fail(function (e) {
-                    alert("검색에 실패하였습니다.");
-                    console.log("AJAX Error:", status, error);
-                    console.log("Response:", xhr.responseText);
-                })
-                .fail(function(e) {
-                    console.log("AJAX 요청 실패:", e);
-                })
-                .always(function() {
-
-                });
-        }
     </script>
 
 </head>
@@ -297,7 +249,7 @@
         <div class="table">
             <div class="heading">
                 <h2>Admin Doctor List</h2>
-                <input type="button" value="의사정보입력양식" onclick="adminDoctorInsertForm()">
+                <input type="button" class="adminmodal_btn2" value="의사정보입력양식" onclick="adminDoctorInsertForm()">
 
             </div>
             <thead></thead>
@@ -326,11 +278,11 @@
                         <td>${doctorList1.dseq}</td>
                         <td>${doctorList1.name}</td>
                         <td>${doctorList1.doctorsection}</td>
-                        <th>${doctorList1.image}</th>
+                        <td>${doctorList1.image}</td>
                         <td>${doctorList1.daylimit}</td>
                         <td>
-                            <input type="button" value="의사정보수정" onclick="adminDoctorUpdateForm(${doctorList1.dseq},${paging.page})">
-                            <input type="button" value="의사정보삭제" onclick="adminDoctorDelete(${doctorList1.dseq},${paging.page})">
+                            <input type="button" class="adminmodal_btn" value="의사정보수정" onclick="adminDoctorUpdateForm(${doctorList1.dseq},${paging.page})">
+                            <input type="button" class="adminmodal_btn3" value="의사정보삭제" onclick="adminDoctorDelete(${doctorList1.dseq},${paging.page})">
                         </td>
                     </tr>
                 </c:forEach>
@@ -340,16 +292,18 @@
         </div>
 <br>
 
-        <div class="table">
+        <div class="adminmodal">
+            <div class="adminmodal_popup">
             <table>
             <tbody class="listData2">
 
                 <tr>
 
                 </tr>
-
+                <button type="button" class="adminclose_btn">닫기</button>
             </tbody>
             </table>
+            </div>
         </div>
 
 
