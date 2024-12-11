@@ -9,6 +9,109 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 
+    <style>
+        .tbody td{text-align: center}
+
+        .adminmodal .on{
+            display: block;
+        }
+
+        .adminmodal_btn {
+            display: block;
+            margin: 5px auto;
+            padding: 5px 5px;
+            background-color: royalblue;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            transition: box-shadow 0.2s;
+        }
+        .adminmodal_btn:hover {
+            box-shadow: 3px 4px 11px 0px #00000040;
+        }
+
+
+        .adminmodal_btn2 {
+            display: block;
+            margin: 0px auto;
+            padding: 0px 0px;
+            background-color: royalblue;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            transition: box-shadow 0.2s;
+        }
+        .adminmodal_btn2:hover {
+            box-shadow: 3px 4px 11px 0px #00000040;
+        }
+
+        .adminmodal_btn3 {
+            display: block;
+            margin: 0px auto;
+            padding: 0px 0px;
+            background-color: crimson;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            transition: box-shadow 0.2s;
+        }
+        .adminmodal_btn2:hover {
+            box-shadow: 3px 4px 11px 0px #00000040;
+        }
+
+        /*모달 팝업 영역 스타일링*/
+        .adminmodal {
+            /*팝업 배경*/
+            display: none; /*평소에는 보이지 않도록*/
+            position: absolute;
+            top:0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            background: rgba(0,0,0,0.5);
+        }
+        .adminmodal .adminmodal_popup {
+            /*팝업*/
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 20px;
+        }
+        .adminmodal .adminmodal_popup .adminclose_btn {
+            display: block;
+            padding: 10px 20px;
+            background-color: royalblue;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            transition: box-shadow 0.2s;
+        }
+
+
+
+
+    </style>
+
+    <script>
+        var adminmodal = document.querySelector('.adminmodal');
+        var adminmodalOpen = document.querySelector('.adminmodal_btn');
+        var adminmodalClose = document.querySelector('.adminclose_btn');
+
+        adminmodalClose.addEventListener('click',function(){
+            //display 속성을 none으로 변경
+            adminmodal.style.display = 'none';
+        });
+    </script>
+
+
     <script type="text/javascript">
 
         function fn_go_page(pageNo) {
@@ -81,6 +184,9 @@
                         content += '</td>';
 
                         content += '<td>' + value.indate + '</td>';
+
+                        content += '<td><input type="button" value="댓글작성" class="adminmodal_btn"'+
+                                              'onClick="fn_view_page('+value.qseq+');"/></td>'
 
                         content += '</tr>';
 
@@ -221,6 +327,10 @@
                 .always(function() {
 
                 });
+
+
+
+
         }
     </script>
 
@@ -293,6 +403,13 @@
                 .always(function() {
 
                 });
+
+            if (adminmodal) {
+                // adminmodal이 존재하면 실행
+                adminmodal.style.display = 'block';
+            } else {
+                console.log('adminmodal 요소를 찾을 수 없습니다.');
+            }
         }
 
 
@@ -354,7 +471,7 @@
 
                         <td>${qnaList1.qseq}</td>
                         <td>${qnaList1.userid}</td>
-                        <td><a href="javascript:void(0);"  onclick="fn_view_page(${qnaList1.qseq});" >${qnaList1.subject}</a></td>
+                        <td>${qnaList1.subject}</td>
                             <%--&lt;%&ndash;            <th>${qnaList1.content}</th>&ndash;%&gt;--%>
 
 
@@ -365,7 +482,7 @@
                             </c:choose></td>
                             <%--                ${qnaList1.reply}--%>
                         <td>${qnaList1.indate}</td>
-                            <%--                    <th><input type="button" value="의사정보수정" onclick="href='adminUpdateDoctor'"><input type="button" value="의사정보삭제" onclick="href='adminDeleteDoctor'"></th>--%>
+                        <td><input type="button" value="댓글작성" class="adminmodal_btn" onclick="fn_view_page(${qnaList1.qseq});"></td>
 
                     </tr>
 
@@ -375,22 +492,23 @@
 
 
                 </tbody>
-
-                <tbody class="listData2">
-<%--                <tr class="listData2">--%>
-
-
-<%--                </tr>--%>
-<%--                <tr class="listData3">--%>
-
-<%--                </tr>--%>
-
-
-
-
-                </tbody>
-
             </table>
+
+                <div class="adminmodal">
+                    <div class="adminmodal_popup">
+                        <table>
+                            <tbody class="listData2">
+
+                            <tr>
+
+                            </tr>
+                            <button type="button" class="adminclose_btn">닫기</button>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
 
 
 
