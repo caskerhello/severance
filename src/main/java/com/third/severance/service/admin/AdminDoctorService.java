@@ -49,7 +49,7 @@ public class AdminDoctorService {
         Paging paging = new Paging();
         paging.setPage(page);
         paging.setDisplayPage(10);
-        paging.setDisplayRow(2);
+        paging.setDisplayRow(7);
 
         int count = addao.getAllCount( "doctor", "name", key);
         System.out.println("count : "+count);
@@ -120,7 +120,7 @@ public class AdminDoctorService {
         Paging paging = new Paging();
         paging.setPage(page);
         paging.setDisplayPage(10);
-        paging.setDisplayRow(2);
+        paging.setDisplayRow(7);
 
         int count = addao.getAllCount( "doctor", "name", key);
         System.out.println("count : "+count);
