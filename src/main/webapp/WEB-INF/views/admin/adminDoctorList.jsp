@@ -18,8 +18,8 @@
 
         .adminmodal_btn {
             display: block;
-            margin: 0px auto;
-            padding: 0px 0px;
+            margin: 5px auto;
+            padding: 5px 5px;
             background-color: royalblue;
             border: none;
             border-radius: 5px;
@@ -34,8 +34,8 @@
 
         .adminmodal_btn2 {
             display: block;
-            margin: 0px auto;
-            padding: 0px 0px;
+            margin: 5px auto;
+            padding: 5px 5px;
             background-color: royalblue;
             border: none;
             border-radius: 5px;
@@ -49,8 +49,8 @@
 
         .adminmodal_btn3 {
             display: block;
-            margin: 0px auto;
-            padding: 0px 0px;
+            margin: 5px auto;
+            padding: 5px 5px;
             background-color: crimson;
             border: none;
             border-radius: 5px;
