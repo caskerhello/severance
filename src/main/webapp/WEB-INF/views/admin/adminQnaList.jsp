@@ -170,11 +170,7 @@
 
                         content += '<td>' + value.qseq + '</td>';
                         content += '<td>' + value.userid + '</td>';
-                        content += '<td>' +
-                            '<a href="javascript:void(0);" onclick="fn_view_page(' + value.qseq + ');">' +
-                            value.subject +
-                            '</a>';
-
+                        content += '<td>' + value.subject + '</td>';
                         content += '<td id="replytd' + value.qseq + '">';
 
                         if (value.reply == null) {
@@ -206,18 +202,6 @@
                         content2 += '<li class="prev_end"><a href="javascript:void(0);" onclick="fn_go_page(1); return false;" >◀</a></li>';
                         content2 += '<li class="prev"><a href="javascript:void(0);"  onclick="fn_go_page(' + startButtonDate + '); return false;" >◀</a></li>';
                     }
-
-
-<%--                    <c:if test="${num==paging.page}">--%>
-<%--                    <span style="color:red">${num}&nbsp;</sp--%>
-
-<%--                    </c:if>--%>
-<%--                    <c:if test="${num!=paging.page}">--%>
-<%--                    <a href="javascript:void(0);" onClick="fn_go_page(${num}); return false;"--%>
-<%--                       className="num ${page eq num ? 'on':'' }" title="${num}">${num}<--%>
-
-<%--                    </c:if>--%>
-
 
                     for (var num = startDate; num <= endDate; num++) {
                         if (num == pageIndex) {
