@@ -20,6 +20,10 @@ public class QnaService {
     public HashMap<String, Object> getQnaList(HttpServletRequest request) {
         HashMap<String, Object> result = new HashMap<>();
         HttpSession session = request.getSession();
+        if( request.getParameter("first") != null ) {
+            session.removeAttribute("page");
+            session.removeAttribute("key");
+        }
         int page = 1;
         if( request.getParameter("page") != null ) {
             page = Integer.parseInt(request.getParameter("page"));

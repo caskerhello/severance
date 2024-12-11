@@ -55,11 +55,11 @@ public class DoctorController {
 //        mav.addObject("doctorsection", doctorsection );
 
 
-        System.out.println("dvo 입력 전 "+dvo);
+//        System.out.println("dvo 입력 전 "+dvo);
 
         mav.addObject("doctorList", dvo );
 
-        System.out.println("dvo 입력 후 "+dvo);
+//        System.out.println("dvo 입력 후 "+dvo);
 
 
 
@@ -85,23 +85,6 @@ public class DoctorController {
         DoctorVO dvo = ds.getDoctor( dseq );
 
 //        List<DoctorVO> dvos = ds.getDoctor( dseq );
-
-
-
-
-
-//        for( DoctorVO dvo : dvos ){
-//            String resume = dvo.getResume();  // 각 dvo 객체에서 resume 값 가져오기
-//            resume = resume.replaceAll("(?<=\\.)\\s*(?!<br>)", ".<br>").replaceAll("\\.\\.<br>", ".<br>");
-//            resume = resume.replaceAll("(?<=\\.<br>)", "<br>");  // 문장 뒤에 한 줄 띄우기
-//            resume = resume.replaceAll("(^|<br>)([^<]+)", "$1<span style='font-size: 12px;'>●</span> $2");  // 각 문장 앞에 작은 ● 추가
-//
-//            dvo.setResume(resume);
-//        }
-
-
-
-
 
 
         String resume = dvo.getResume();

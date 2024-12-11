@@ -52,7 +52,7 @@ public class AdminDoctorService {
         paging.setDisplayRow(7);
 
         int count = addao.getAllCount( "doctor", "name", key);
-        System.out.println("count : "+count);
+//        System.out.println("count : "+count);
 
         paging.setTotalCount(count);
         paging.calPaging();
@@ -60,12 +60,12 @@ public class AdminDoctorService {
 
 
 
-        System.out.println("paging : " + paging);
-        System.out.println("key : " + key);
+//        System.out.println("paging : " + paging);
+//        System.out.println("key : " + key);
 
         List<DoctorVO> list = addao.getDoctorList( paging, key );
-        System.out.println("list : " + list);
-        System.out.println("레코드 갯수 : " + list.size() );
+//        System.out.println("list : " + list);
+//        System.out.println("레코드 갯수 : " + list.size() );
 
 
         result.put("doctorList", list);
@@ -88,7 +88,7 @@ public class AdminDoctorService {
         HashMap<String, Object> result = new HashMap<>();
         HttpSession session = request.getSession();
 
-        System.out.println("서비스내부 page :"+ page );
+//        System.out.println("서비스내부 page :"+ page );
 
 
 //        if( request.getParameter("first") != null ) {
@@ -123,7 +123,7 @@ public class AdminDoctorService {
         paging.setDisplayRow(7);
 
         int count = addao.getAllCount( "doctor", "name", key);
-        System.out.println("count : "+count);
+//        System.out.println("count : "+count);
 
         paging.setTotalCount(count);
         paging.calPaging();
@@ -131,12 +131,12 @@ public class AdminDoctorService {
 
 
 
-        System.out.println("paging : " + paging);
-        System.out.println("key : " + key);
+//        System.out.println("paging : " + paging);
+//        System.out.println("key : " + key);
 
         List<DoctorVO> list = addao.getDoctorList( paging, key );
-        System.out.println("list : " + list);
-        System.out.println("레코드 갯수 : " + list.size() );
+//        System.out.println("list : " + list);
+//        System.out.println("레코드 갯수 : " + list.size() );
 
 
         result.put("doctorList", list);

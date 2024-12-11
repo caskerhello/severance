@@ -47,16 +47,8 @@ public class ReservationController {
 
         List<DoctorVO> dvo = ds.selectSection( doctorsection );
 
-//        mav.addObject("doctorsection", doctorsection );
-
-
-        System.out.println("dvo 입력 전 "+dvo);
 
         mav.addObject("doctorList", dvo );
-
-        System.out.println("dvo 입력 후 "+dvo);
-
-
 
         mav.setViewName("reservation/beforereservation");
         return mav;
@@ -181,13 +173,13 @@ public class ReservationController {
     {
         ModelAndView mav = new ModelAndView();
 
-        System.out.println("cont2, dseq: " + dseq);
-        System.out.println("cont2, mseq: " + mseq);
-        System.out.println("cont2, selectedDate: " + bookdate);
-        System.out.println("cont2, selectedTime: " + time);
+//        System.out.println("cont2, dseq: " + dseq);
+//        System.out.println("cont2, mseq: " + mseq);
+//        System.out.println("cont2, selectedDate: " + bookdate);
+//        System.out.println("cont2, selectedTime: " + time);
 
         rs.insertReservation(dseq, mseq, bookdate, time);
-        System.out.println(" 데이터 입력 성공 ");
+//        System.out.println(" 데이터 입력 성공 ");
 
 
 
