@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServletRequest;
 //import net.minidev.json.JSONArray;
 
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 import org.json.JSONArray;
 //import org.json.JSONObject;
 
@@ -16,7 +17,10 @@ import org.json.JSONArray;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -105,18 +109,18 @@ public class ReservationController {
 
 
 
-            System.out.println(loginUser);
-            System.out.println(loginUser.getUserid() );
+//            System.out.println(loginUser);
+//            System.out.println(loginUser.getUserid() );
 
 
 
             //멤버정보가져오기
             MemberVO mvo = rs.getLoginMember(loginUser.getUserid() );
 
-            System.out.println(loginUser);
-            System.out.println(loginUser.getUserid() );
-
-            System.out.println(mvo);
+//            System.out.println(loginUser);
+//            System.out.println(loginUser.getUserid() );
+//
+//            System.out.println(mvo);
 
             // ReservationResponse를 통해 예약 정보 가져오기
             DoctorVO dvo = ds.getDoctor(dseq);
@@ -165,39 +169,100 @@ public class ReservationController {
     }
 
     @PostMapping("/reservation")
-    public ModelAndView reservation(@RequestParam("dseq") int dseq,
-                              @RequestParam("mseq") int mseq,
-                              @RequestParam("selectedDate") LocalDate bookdate,
-                              @RequestParam("selectedTime2") int time,
-                              HttpServletRequest req)
+    public ModelAndView reservation(
+            @ModelAttribute("dto") @Valid ReservationVO rvo, BindingResult result,
+
+            Model model,
+
+
+            @RequestParam("dseq") int dseq,
+            @RequestParam("mseq") int mseq,
+//                              @RequestParam("selectedDate") LocalDate bookdate,
+//                              @RequestParam("selectedTime2") int time,
+                              HttpServletRequest req,HttpSession session)
     {
         ModelAndView mav = new ModelAndView();
 
-//        System.out.println("cont2, dseq: " + dseq);
-//        System.out.println("cont2, mseq: " + mseq);
-//        System.out.println("cont2, selectedDate: " + bookdate);
-//        System.out.println("cont2, selectedTime: " + time);
-
-        rs.insertReservation(dseq, mseq, bookdate, time);
-//        System.out.println(" 데이터 입력 성공 ");
 
 
+        String url = "reservation/reservationform";
+
+        MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
+        MemberVO mvo = rs.getLoginMember(loginUser.getUserid() );
+
+//            System.out.println(loginUser);
+//            System.out.println(loginUser.getUserid() );
+//
+//            System.out.println(mvo);
+
+        // ReservationResponse를 통해 예약 정보 가져오기
+        DoctorVO dvo = ds.getDoctor(dseq);
+        ReservationResponse response = rs.getDoctorTimeDetails(dseq);
 
 
-        int rseq = rs.lookupMaxOseq(mseq);
+        // 새로운 JSONArray 생성
+        JSONArray jsonArray = new JSONArray();
 
-        System.out.println(rseq);
-        System.out.println(" 입력 데이터 출력 성공");
+//        List<JSONObject> thisMonthResData = response.getThisMonthResData();
+//        List<JSONObject> nextMonthResData = response.getNextMonthResData();
 
-        ReservationResultVO rrvo = rs.getReserveResult(rseq);
+//        // List의 각 항목을 JSONArray에 추가
+//        for (JSONObject item : thisMonthResData) {
+//            jsonArray.put(item);
+//        }
+//
+//        // List의 각 항목을 JSONArray에 추가
+//        for (JSONObject item : nextMonthResData) {
+//            jsonArray.put(item);
+//        }
+        // ReservationResponse에서 thisMonthResData와 nextMonthResData를 추출
+        JSONArray thisMonthResData = response.getThisMonthResData();
+        JSONArray nextMonthResData = response.getNextMonthResData();
 
-        System.out.println(rrvo);
+
+        // request에 데이터 저장
+        req.setAttribute("detail", dvo);
+        req.setAttribute("mvo", mvo);
+        req.setAttribute("dseq",dvo.getDseq());
+        req.setAttribute("mseq",mvo.getMseq());
+        req.setAttribute("thisMonthResData", thisMonthResData);
+        req.setAttribute("nextMonthResData", nextMonthResData);
 
 
-        mav.addObject("rrvo", rrvo);
-        mav.setViewName("reservation/reservationresult");
+        if( result.getFieldError("bookdate") != null)
+            mav.addObject("validmsg", result.getFieldError("bookdate").getDefaultMessage());
 
+        else if( result.getFieldError("time") != null)
+            mav.addObject("validmsg", result.getFieldError("time").getDefaultMessage());
+
+
+        else {
+
+            url = "reservation/reservationresult";
+//            model.addAttribute("message", "회원가입이 완료되었습니다. 로그인하세요");
+
+            rs.insertReservation2(rvo);
+
+
+            int rseq = rs.lookupMaxOseq(mseq);
+
+            System.out.println(rseq);
+            System.out.println(" 입력 데이터 출력 성공");
+
+            ReservationResultVO rrvo = rs.getReserveResult(rseq);
+
+            System.out.println(rrvo);
+
+
+            mav.addObject("rrvo", rrvo);
+        }
+
+        mav.setViewName(url);
         return mav;
+
+
+
+
 
     }
 

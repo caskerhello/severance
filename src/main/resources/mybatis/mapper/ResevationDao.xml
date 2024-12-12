@@ -24,6 +24,11 @@
         VALUES (#{dseq}, #{mseq}, #{bookdate}, #{time})
     </insert>
 
+    <insert id="insertReservation2" >
+        INSERT INTO reserve (dseq, mseq, bookdate, time)
+        VALUES (#{dseq}, #{mseq}, #{bookdate}, #{time})
+    </insert>
+
 <!--    <insert id="insertReservation">-->
 <!--        INSERT INTO reserve (dseq, mseq, bookdate, time, bookable)-->
 <!--        VALUES (#{dseq}, #{mseq}, #{bookdate}, #{time},-->
