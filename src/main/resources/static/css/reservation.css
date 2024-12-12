@@ -20,6 +20,23 @@
     align-items: center;
     box-shadow: 0px 0px 19px 5px rgba(0, 0, 0, 0.19);
     min-width: 320px;
+    position: relative;
+}
+
+.doccontainer:nth-of-type(3) .contact-box2 {
+    position: relative;
+}
+
+
+
+.doccontainer:nth-of-type(3) .contact-box2::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+    background-color: rgba(128, 128, 128, 0.5);
 }
 
 .left3 {
@@ -48,25 +65,6 @@
 }
 
 
-
-#calendar {
-    width: 90%; /* 캘린더 테이블의 너비를 부모 요소의 90%로 설정 */
-    margin: 0 auto; /* 가로로 중앙 정렬 */
-    font-size: 16px; /* 폰트 크기 조정 (옵션) */
-}
-
-#calendar td {
-    padding: 15px; /* 각 셀에 여백 추가 */
-    font-size: 18px; /* 각 셀의 글자 크기 키우기 */
-}
-
-#calendarTitle {
-    font-size: 24px; /* 캘린더 제목 크기 키우기 */
-}
-
-#calendar td, #calendar th {
-    text-align: center; /* 텍스트를 중앙 정렬 */
-}
 
 .left4 h2 {
     margin-bottom: 20px;
@@ -157,6 +155,10 @@ h2:after{
     color: #666;
 }
 
+#selectedDate {
+    width: 200px;  /* 필요에 따라 적절한 크기 설정 */
+    text-align: center;
+}
 
 .field3:hover{
     background-color: rgba(0,0,0,0.1);
@@ -278,11 +280,6 @@ h2:after{
     width:300px;
 }
 
-
-
-
-
-
 #reservation_user{
     margin:50px;
     width:80%;
@@ -310,10 +307,6 @@ h2:after{
 }
 
 
-
-
-
-
 #reservation_time{
     margin:50px;
     width:80%;
@@ -335,232 +328,262 @@ h2:after{
     margin-top: 20px;
 }
 
-
-#timeTable {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row;
-    gap: 10px;
-    padding: 10px;
+#calendar {
     width: 100%;
-    color: #505050;
-    text-align: center;
     border-collapse: collapse;
+    margin: 0 auto; /* 가로로 중앙 정렬 */
+    margin-top: 20px;
+    font-family: 'Arial', sans-serif; /* 폰트 설정 */
 }
 
-.timeTableCell {
-    padding: 10px 20px;
-    border: 1px solid #C6C6C6;
-    text-align: center;
+#calendar td {
+    padding: 15px; /* 각 셀에 여백 추가 */
+    font-size: 18px; /* 각 셀의 글자 크기 키우기 */
     cursor: pointer;
-    background-color: #fff;
 }
 
-/* 선택된 시간대의 배경 색상 */
-.selected {
-    background-color: #fbedaa;
-}
 
-/* 예약된 시간에 비활성화된 버튼 스타일 */
-.disabled {
-    background-color: #E0E0E0;
-    color: #C6C6C6;
-    cursor: not-allowed;
-}
-
-/* 버튼들 가로로 배치 */
-.btnTime {
-    display: inline-block;
-    margin-right: 10px;
-    padding: 8px 16px;
-    background-color: #FFB6C1;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.btnTime:hover {
-    background-color: #FF8C94;
-}
-
-#timeTable td {
-    flex: 1; /* 각 셀을 균등하게 분할 */
+#calendar td, #calendar th {
+    border: 1px solid #ddd; /* 테두리 추가 */
+    padding: 10px; /* 패딩 추가 */
     text-align: center; /* 텍스트 중앙 정렬 */
-    cursor: pointer;
+}
+
+#calendar th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: #7494ec; /* 헤더 배경색 */
+    color: white; /* 헤더 글자색 */
+}
+
+    #timeTable {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+        gap: 10px;
+        padding: 10px;
+        width: 100%;
+        color: #505050;
+        text-align: center;
+        border-collapse: collapse;
+    }
+
+    .timeTableCell {
+        padding: 10px 20px;
+        border: 1px solid #C6C6C6;
+        text-align: center;
+        cursor: pointer;
+        background-color: #fff;
+    }
+
+    /* 선택된 시간대의 배경 색상 */
+    .selected {
+        background-color: #7494ec;
+        cursor: pointer;
+    }
+
+    /* 예약된 시간에 비활성화된 버튼 스타일 */
+    .disabled {
+        background-color: #E0E0E0;
+        color: #C6C6C6;
+        cursor: not-allowed;
+    }
+
+    /* 버튼들 가로로 배치 */
+    .btnTime {
+        display: inline-block;
+        margin-right: 10px;
+        padding: 8px 16px;
+        background-color: #FFB6C1;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .btnTime:hover {
+        background-color: #FF8C94;
+    }
+
+    #timeTable td {
+        text-align: center; /* 텍스트 중앙 정렬 */
+        cursor: pointer;
+        padding: 10px 20px;
+        border: none;
+        font-size: 16px; /* 폰트 크기 */
+        text-decoration: none;
+        background-color: #7494ec; /* 배경 */
+        color: white; /* 글자색은 흰색 */
+        border-radius: 8px; /* 모서리 둥글게 */
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    #timeTable td:hover {
+        background-color: #007cfb;/
+    }
+
+    #timeTable td:active {
+        background-color: #2faaff;
+    }
+
+    .timeTableRow {
+        display: flex;  /* flexbox를 사용하여 가로로 배치 */
+        justify-content: center;
+        align-items: center;
+        gap: 20px; /* 버튼 사이 간격 */
+    }
+
+    /* 셀을 버튼처럼 꾸미기 위한 스타일 */
+    .timeButtonCell {
+        padding: 10px 20px;
+        cursor: pointer;  /* 마우스를 올렸을 때 포인터 모양으로 변경 */
+        background-color: #f1f1f1;  /* 기본 배경 색상 */
+        text-align: center;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;  /* 배경 색상이 부드럽게 변경되도록 설정 */
+    }
+
+    .timeButtonCell:hover {
+        background-color: #007cfb;  /* 마우스를 올렸을 때 배경 색상 변경 */
+    }
+
+    /* 선택된 셀에 대한 스타일 */
+    .timeButtonCell.selected {
+        background-color: #2faaff;  /* 선택된 셀에 대한 배경 색상 */
+    }
+label {
+    cursor: pointer; /* 마우스 커서 포인터 */
+}
+
+.calendar-date {
+    cursor: pointer; /* 기본적으로 모든 날짜 셀에 커서 포인터 추가 */
+}
+
+
+
+    #selectedDate{
+        width: 200px;
+        height: 25px;
+        padding: 10px;
+        color: #505050;
+        font-size:17px;
+        background-color: #fff;
+        border: 1px solid #dcdcdc;
+    }
+
+#selectedTime{width: 200px;
+    height: 25px;
     padding: 10px;
-    border: 1px solid #C6C6C6; /* 셀의 테두리 스타일 */
-    font-size: 18px; /* 폰트 크기 */
-}
-
-#timeTable td:hover {
-    background-color: #fbedaa; /* 마우스 오버 시 색상 변화 */
-}
-
-.timeTableRow {
-    display: flex;  /* flexbox를 사용하여 가로로 배치 */
-    justify-content: center;
-    align-items: center;
-    gap: 20px; /* 버튼 사이 간격 */
-}
-
-/* 셀을 버튼처럼 꾸미기 위한 스타일 */
-.timeButtonCell {
-    padding: 10px 20px;
-    cursor: pointer;  /* 마우스를 올렸을 때 포인터 모양으로 변경 */
-    background-color: #f1f1f1;  /* 기본 배경 색상 */
-    text-align: center;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;  /* 배경 색상이 부드럽게 변경되도록 설정 */
-}
-
-.timeButtonCell:hover {
-    background-color: #fbedaa;  /* 마우스를 올렸을 때 배경 색상 변경 */
-}
-
-/* 선택된 셀에 대한 스타일 */
-.timeButtonCell.selected {
-    background-color: #fbedaa;  /* 선택된 셀에 대한 배경 색상 */
-}
-
-
-
-
-
-
-
-
-
-#selectedDate{width: 200px; height: 25px;	padding: 10px;
-    color: #505050; font-size:17px;	background-color: #fff;	border: 1px solid #dcdcdc;	}
-#selectedTime{width: 200px; height: 25px;	padding: 10px;
-    color: #505050; font-size:17px;	background-color: #fff;	border: 1px solid #dcdcdc;	}
-
-/*#totalPrice{width: 200px; height: 25px;	padding: 10px;*/
-/*    color: #505050; font-size:17px;	background-color: #fff;	border: 1px solid #dcdcdc;	}*/
-
-
-#btn_init{
-    margin: 0;
-    padding: 0px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 15px; color:#fff;
-    background-color: #275DE8;
-    font-weight:700;
-
-    border: none;
-    /* 		border-radius: 10px; */
-    border-radius: 5px;
-
-    display: inline-block;
-    width: 120px;
-    height: 30px;
-}
-
-
-
-#btn_init:hover{
-    margin: 0;
-    padding: 0px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 15px; color:#275DE8;
+    color: #505050;
+    font-size:17px;
     background-color: #fff;
-    font-weight:700;
-
-    border: 1px solid #275DE8;
-    /* 		border-radius: 10px; */
-    border-radius: 5px;
-
-    display: inline-block;
-    width: 120px;
-    height: 30px;
-}
+    border: 1px solid #dcdcdc;	}
 
 
+    #btn_init{
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        text-decoration: none;
+        border: none;
+        display: flex;
+        width: 120px;
+        height: 30px;
+        font-size: 16px; /* 폰트 크기 */
+        background-color: #7494ec; /* 배경 */
+        color: white; /* 글자색은 흰색 */
+        padding: 10px 20px; /* 여백 */
+        border-radius: 8px; /* 모서리 둥글게 */
+        cursor: pointer; /* 마우스 커서 포인터 */
+        transition: background-color 0.3s, transform 0.3s;
+    }
 
 
 
-
+    #btn_init:hover{
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background-color: #007cfb;
+    }
 
 
 
 #btn_submit{
-    margin: 0;
-    padding: 20px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 20px; color:#fff;
-    background-color: #275DE8;
-    font-weight:700;
+        margin: 0;
+        padding: 20px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 20px; color:#fff;
+        background-color: #275DE8;
+        font-weight:700;
 
-    border: none;
-    /* 		border-radius: 10px; */
-    border-radius: 5px;
+        border: none;
+        /* 		border-radius: 10px; */
+        border-radius: 5px;
 
-    display: inline-block;
-    width: 300px;
-}
-
-
-
-#btn_submit:hover{
-    margin: 0;
-    padding: 20px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 20px; color:#275DE8;
-    background-color: #fff;
-    font-weight:700;
-
-    border: 1px solid #275DE8;
-    /* 		border-radius: 10px; */
-    border-radius: 5px;
-
-    display: inline-block;
-    width: 300px;
-}
+        display: inline-block;
+        width: 300px;
+    }
 
 
 
+    #btn_submit:hover{
+        margin: 0;
+        padding: 20px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 20px; color:#275DE8;
+        background-color: #fff;
+        font-weight:700;
 
-.resulthead{
-    border: 1px solid #dcdcdc;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
+        border: 1px solid #275DE8;
+        /* 		border-radius: 10px; */
+        border-radius: 5px;
+
+        display: inline-block;
+        width: 300px;
+    }
 
 
+
+
+    .resulthead{
+        border: 1px solid #dcdcdc;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
 
 
 
 
 
-/*.resultcontent{*/
-/*    border: 1px solid #dcdcdc;*/
-/*    display: flex;*/
-/*    flex-direction: row;*/
-/*    justify-content: center;*/
-/*}*/
 
-#reservationresult{
-    width:90%;
-    border-collapse: collapse;
-}
 
-#reservationresult td.title{
-    border: 1px solid #dcdcdc;
-    font-weight:700;
-    font-size:20px;
-    height:60px;
-}
+    /*.resultcontent{*/
+    /*    border: 1px solid #dcdcdc;*/
+    /*    display: flex;*/
+    /*    flex-direction: row;*/
+    /*    justify-content: center;*/
+    /*}*/
 
-#reservationresult td.content{
-    border: 1px solid #dcdcdc;
-    font-size:19px;
-    height:60px;
-}
+    #reservationresult{
+        width:90%;
+        border-collapse: collapse;
+    }
+
+    #reservationresult td.title{
+        border: 1px solid #dcdcdc;
+        font-weight:700;
+        font-size:20px;
+        height:60px;
+    }
+
+    #reservationresult td.content{
+        border: 1px solid #dcdcdc;
+        font-size:19px;
+        height:60px;
+    }
