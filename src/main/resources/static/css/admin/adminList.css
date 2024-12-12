@@ -1,6 +1,6 @@
 .table-container {
     width: 1570px;  /* Make the container take up full width of the main area */
-    height: 750px;
+    height: 780px;
     padding: 20px;
     background-color: #fff;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -16,6 +16,13 @@ table {
 }
 
 thead th {
+    font-weight: bold;
+    color: #333;
+    padding: 10px;
+    background-color: #f2f2f2;
+}
+
+tbody th {
     font-weight: bold;
     color: #333;
     padding: 10px;

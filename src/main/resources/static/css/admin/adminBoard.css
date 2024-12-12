@@ -10,6 +10,19 @@ body{
     overflow-x: hidden;
 }
 
+.heading2{
+    width: 100%;
+    height: auto;
+}
+
+.heading1{
+    width: 100%;
+    height: auto;
+}
+
+
+
+
 .container{
     position: relative;
     width: 100%;
@@ -88,6 +101,31 @@ body{
     z-index: 1;
 }
 
+.top-bar .search2{
+    width: 250px;
+    position: relative;
+    max-width: 400px;
+}
+
+.search2 input{
+    width: 100%;
+    min-width: 128px;
+    height: 40px;
+    border: none;
+    padding: 0 40px;
+    outline: none;
+    font-size: 16px;
+    background: #f5f5f5;
+}
+
+.search2 i{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
 .top-bar .top-title{
     display: flex;
     max-width: 400px;
@@ -107,7 +145,55 @@ body{
 
 }
 
-
 .top-title{
     display: flex;
 }
+
+/* 전체 검색 메뉴 레이아웃 */
+.search-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px; /* 둥근 테두리 */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+}
+
+/* select 박스 스타일 */
+#searchCategory {
+    font-size: 16px;  /* 폰트 크기 */
+    padding: 8px 12px;  /* 안쪽 여백 */
+    border: 1px solid #ddd;  /* 테두리 */
+    background-color: #f5f5f5; /* 배경색 */
+    color: #666;  /* 텍스트 색 */
+    transition: border 0.3s ease;  /* 테두리 색 변경 애니메이션 */
+}
+
+/* 선택 박스를 클릭했을 때의 스타일 (포커스) */
+#searchCategory:focus {
+    border-color: #007bff;  /* 포커스 시 테두리 색 */
+    outline: none;  /* 기본 outline 제거 */
+}
+
+/* 옵션 항목들에 대한 스타일 */
+#searchCategory option {
+    padding: 10px;  /* 옵션 내부 여백 */
+}
+
+/* 마우스를 hover했을 때의 효과 */
+#searchCategory:hover {
+    border-color: #007bff;  /* hover 시 테두리 색 */
+    cursor: pointer;  /* 마우스 커서 변화 */
+}
+
+/* 모바일 화면에 더 잘 맞게 스타일을 조정 */
+@media (max-width: 768px) {
+    .search-menu {
+        flex-direction: column;  /* 모바일에서는 세로로 배치 */
+        gap: 5px;
+    }
+
+    #searchCategory {
+        width: 100%;  /* select 박스의 너비를 100%로 확장 */
+    }
+}
+
