@@ -332,9 +332,11 @@
 					//선택된 셀 색 변화
 					if (selectedCell != null) {
 						selectedCell.bgColor = "#FFFFFF";
+						// selectedCell.style.cursor = "pointer";
 					}
 					selectedCell = this;
-					this.bgColor = "#fbedaa";
+					this.bgColor = "#2faaff";
+					// this.style.cursor = "pointer";
 
 					//time table 생성
 					timeTableMaker(today.getMonth() + 1, this.getAttribute('id'));
@@ -409,9 +411,11 @@
 				//선택된 셀 색 변화
 				if (selectedCell != null) {
 					selectedCell.bgColor = "#FFFFFF";
+					// selectedCell.style.cursor = "pointer";
 				}
 				selectedCell = this;
-				this.bgColor = "#fbedaa";
+				this.bgColor = "#2faaff";
+				// this.style.cursor = "pointer";
 
 				//time table 생성
 				timeTableMaker(today.getMonth() + 1, this.getAttribute('id'));
@@ -582,7 +586,7 @@
 				console.log("최후selectedFirstTime값 설정" + selectedFirstTime);
 
 				// 배경 색 변경
-				this.bgColor = "#fbedaa";
+				this.bgColor = "#2faaff";
 
 				// 하단의 예약일시 표시
 				resTime = (selectedFirstTime === 0 ? "오전" : "오후"); // 오전/오후 표시
@@ -754,18 +758,6 @@
 					</div>
 
 
-<%--					<div class="abc3">--%>
-<%--						<input type="text" class="field3" name="docmastd" value="${detail.mastd}" readonly/>--%>
-<%--					</div>--%>
-
-<%--					<div class="abc3">--%>
-<%--						<input type="text" class="field3" name="docdoctd" value="${detail.doctd}" readonly/>--%>
-<%--					</div>--%>
-
-<%--					<div class="abc3">--%>
-<%--						<input type="text" class="field3" name="docresume" value="${detail.resume}" readonly/>--%>
-<%--					</div>--%>
-
 				</div>
 
         	</div>
@@ -827,13 +819,14 @@
 											<td align="center"><label onclick="nextCalendar()"> ▶ </label></td>
 										</tr>
 										<tr>
-											<td align="center"><font color ="#F79DC2">일</td>
+											<td align="center" style="color: #F79DC2;">일</td>
 											<td align="center">월</td>
 											<td align="center">화</td>
 											<td align="center">수</td>
 											<td align="center">목</td>
 											<td align="center">금</td>
-											<td align="center"><font color ="skyblue">토</td>
+											<td align="center" style="color: skyblue;">토</td>
+
 										</tr>
 									</table>
 
@@ -849,6 +842,7 @@
 
 							<div class="right4">
 								<h2>예약일시</h2>
+
 
 								<td class="content" style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%;">
 
