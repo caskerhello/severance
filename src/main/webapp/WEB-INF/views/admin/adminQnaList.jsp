@@ -183,7 +183,7 @@
 
                         content += '<td>' + value.indate + '</td>';
 
-                        content += '<td><input type="button" value="댓글작성" class="adminmodal_btn"'+
+                        content += '<td><input type="button" value="댓글조회/작성" class="adminmodal_btn"'+
                                               'onClick="fn_view_page('+value.qseq+');"/></td>'
 
                         content += '</tr>';
@@ -274,7 +274,7 @@
 
 
                     content2 += '<tr>'
-                    content2 +=    '<td>' + '번호('+qseq+')</td>';
+                    content2 +=    '<td>' + '답변</td>';
 
                     if (result.reply == null) {
                         content2 +=    '<td colspan="4">  <textarea rows="4" cols="200" name="reply"></textarea> </td>';
@@ -354,7 +354,7 @@
 
 
                         content2 += '<tr>'
-                        content2 +=    '<td>' + '번호('+qseq+')</td>';
+                        content2 +=    '<td>' + '답변</td>';
 
                     if (result.reply == null) {
                         content2 +=    '<td colspan="4">  <textarea rows="4" cols="200" name="reply"></textarea> </td>';
@@ -468,7 +468,7 @@
                             </c:choose></td>
                             <%--                ${qnaList1.reply}--%>
                         <td>${qnaList1.indate}</td>
-                        <td><input type="button" value="댓글작성" class="adminmodal_btn" onclick="fn_view_page(${qnaList1.qseq});"></td>
+                        <td><input type="button" value="댓글조회/작성" class="adminmodal_btn" onclick="fn_view_page(${qnaList1.qseq});"></td>
 
                     </tr>
 

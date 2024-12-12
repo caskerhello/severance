@@ -62,8 +62,14 @@ tbody td {
     display: flex;
     padding-left: 0;  /* 기본 들여쓰기를 없앰 */
     list-style-type: none;
+    justify-content: center;
+    text-decoration: none;
+    color: inherit;
+
 }
 
 .pagination li {
     margin-right: 20px; /* 항목들 사이의 간격 */
+    list-style-type: none;
+    text-decoration: none;
 }
