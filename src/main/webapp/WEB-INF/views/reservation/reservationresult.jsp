@@ -5,115 +5,90 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 
-<main>
+<html>
+<head>
+	<link rel="stylesheet" href="/css/reservationResult.css"/>
+</head>
 
 
-<h1>예약 결과</h1>
-
-<div class="mainBox">
-    <div class="contentBox">
-
-
-
-        <table id="reservationresult">
-            <tr>
-                <td class="title">예약 의사 성명</td>
-                <td class="title">예약 의사 과</td>
-                <td class="title">예약자 성명</td>
-                <td class="title">예약자 연락처</td>
-                <td class="title">예약일자</td>
-                <td class="title">예약시간</td>
-
-            </tr>
-
-
-            <tr>
-
-                <td class="content">${rrvo.doctorname}</td>
-
-                <td class="content">
-                    <c:choose>
-                        <c:when test="${rrvo.doctorsection == 5}">비뇨기과</c:when>
-                        <c:when test="${rrvo.doctorsection == 4}">산부인과</c:when>
-                        <c:when test="${rrvo.doctorsection == 3}">외과</c:when>
-                        <c:when test="${rrvo.doctorsection == 2}">이비인후과</c:when>
-                        <c:otherwise>정형외과</c:otherwise>
-                    </c:choose>
-
-                </td>
-
-                <td class="content">${rrvo.membername}</td>
-
-                <td class="content">${rrvo.phone}</td>
-
-                <td class="content">${rrvo.bookdate}</td>
-
-                <td class="content">
-                <c:choose>
-                    <c:when test="${rrvo.time == 0}">오전</c:when>
-                    <c:otherwise>오후</c:otherwise>
-                </c:choose>
-                </td>
-
-            </tr>
-        </table>
+<body>
 
 
 
+        <div class="container">
+            <div class="header5">
+
+            <div class="container5">
+                <section class="center5">
+                    <div class="center-text5">
+                        <h1>
+                            <span class="part3">공감,</span>
+                            <span class="part4">또 하나의 치료</span>
+                        </h1>
+
+                        <p>질병 치료를 넘어 환자의 마음까지 치유하겠습니다.</p>
+                    </div>
+                </section>
+            </div>
+
+         <main class="table">
+             <section class="table_header">
+
+                <h1>예약 결과</h1>
+
+             </section>
 
 
-<%--        <div class="resulthead">--%>
-<%--            <div>예약 의사 성명</div>--%>
-<%--            <div>예약 의사 과</div>--%>
-<%--            <div>예약자 성명</div>--%>
-<%--            <div>예약자 연락처</div>--%>
-<%--            <div>예약일자</div>--%>
-<%--            <div>예약시간</div>--%>
-<%--        </div>--%>
+             <section class="table_body">
+                 <div class="mypagerow3">
+                     <div class="coltitle">예약 의사명</div>
+                     <div class="coltitle">예약 병원과</div>
+                     <div class="coltitle">예약자 성명</div>
+                     <div class="coltitle">예약자 연락처</div>
+                     <div class="coltitle">예약 날짜</div>
+                     <div class="coltitle">예약 시간</div>
+                 </div>
+             </section>
 
-<%--        <div class="resultcontent">--%>
-<%--            <div>${rrvo.doctorname}</div>--%>
-<%--            <div>${rrvo.doctorsection}</div>--%>
-<%--            <div>${rrvo.membername}</div>--%>
-<%--            <div>${rrvo.phone}</div>--%>
-<%--            <div>${rrvo.bookdate}</div>--%>
-<%--            <div>${rrvo.time}</div>--%>
-<%--        </div>--%>
+             <div class="list">
 
 
-
-<%--        <div>--%>
-<%--            <div>예약 의사 성명 : 1${rrvo.doctorname}</div>--%>
-<%--            <div>예약 의사 과 : 1${rrvo.doctorsection}</div>--%>
-
-<%--            <div>예약자 성명 : 1${rrvo.membername}</div>--%>
-<%--            <div>예약자 연락처 : 1${rrvo.phone}</div>--%>
-
-<%--            <div>예약일자 : 1${rrvo.bookdate}</div>--%>
-<%--            <div>예약시간 : 1${rrvo.time}</div>--%>
-<%--        </div>--%>
+							<div class="mypagerow4">
+								<div class="col">${rrvo.doctorname}</div>
 
 
+								<div class="col">
+									<c:choose>
+										<c:when test="${rrvo.doctorsection == 5}">비뇨기과</c:when>
+                                        <c:when test="${rrvo.doctorsection == 4}">산부인과</c:when>
+                                        <c:when test="${rrvo.doctorsection == 3}">외과</c:when>
+                                        <c:when test="${rrvo.doctorsection == 2}">이비인후과</c:when>
+                                        <c:otherwise>정형외과</c:otherwise>
+									</c:choose>
+
+								</div>
 
 
+								<div class="col">${rrvo.membername}</div>
+								<div class="col">${rrvo.phone}</div>
+								<div class="col">${rrvo.bookdate}</div>
 
+								<div class="col">
+									<c:choose>
+										<c:when test="${rrvo.time == 0}">오전</c:when>
+                                        <c:otherwise>오후</c:otherwise>
+									</c:choose>
+								</div>
+                            </div>
 
-
-    </div>
+	                </div>
+                </main>
+            </div>
 </div>
 
+</body>
 
-
-
-
-
-
-
-
-
-
-</main>
-
+</html>
 
 
 <%@ include file="../footer.jsp" %>
