@@ -1,5 +1,7 @@
 package com.third.severance.dto;
 
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -15,8 +17,12 @@ public class ReservationVO {
     private String phone;
     private String doctorname;
     private String doctorsection;
+
+    @NotNull(message="날짜를 선택하세요")
    private LocalDate bookdate;
-   private int time;
+
+    @NotNull(message="시간대를 선택하세요")
+   private Integer time;
    private LocalDate indate;
    private int result;
 

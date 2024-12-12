@@ -847,13 +847,13 @@
 
 																<div class="abc5">
 																	<input type="text" class="field5" value="선택 날짜" readonly>
-																	<input id="selectedDate" name="selectedDate" value="" readonly="readonly" />
+																	<input id="selectedDate" name="bookdate" value="${dto.bookdate}" readonly="readonly" />
 																</div>
 
 																<div class="abc5">
 																	<input type="text" class="field5" value="선택 시간" readonly>
 																	<input id="selectedTime" name="selectedTime" value="" readonly="readonly"/>
-																	<input id="selectedTime2" type="hidden" name="selectedTime2" value="" readonly="readonly"/>
+																	<input id="selectedTime2" type="hidden" name="time" value="${dto.time}" readonly="readonly"/>
 																</div>
 
 
@@ -862,6 +862,7 @@
 
 														<input type="hidden" name="mseq" value="${mvo.mseq}"></input>
 														<input type="hidden" name="dseq" value="${dseq}"></input>
+														<div>${validmsg}</div>
 														<input type="submit" value="예약" id="btn_submit">
 
 

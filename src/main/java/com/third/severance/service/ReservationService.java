@@ -306,5 +306,9 @@ public class ReservationService {
 
 
     }
+
+    public void insertReservation2(@Valid ReservationVO rvo) {
+        rdao.insertReservation2(rvo);
+    }
 }
 

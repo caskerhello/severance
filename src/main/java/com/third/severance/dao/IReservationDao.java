@@ -4,6 +4,7 @@ import com.third.severance.dto.MemberVO;
 import com.third.severance.dto.Paging;
 import com.third.severance.dto.ReservationResultVO;
 import com.third.severance.dto.ReservationVO;
+import jakarta.validation.Valid;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.time.LocalDate;
@@ -39,4 +40,6 @@ public interface IReservationDao {
     List<ReservationResultVO> getReservationResultList(Paging paging, String key, int mseq);
 
     int getAllCount(String reserve, String bookdate, String key, int mseq);
+
+    void insertReservation2(@Valid ReservationVO rvo);
 }
