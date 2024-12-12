@@ -154,6 +154,12 @@
             });
         }
 
+        function checkEnter(event) {
+            if (event.key === "Enter") {
+                go_search(); // 엔터 키가 눌렸을 때 go_search() 호출
+            }
+        }
+
     </script>
 
     <script>
@@ -395,9 +401,13 @@
                 <h1>Severance</h1>
             </div>
 
-            <div class="heading">
+            <!-- 검색 입력 필드 -->
+            <div class="search2">
+                <input type="text" name="key" id="key" placeholder="의사 검색" onclick="go_search()" onkeydown="checkEnter(event)"/>
+                <label for="key"><i class="ri-search-line"></i></label>
+            </div>
 
-
+            <div class="heading2">
                 <div class="search-menu">
                     <select id="searchCategory" onchange="updatePlaceholder()">
                         <option value="adminDoctorList">의사리스트</option>
@@ -405,27 +415,9 @@
                         <option value="adminMemberList">맴버리스트</option>
                         <option value="adminQnaList">QNA리스트</option>
                     </select>
-
-                    <!-- 검색 입력 필드 -->
-                    <input type="text" name="key" id="key" placeholder="Search here" />
-
-                    <!-- 검색 버튼 -->
-                    <button type="button" onclick="go_search()">
-                        <i class="ri-search-line"></i> 검색
-                    </button>
                 </div>
-
-<%--                <h2>Admin Doctor List</h2>--%>
-<%--                <div class="doctorlistsearch">--%>
-<%--                    <input type="text" name="key" id="key" value="${key}" placeholder="Search here"/>--%>
-
-<%--                    <button type="button" onclick="go_search('adminDoctorList')">--%>
-<%--                        <i class="ri-search-line"></i>--%>
-<%--                    </button>--%>
-<%--                </div>--%>
-
-
             </div>
+
         </div>
 
         <!-- Insert the doctor list content here -->
@@ -434,10 +426,6 @@
 
 
         </div>
-
-
-
-
     </div>
 </div>
 </body>
