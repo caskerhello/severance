@@ -1,0 +1,221 @@
+@charset "UTF-8";
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+.header5{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.center5{
+    position: relative;
+    width: 80%;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: url(../images/center.jpg);
+    background-size: cover;
+    background-position: center;
+    margin: 0 auto;
+}
+
+.center-text5 h1{
+    font-size: var(--h1-font);
+    color: var(--bg-color);
+    margin: 10px 0 20px;
+    line-height: 1;
+}
+
+.center-text5 p{
+    color: #343a40;
+    margin: 10px 0 20px;
+    line-height: 1;
+    font-weight: normal;
+    font-size: 22px;
+}
+
+.part3 {
+    font-size: 3rem; /* 공감, 부분의 크기 */
+    color: #343a40; /* 공감, 색상 */
+    font-weight: 700;
+}
+
+.part4 {
+    font-size: 3rem; /* 또 하나의 치료 부분의 크기 */
+    color: #343a40; /* 또 하나의 치료 색상 */
+    font-weight: normal;
+
+}
+
+.container5{
+    width: 105%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.container{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    align-items: center;
+    border-top: 1px solid rgba(128, 128, 128, 0.5); /* 회색 반투명 경계선 */
+    background :#ffffff;
+    background: url("../images/bck.jpg") center center no-repeat;
+    background-position: bottom right;
+    /*overflow: auto;*/
+}
+
+main{
+    min-height: 100vh;
+    display: flex; /* main을 flex로 설정하여 자동 크기 조정 */
+    flex-direction: column;
+    align-items: center;
+    width: 100%; /* 부모 너비 100% */
+    justify-content: flex-start;
+}
+
+main.table{
+    display: block;
+    flex-direction: column;
+    width: 1600px;
+    background-color: #fff5;
+    box-shadow: 0.4rem .8rem #0005;
+    border-radius: .8rem;
+    backdrop-filter: blur(7px);
+    background :#c9d6ff;
+    min-height: 100px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    margin: 50px auto;
+    padding-bottom: 20px;
+    /*overflow-x: auto;*/
+}
+
+
+.mypagerow3 {
+    display: flex;
+    justify-content: space-between; /* 항목들 간 균등한 간격 배치 */
+    width: 100%; /* 전체 너비 사용 */
+}
+
+.mypagerow4 {
+    display: flex;
+    justify-content: space-between; /* 항목들 간 균등한 간격 배치 */
+    width: 100%; /* 전체 너비 사용 */
+    height: 100px;
+}
+
+.coltitle{
+    display: flex;
+    justify-content: center; /* 항목 텍스트 중앙 정렬 */
+    align-items: center; /* 항목 세로 중앙 정렬 */
+    font-size: 20px;
+    font-weight: bold;
+    flex: 1; /* 균등하게 너비 분배 */
+    text-align: center;
+    padding: 10px;
+}
+
+
+.table_header{
+    display: flex;
+    justify-content: center; /* h1과 nav 사이에 최대한의 공간을 배분 */
+    align-items: center;
+    width: 100%;
+    height: 65px;
+    background-color: #fff4;
+    padding: .8rem 2rem	;
+}
+
+.table_header h1 {
+    margin: 0; /* 기본 여백 제거 */
+}
+
+
+
+.table_body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1500px;
+    height: 0;
+    background-color: #fffb;
+    border-radius: .6rem;
+    margin: 0 auto;
+    margin-top: 30px;
+    padding: 20px 0;
+}
+
+.list{
+    display: flex;
+    flex-direction: column;
+    width: 1500px;
+    margin: 0 auto;
+    margin-top: 30px;
+    background-color: #fffb;
+    border-radius: .6rem;
+    flex-grow: 1;
+}
+
+.coltitle, .col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+    flex: 1; /* 동일한 너비 분배 */
+    text-align: center;
+    padding: 10px;
+}
+
+.list .mypagerow4:nth-child(odd) {
+    background-color: #0000000b; /* 짝수 행에 배경색 추가 */
+}
+
+/* 기본 예약취소 버튼 스타일 */
+.cancel-button {
+    background-color: #7494ec; /* 빨간색 배경 */
+    color: white; /* 글자색은 흰색 */
+    padding: 10px 20px; /* 여백 */
+    font-size: 16px; /* 글자 크기 */
+    border-radius: 8px; /* 모서리 둥글게 */
+    cursor: pointer; /* 마우스 커서 포인터 */
+    transition: background-color 0.3s, transform 0.3s; /* 배경색과 애니메이션 */
+    border: none;
+}
+
+/* 마우스 오버시 배경색 변경 */
+.cancel-button:hover {
+    background-color: #007cfb; /* 마우스 올렸을 때 */
+
+}
+
+/* 마우스 클릭시 효과 */
+.cancel-button:active {
+    background-color: #2faaff; /* 클릭 시 배경색 변경 */
+    transform: scale(1); /* 클릭 시 크기 리셋 */
+}
+
+/*html, body {*/
+/*	height: 100%; !* 페이지 높이를 100%로 설정 *!*/
+/*	margin: 0; !* 기본 여백 제거 *!*/
+/*	overflow: auto; !* 콘텐츠가 넘칠 때 스크롤을 표시 *!*/
+/*}*/
+
+
+
+
+

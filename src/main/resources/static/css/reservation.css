@@ -23,13 +23,27 @@
     position: relative;
 }
 
-.doccontainer:nth-of-type(3) .contact-box2 {
+.contact-box3 {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 왼쪽과 오른쪽 영역을 50%씩 나눔 */
+    justify-items: center;
+    align-items: center;
+    box-shadow: 0px 0px 19px 5px rgba(0, 0, 0, 0.19);
+    min-width: 320px;
     position: relative;
 }
 
 
 
-.doccontainer:nth-of-type(3) .contact-box2::before {
+.doccontainer:nth-of-type(3) .contact-box3 {
+    position: relative;
+
+}
+
+
+.doccontainer:nth-of-type(3) .contact-box3::before {
     content: "";
     position: absolute;
     top: 0;
@@ -38,6 +52,8 @@
     width: 1px;
     background-color: rgba(128, 128, 128, 0.5);
 }
+
+
 
 .left3 {
     width: 100%;
@@ -84,17 +100,35 @@
 .right4{
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly; /* 세로 방향으로 공간을 분배 */
+    justify-content: space-between; /* 세로 방향으로 공간을 분배 */
     align-items: center;
     width: 100%;
     height: 100%;
-    padding: 25px 40px;
+    padding: 18px 40px;
 }
 
 .abc4 {
     display: flex;
     flex-direction: column;   /* 필드를 세로로 정렬 */
     gap: 0;                    /* 필드들 사이의 간격을 없앰 */
+}
+
+.abc5{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.abc5::after {
+    content: '';  /* 내용 없음 */
+    position: absolute;
+    top: 40%;  /* 중간 위치에 경계선 배치 */
+    left: 0;
+    width: 100%;
+    border-top: 2px solid rgba(128, 128, 128, 0.5);  /* 경계선 스타일 */
 }
 
 .field4 {
@@ -113,6 +147,22 @@
     white-space: pre-line;     /* 줄바꿈을 허용하여 텍스트가 세로로 나누어짐 */
     resize: none;              /* 크기 조절 비활성화 */
     color: #666;
+}
+
+.field5{
+    display: block; /* 확실하게 block 요소로 설정 */
+    width: 100%;
+    padding: 0.5rem 1rem;
+    outline: none;
+    border: 2px solid rgba(0, 0, 0, 0);
+    background-color: rgba(230,230,230, 0.6);
+    font-size: 1.1rem;
+    margin-bottom: 0;
+    transition: .3s;
+    color: #666;
+    text-align: center;
+    align-items: center;
+
 }
 
 
@@ -462,24 +512,54 @@ label {
 }
 
 
+#selectedDate{
+        display: block; /* 확실하게 block 요소로 설정 */
+        text-align: center;
+        width: 100%;
+        padding: 0.5rem 1rem;
+        outline: none;
+        border: 2px solid rgba(0, 0, 0, 0);
+        background-color: rgba(230,230,230, 0.6);
+        font-size: 1.1rem;
+        margin-bottom: 22px;
+        transition: .3s;
+        color: #666;
+        margin-top: 0; /* 위 여백 없애기 */
+}
 
-    #selectedDate{
-        width: 200px;
-        height: 25px;
-        padding: 10px;
-        color: #505050;
-        font-size:17px;
-        background-color: #fff;
-        border: 1px solid #dcdcdc;
-    }
+#selectedTime{
+    display: block; /* 확실하게 block 요소로 설정 */
+    text-align: center;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    outline: none;
+    border: 2px solid rgba(0, 0, 0, 0);
+    background-color: rgba(230,230,230, 0.6);
+    font-size: 1.1rem;
+    margin-bottom: 22px;
+    transition: .3s;
+    color: #666;
+    margin-top: 0; /* 위 여백 없애기 */
+}
 
-#selectedTime{width: 200px;
-    height: 25px;
-    padding: 10px;
-    color: #505050;
-    font-size:17px;
-    background-color: #fff;
-    border: 1px solid #dcdcdc;	}
+#selectedTime2{
+    display: block; /* 확실하게 block 요소로 설정 */
+    text-align: center;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    outline: none;
+    border: 2px solid rgba(0, 0, 0, 0);
+    background-color: rgba(230,230,230, 0.6);
+    font-size: 1.1rem;
+    margin-bottom: 22px;
+    transition: .3s;
+    color: #666;
+    margin-top: 0; /* 위 여백 없애기 */
+}
+
+
+
+
 
 
     #btn_init{
@@ -512,39 +592,32 @@ label {
 
 
 #btn_submit{
-        margin: 0;
-        padding: 20px;
-        text-align: center;
-        text-decoration: none;
-        font-size: 20px; color:#fff;
-        background-color: #275DE8;
-        font-weight:700;
+    margin: 0;
+    text-align: center;
+    text-decoration: none;
+    font-weight:700;
+    border: none;
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    font-size: 20px; /* 폰트 크기 */
+    background-color: #7494ec; /* 배경 */
+    color: white; /* 글자색은 흰색 */
+    padding: 10px 20px; /* 여백 */
+    border-radius: 8px; /* 모서리 둥글게 */
+    cursor: pointer; /* 마우스 커서 포인터 */
+    transition: background-color 0.3s, transform 0.3s;
 
-        border: none;
-        /* 		border-radius: 10px; */
-        border-radius: 5px;
-
-        display: inline-block;
-        width: 300px;
-    }
+}
 
 
 
     #btn_submit:hover{
-        margin: 0;
-        padding: 20px;
+        justify-content: center;
+        align-items: center;
         text-align: center;
-        text-decoration: none;
-        font-size: 20px; color:#275DE8;
-        background-color: #fff;
-        font-weight:700;
-
-        border: 1px solid #275DE8;
-        /* 		border-radius: 10px; */
-        border-radius: 5px;
-
-        display: inline-block;
-        width: 300px;
+        background-color: #007cfb;
     }
 
 
@@ -587,3 +660,32 @@ label {
         font-size:19px;
         height:60px;
     }
+
+    .boxbox{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+
+    .redbox{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+.redbox span:first-child {
+    color: red;  /* 원하는 색상으로 변경 */
+    font-size: 20px;
+}
+
+.graybox{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.graybox span:first-child {
+    color: gray;  /* 원하는 색상으로 변경 */
+    font-size: 20px;
+}

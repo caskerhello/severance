@@ -801,7 +801,7 @@
 					<div class="doccontainer">
 
 
-						<div class="contact-box2">
+						<div class="contact-box3">
 
 							<div class="left4">
 
@@ -844,56 +844,43 @@
 								<h2>예약일시</h2>
 
 
-								<td class="content" style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%;">
+
+																<div class="abc5">
+																	<input type="text" class="field5" value="선택 날짜" readonly>
+																	<input id="selectedDate" name="selectedDate" value="" readonly="readonly" />
+																</div>
+
+																<div class="abc5">
+																	<input type="text" class="field5" value="선택 시간" readonly>
+																	<input id="selectedTime" name="selectedTime" value="" readonly="readonly"/>
+																	<input id="selectedTime2" type="hidden" name="selectedTime2" value="" readonly="readonly"/>
+																</div>
 
 
-														<table id = "reservationselected"  style="border:1px;text-align: center; width: 100%;">
-
-															<tr style="text-align: center">
-																<td class="title" style="border:1px">
-																	선택날짜
-																</td>
-																<td class="title" style="border:1px">
-																	선택 시간
-																</td>
-
-															</tr>
-
-															<tr style="text-align: center">
-
-																<td class="content" style="text-align: center; border:1px">
-																	<div>
-																	<input id="selectedDate" style="border:none; width:150px"  name="selectedDate" value="" readonly="readonly" ></input>
-																	</div>
-
-																</td>
-																<td class="content" style="text-align: center">
-																	<div>
-																	<input id="selectedTime" style="border:none; width:150px"  name="selectedTime" value="" readonly="readonly"></input>
-
-																	<input id="selectedTime2" type="hidden" style="border:none"  name="selectedTime2" value="" readonly="readonly"></input>
-																	</div>
-
-																</td>
 
 
-															</tr>
-														</table>
 
 														<input type="hidden" name="mseq" value="${mvo.mseq}"></input>
 														<input type="hidden" name="dseq" value="${dseq}"></input>
 														<input type="submit" value="예약" id="btn_submit">
 
-													</td>
 
 
-												</tr>
-												<tr>
-													<td>
-													<div><span style="color:#ff0000">빨간색<span> : 오전/오후중 하나가 이미 예약된날</div><br>
-													<div>회색 : 오전/오후가 모두 예약된날 혹은 휴무</div>
-													</td>
-												</tr>
+
+
+														<div class="boxbox">
+															<div class="redbox">
+																<span>■</span>&nbsp;
+																<span>오전/오후중 하나가 이미 예약된 날</span>
+															</div>
+
+															<div class="graybox">
+																<span>■</span>&nbsp;
+																<span>오전/오후가 모두 예약된날 혹은 휴무</span>
+															</div>
+														</div>
+
+
 
 
 							</div>
@@ -902,98 +889,6 @@
 
 					</div>
 
-
-
-
-
-<%--		<table id="reservation_time">--%>
-<%--			<tr>--%>
-<%--				<td class="top" align="left" colspan="2" style="text-align: center"><span>시간선택</span>&nbsp;&nbsp;&nbsp;&nbsp;<span><button class="btnTime" type="button" id="btn_init" onclick="tableinit()">시간초기화</button></span></td>--%>
-
-
-
-<%--				<td class="top" colspan="2" style="text-align: center">예약일시</td>--%>
-<%--			</tr>--%>
-
-<%--			<tr>--%>
-<%--				<td style="border:1px">--%>
-<%--					<table id="calendar">--%>
-
-<%--						<tr>--%>
-<%--							<td align="center"><label onclick="prevCalendar()"> ◀ </label></td>--%>
-<%--							<td colspan="5" align="center" id="calendarTitle">yyyy년 m월</td>--%>
-<%--							<td align="center"><label onclick="nextCalendar()"> ▶ </label></td>--%>
-<%--						</tr>--%>
-<%--						<tr>--%>
-<%--							<td align="center"><font color ="#F79DC2">일</td>--%>
-<%--							<td align="center">월</td>--%>
-<%--							<td align="center">화</td>--%>
-<%--							<td align="center">수</td>--%>
-<%--							<td align="center">목</td>--%>
-<%--							<td align="center">금</td>--%>
-<%--							<td align="center"><font color ="skyblue">토</td>--%>
-<%--						</tr>--%>
-
-<%--					</table>--%>
-<%--				</td>--%>
-
-<%--				<td>--%>
-<%--					<table id = "timeTable"></table>--%>
-
-<%--				</td>--%>
-
-
-<%--				<td class="content" style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%;">--%>
-
-
-<%--					<table id = "reservationselected"  style="border:1px;text-align: center; width: 100%;">--%>
-
-<%--						<tr style="text-align: center">--%>
-<%--							<td class="title" style="border:1px">--%>
-<%--								선택날짜--%>
-<%--							</td>--%>
-<%--							<td class="title" style="border:1px">--%>
-<%--								선택 시간--%>
-<%--							</td>--%>
-
-<%--						</tr>--%>
-
-<%--						<tr style="text-align: center">--%>
-
-<%--							<td class="content" style="text-align: center; border:1px">--%>
-<%--								<div>--%>
-<%--								<input id="selectedDate" style="border:none; width:150px"  name="selectedDate" value="" readonly="readonly" ></input>--%>
-<%--								</div>--%>
-
-<%--							</td>--%>
-<%--							<td class="content" style="text-align: center">--%>
-<%--								<div>--%>
-<%--								<input id="selectedTime" style="border:none; width:150px"  name="selectedTime" value="" readonly="readonly"></input>--%>
-
-<%--								<input id="selectedTime2" type="hidden" style="border:none"  name="selectedTime2" value="" readonly="readonly"></input>--%>
-<%--								</div>--%>
-
-<%--							</td>--%>
-
-
-<%--						</tr>--%>
-<%--					</table>--%>
-
-<%--					<input type="hidden" name="mseq" value="${mvo.mseq}"></input>--%>
-<%--					<input type="hidden" name="dseq" value="${dseq}"></input>--%>
-<%--					<input type="submit" value="예약" id="btn_submit">--%>
-
-<%--				</td>--%>
-
-
-<%--			</tr>--%>
-<%--			<tr>--%>
-<%--				<td>--%>
-<%--				<div><span style="color:#ff0000">빨간색<span> : 오전/오후중 하나가 이미 예약된날</div><br>--%>
-<%--				<div>회색 : 오전/오후가 모두 예약된날 혹은 휴무</div>--%>
-<%--				</td>--%>
-<%--			</tr>--%>
-<%--		</table>--%>
 
 			</form>
 
