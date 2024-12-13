@@ -57,7 +57,7 @@ public class AdminReservationService {
 
 
         paging.setDisplayPage(10);
-        paging.setDisplayRow(5);
+        paging.setDisplayRow(6);
 
         paging.setTotalCount(count);
         paging.calPaging();
@@ -125,7 +125,7 @@ public class AdminReservationService {
         Paging paging = new Paging();
         paging.setPage(page);
         paging.setDisplayPage(10);
-        paging.setDisplayRow(5);
+        paging.setDisplayRow(6);
 
         int count = addao.getAllCount( "memberreservationhistory", "membername", key);
         System.out.println("count : "+count);

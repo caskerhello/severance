@@ -20,15 +20,16 @@
             display: block;
             margin: 5px auto;
             padding: 5px 5px;
-            background-color: royalblue;
             border: none;
             border-radius: 5px;
             color: #fff;
             cursor: pointer;
-            transition: box-shadow 0.2s;
+            background-color: #7494ec;
+            outline: none;
+            transition: .3s;
         }
         .adminmodal_btn:hover {
-            box-shadow: 3px 4px 11px 0px #00000040;
+            background-color: #007cfb;
         }
 
 
@@ -505,7 +506,7 @@
 </form>
 
 <!-- Paging[s] -->
-<div>페이지 넘기기</div>
+
 <div class="board-list-paging">
     <c:set var="pageIndex" value="1"/>
 

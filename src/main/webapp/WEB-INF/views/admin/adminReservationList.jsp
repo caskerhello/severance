@@ -5,6 +5,46 @@
 <head>
     <title>Title</title>
 
+    <style>
+
+        .cancel-button{
+            width: 100px;
+            display: block;
+            margin: 5px auto;
+            padding: 5px 5px;
+            background-color: #F08282;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            transition: box-shadow 0.2s;
+        }
+
+        .cancel-button:hover {
+            background-color: #F06464
+        }
+
+        .result-button{
+            display: block;
+            margin: 5px auto;
+            padding: 5px 5px;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            background-color: #7494ec;
+            outline: none;
+            transition: .3s;
+        }
+
+        .result-button:hover {
+            background-color: #007cfb;
+        }
+
+
+
+    </style>
+
     <script type="text/javascript">
 
         function fn_go_page(pageNo) {
@@ -333,9 +373,9 @@
                             </c:when>
 
                             <c:when test="${reservationList1.result == 1}">예약 접수 중
-                            <div><input type="button" value="예약취소" onclick="admincancelreservation(${reservationList1.rseq})"/></div>
+                            <div><input type="button" value="예약취소" class="cancel-button" onclick="admincancelreservation(${reservationList1.rseq})"/></div>
 
-                            <div><input type="button" value="결과변경(상승)" onclick="adminSetReservationResultUp(${reservationList1.rseq},${paging.page})"/></div>
+                            <div><input type="button" value="결과변경(상승)" class="result-button" onclick="adminSetReservationResultUp(${reservationList1.rseq},${paging.page})"/></div>
 
 
 
@@ -369,7 +409,7 @@
 </form>
 
 <!-- Paging[s] -->
-<div>페이지 넘기기</div>
+
 <div class="board-list-paging">
     <c:set var="pageIndex" value="1"/>
 
