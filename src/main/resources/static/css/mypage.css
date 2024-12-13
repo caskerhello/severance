@@ -179,12 +179,9 @@ main.table{
 /*	overflow: auto; !* 콘텐츠가 넘칠 때 스크롤을 표시 *!*/
 /*}*/
 
-.pagination{
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	margin-top: 20px;
-}
+/* pagination 버튼 기본 스타일 */
+
+
 
 
 

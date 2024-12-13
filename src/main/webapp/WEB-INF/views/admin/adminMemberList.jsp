@@ -205,7 +205,7 @@
 </form>
 
 <!-- Paging[s] -->
-<div>페이지 넘기기</div>
+
 <div class="board-list-paging">
     <c:set var="pageIndex" value="1"/>
 

@@ -197,7 +197,67 @@ main.table{
     align-items: center;
     justify-content: center;
 
+}
 
+/* 전체 페이지 네비게이션 영역 */
+.paging {
+    display: flex;
+    justify-content: center; /* 가운데 정렬 */
+    align-items: center;
+    margin-bottom: 10px;
+}
+/* 페이지 번호들 */
+
+.coltitle5 {
+    font-weight: bold;
+    display: flex;
+    justify-content: center; /* 가운데 정렬 */
+    align-items: center;
+}
+
+/* 페이지 번호 링크 스타일 */
+.coltitle5 a {
+    display: inline-block;
+    padding: 5px 8px;
+    background-color: #7494ec;  /* 파란색 배경 */
+    color: white;
+    border-radius: 25px;  /* 둥근 버튼 */
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    margin-right: 10px; /* 페이지 번호 간 간격 */
+    transition: background-color 0.3s, transform 0.2s; /* 효과 전환 */
+    padding-left: 14px;
+}
+
+.coltitle5 .use {
+    background-color: #e74c3c;  /* 현재 페이지 색상 */
+    color: white;
+    padding: 3px 8px;
+    border-radius: 25px; /* 둥글게 */
+    margin-right: 10px;
+    padding-left: 14px; /* 텍스트를 오른쪽으로 밀기 */
+}
+
+/* 페이지 번호 링크 호버 효과 */
+.coltitle5 a:hover {
+    background-color: #007cfb;  /* 마우스 오버 시 짙은 파란색 */
+    transform: scale(1.1);  /* 크기 확대 */
+}
+
+
+/* 비활성화된 버튼(이전, 다음 버튼)이 있을 때 */
+.coltitle5 a:disabled {
+    background-color: #bdc3c7;  /* 비활성화된 버튼 색상 */
+    color: #ecf0f1;
+    cursor: not-allowed;
+}
+
+
+/* 이전/다음 버튼 호버 */
+.coltitle5 a:hover {
+    background-color: #007cfb;
+    transform: scale(1.2); /* 크기 확대 */
 }
 
 

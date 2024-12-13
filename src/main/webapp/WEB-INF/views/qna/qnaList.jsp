@@ -48,7 +48,7 @@
 	 </div>
 
 	<div class="paging">
-		<div class="coltitle" style="font-size:120%; font-weight:bold;">
+		<div class="coltitle5" style="font-size:120%; font-weight:bold; color: red;">
 			<c:if test="${paging.prev}" >
 			<a href="qnaList?page=${paging.beginPage-1}">◀</a>
 			</c:if>
