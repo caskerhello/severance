@@ -33,8 +33,8 @@ public class MemberVO {
     private String me_name;
     private String me_tel; // 필드명 수정 (me_phone -> me_tel)
     private String me_id;
+    private String me_email;
 
-    // Getter and Setter for me_name
     public String getMe_name() {
         return me_name;
     }
@@ -43,7 +43,6 @@ public class MemberVO {
         this.me_name = me_name;
     }
 
-    // Getter and Setter for me_tel
     public String getMe_tel() {
         return me_tel;
     }
@@ -52,12 +51,19 @@ public class MemberVO {
         this.me_tel = me_tel;
     }
 
-    // Getter and Setter for me_id
     public String getMe_id() {
         return me_id;
     }
 
     public void setMe_id(String me_id) {
         this.me_id = me_id;
+    }
+
+    public String getMe_email() {
+        return me_email;
+    }
+
+    public void setMe_email(String me_email) {
+        this.me_email = me_email;
     }
 }

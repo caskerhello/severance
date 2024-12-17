@@ -37,7 +37,7 @@ article button:hover {
     background-color: #0056b3;
 }
 
-#me_name, #me_tel {
+#me_name, #me_tel, #me_email {
     width: 100%; /* 부모 요소의 너비에 맞춤 */
     padding: 10px; /* 입력 필드 안쪽 여백 */
     font-size: 14px; /* 텍스트 크기 */

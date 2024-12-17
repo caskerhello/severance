@@ -42,12 +42,14 @@
         SELECT
             userid AS me_id,
             name AS me_name,
-            phone AS me_tel
+            phone AS me_tel,
+            email AS me_email
         FROM
             member
         WHERE
             name = #{me_name}
           AND phone = #{me_tel}
+            AND email = #{me_email}
             LIMIT 1
         ]]>
     </select>
