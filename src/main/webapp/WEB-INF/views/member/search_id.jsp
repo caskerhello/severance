@@ -11,7 +11,7 @@
     <article>
         <div class="box">
             <h1>아이디 찾기</h1>
-            <p>회원가입 시 작성한 이름과 핸드폰번호를 입력하세요 ☺</p>
+            <p>회원가입 시 작성한 이름, 핸드폰번호, 이메일을 입력하세요 ☺</p>
             <form action="/search_id_page" method="post">
                 <br />
 
