@@ -7,7 +7,7 @@
         <div class="footer1">
             <br>
             <div id="copy">
-                경기도 고양시 일산동구 중앙로 1317<br>
+                03722 서울특별시 서대문구 연세로 50-1<br>
                 사업자 등록번호 : 128-39-63754<br>
                 대표자 : 홍길동 / 상호 : 하이미디어 병원
 
@@ -16,8 +16,13 @@
                 </a>
 
                 <br><br>
-                All contents Copyright 2021 HJKang.co Inc. all rights reserved<br>
-                Contact mail : abc@abc.con Tel : +82 02 1234 1234  Fax : +82 02 1233 1234
+                COPYRIGHT(C) HIMEDIA HOSPITAL. ALL RIGHTS RESERVED.<br>
+                Contact mail : abc@abc.com
+                <hr />
+                Tel : +82 010 1234 1234
+                <hr />
+                Fax : +82 02 1234 1234
+                <hr />
             </div>
         </div>
 
