@@ -112,21 +112,21 @@
 
                         if (value.result == 4) {
                             content += '진료 완료';
-                            content += '<div><input type="button" value="결과변경(하락)" onclick="adminSetReservationResultDown(' + value.rseq + ',' + paging2.page + ')"/></div>';
+                            content += '<div><input type="button" value="결과변경(하락)" class="result-button" onclick="adminSetReservationResultDown(' + value.rseq + ',' + paging2.page + ')"/></div>';
                         } else if (value.result == 3) {
                             content += '예약 완료';
-                            content += '<div><input type="button" value="예약취소" onclick="admincancelreservation(' + value.rseq + ')"/></div>';
-                            content += '<div><input type="button" value="결과변경(상승)" onclick="adminSetReservationResultUp(' + value.rseq + ',' + paging2.page + ')"/></div>';
-                            content += '<div><input type="button" value="결과변경(하락)" onclick="adminSetReservationResultDown(' + value.rseq + ',' + paging2.page + ')"/></div>';
+                            content += '<div><input type="button" value="예약취소" class="cancel-button" onclick="admincancelreservation(' + value.rseq + ')"/></div>';
+                            content += '<div><input type="button" value="결과변경(상승)" class="result-button" onclick="adminSetReservationResultUp(' + value.rseq + ',' + paging2.page + ')"/></div>';
+                            content += '<div><input type="button" value="결과변경(하락)" class="result-button" onclick="adminSetReservationResultDown(' + value.rseq + ',' + paging2.page + ')"/></div>';
                         } else if (value.result == 2) {
                             content += '예약 접수 완료';
-                            content += '<div><input type="button" value="예약취소" onclick="admincancelreservation(' + value.rseq + ')"/></div>';
-                            content += '<div><input type="button" value="결과변경(상승)" onclick="adminSetReservationResultUp(' + value.rseq + ',' + paging2.page + ')"/></div>';
-                            content += '<div><input type="button" value="결과변경(하락)" onclick="adminSetReservationResultDown(' + value.rseq + ',' + paging2.page + ')"/></div>';
+                            content += '<div><input type="button" value="예약취소" class="cancel-button" onclick="admincancelreservation(' + value.rseq + ')"/></div>';
+                            content += '<div><input type="button" value="결과변경(상승)" class="result-button" onclick="adminSetReservationResultUp(' + value.rseq + ',' + paging2.page + ')"/></div>';
+                            content += '<div><input type="button" value="결과변경(하락)" class="result-button" onclick="adminSetReservationResultDown(' + value.rseq + ',' + paging2.page + ')"/></div>';
                         } else if (value.result == 1){
                             content += '예약 접수 중';
-                            content += '<div><input type="button" value="예약취소" onclick="admincancelreservation(' + value.rseq +')"/></div>';
-                            content += '<div><input type="button" value="결과변경(상승)" onclick="adminSetReservationResultUp(' + value.rseq + ',' + paging2.page + ')"/></div>';
+                            content += '<div><input type="button" value="예약취소" class="cancel-button" onclick="admincancelreservation(' + value.rseq +')"/></div>';
+                            content += '<div><input type="button" value="결과변경(상승)" class="result-button" onclick="adminSetReservationResultUp(' + value.rseq + ',' + paging2.page + ')"/></div>';
                         }
 
                         content += '</td>';
@@ -358,17 +358,17 @@
                             <c:choose>
                             <c:when test="${reservationList1.result == 4}">진료 완료
 
-                                <div><input type="button" value="결과변경(하락)" onclick="adminSetReservationResultDown(${reservationList1.rseq},${paging.page})"/></div></c:when>
+                                <div><input type="button" value="결과변경(하락)" class="result-button" onclick="adminSetReservationResultDown(${reservationList1.rseq},${paging.page})"/></div></c:when>
 
                             <c:when test="${reservationList1.result == 3}">예약 완료
-                                <div><input type="button" value="예약취소" onclick="admincancelreservation(${reservationList1.rseq})"/></div>
-                                <div><input type="button" value="결과변경(상승)" onclick="adminSetReservationResultUp(${reservationList1.rseq},${paging.page})"/></div>
-                                <div><input type="button" value="결과변경(하락)" onclick="adminSetReservationResultDown(${reservationList1.rseq},${paging.page})"/></div></c:when>
+                                <div><input type="button" value="예약취소" class="cancel-button" onclick="admincancelreservation(${reservationList1.rseq})"/></div>
+                                <div><input type="button" value="결과변경(상승)" class="result-button" onclick="adminSetReservationResultUp(${reservationList1.rseq},${paging.page})"/></div>
+                                <div><input type="button" value="결과변경(하락)" class="result-button" onclick="adminSetReservationResultDown(${reservationList1.rseq},${paging.page})"/></div></c:when>
 
                             <c:when test="${reservationList1.result == 2}">예약 접수 완료
-                                <div><input type="button" value="예약취소" onclick="admincancelreservation(${reservationList1.rseq})"/></div>
-                                <div><input type="button" value="결과변경(상승)" onclick="adminSetReservationResultUp(${reservationList1.rseq},${paging.page})"/></div>
-                                <div><input type="button" value="결과변경(하락)" onclick="adminSetReservationResultDown(${reservationList1.rseq},${paging.page})"/></div>
+                                <div><input type="button" value="예약취소" class="cancel-button" onclick="admincancelreservation(${reservationList1.rseq})"/></div>
+                                <div><input type="button" value="결과변경(상승)" class="result-button"  onclick="adminSetReservationResultUp(${reservationList1.rseq},${paging.page})"/></div>
+                                <div><input type="button" value="결과변경(하락)" class="result-button" onclick="adminSetReservationResultDown(${reservationList1.rseq},${paging.page})"/></div>
 
                             </c:when>
 
