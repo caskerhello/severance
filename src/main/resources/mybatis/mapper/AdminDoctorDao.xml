@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.third.severance.dao.admin.IAdminDoctorDao">
+<!--    <select id="getAllDoctor" resultType="com.third.severance.dto.DoctorVO" >-->
+<!--        select * from doctor-->
+<!--    </select>-->
+
+
+    <select id="getAllCount" resultType="_int">
+        select count(*) from ${param1} where ${param2} like concat('%' , #{param3}, '%')
+    </select>
+
+    <select id="getDoctorList" resultType="com.third.severance.dto.DoctorVO">
+        select * from doctor where name like concat('%' , #{param2}, '%')  order by dseq desc limit #{param1.displayRow} offset #{param1.startNum}
+    </select>
+
+    <select id="getAdminDoctor" resultType="com.third.severance.dto.DoctorVO">
+        select * from doctor where dseq=#{dseq}
+    </select>
+
+    <update id="updateAdminDoctor" parameterType="com.third.severance.dto.DoctorVO">
+                update doctor set name=#{name}, doctorsection=#{doctorsection}, content=#{content}, image=#{image},savefilename=#{savefilename},
+                                  daylimit=#{daylimit}, bachd=#{bachd}, mastd=#{mastd}, doctd=#{doctd}, resume=#{resume}, univlogo=#{univlogo}, univlogofilename=#{univlogofilename}
+                where dseq=#{dseq}
+    </update>
+
+    <delete id="adminDoctorDelete">
+        delete from doctor where dseq=#{dseq}
+    </delete>
+
+
+
+
+
+
+
+    <insert id="insertAdminDoctor" parameterType="com.third.severance.dto.DoctorVO">
+        insert into doctor(name, doctorsection, content, image, savefilename, daylimit, bachd, mastd,doctd, resume, univlogo,univlogofilename)values(#{name},#{doctorsection},#{content},#{image},#{savefilename},#{daylimit},#{bachd},#{mastd},#{doctd},#{resume},#{univlogo},#{univlogofilename})
+    </insert>
+
+</mapper>

@@ -1,0 +1,187 @@
+@charset "UTF-8";
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: sans-serif;
+}
+
+.container{
+	display: flex;
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+	align-items: center;
+	border-top: 1px solid rgba(128, 128, 128, 0.5); /* 회색 반투명 경계선 */
+	background :#ffffff;
+	background: url("../images/bck.jpg") center center no-repeat;
+	background-position: bottom right;
+	/*overflow: auto;*/
+}
+
+main{
+	min-height: 100vh;
+	display: flex; /* main을 flex로 설정하여 자동 크기 조정 */
+	flex-direction: column;
+	align-items: center;
+	width: 100%; /* 부모 너비 100% */
+	justify-content: flex-start;
+}
+
+main.table{
+	display: block;
+	flex-direction: column;
+	width: 1600px;
+	background-color: #fff5;
+	box-shadow: 0.4rem .8rem #0005;
+	border-radius: .8rem;
+	backdrop-filter: blur(7px);
+	background :#c9d6ff;
+	min-height: 100px;
+	flex-grow: 0;
+	flex-shrink: 0;
+	margin: 50px auto;
+	padding-bottom: 20px;
+	/*overflow-x: auto;*/
+}
+
+.mypagerow {
+	display: flex;
+	justify-content: space-between; /* 항목들 간 균등한 간격 배치 */
+	width: 100%; /* 전체 너비 사용 */
+}
+
+.coltitle{
+	display: flex;
+	justify-content: center; /* 항목 텍스트 중앙 정렬 */
+	align-items: center; /* 항목 세로 중앙 정렬 */
+	font-size: 20px;
+	font-weight: bold;
+	flex: 1; /* 균등하게 너비 분배 */
+	text-align: center;
+	padding: 10px;
+}
+
+
+.table_header{
+	display: flex;
+	justify-content: space-between; /* h1과 nav 사이에 최대한의 공간을 배분 */
+	align-items: center;
+	width: 100%;
+	height: 65px;
+	background-color: #fff4;
+	padding: .8rem 2rem	;
+}
+
+.table_header h1 {
+	margin: 0; /* 기본 여백 제거 */
+}
+
+.sub_menu {
+	display: flex; /* 메뉴 아이템들을 가로로 나열 */
+	gap: 20px; /* 메뉴 항목 사이 간격 설정 */
+}
+
+.sub_menu div {
+	display: inline-block; /* 기본적인 블록으로 설정 */
+}
+
+.sub_menu a {
+	text-decoration: none; /* 링크 밑줄 제거 */
+	font-size: 16px; /* 폰트 크기 */
+	background-color: #7494ec; /* 배경 */
+	color: white; /* 글자색은 흰색 */
+	padding: 10px 20px; /* 여백 */
+	border-radius: 8px; /* 모서리 둥글게 */
+	cursor: pointer; /* 마우스 커서 포인터 */
+	transition: background-color 0.3s, transform 0.3s;
+	border: none;
+}
+
+/* 링크에 마우스 올릴 때 스타일 */
+.sub_menu a:hover {
+	background-color: #007cfb; /* 마우스 올렸을 때 */
+	transform: scale(1.1); /* 약간 커지는 효과 */
+}
+
+.sub_menu a:active {
+	background-color: #2faaff; /* 클릭 시 배경색 변경 */
+	transform: scale(1); /* 클릭 시 크기 리셋 */
+}
+
+.table_body{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 1500px;
+	height: 0;
+	background-color: #fffb;
+	border-radius: .6rem;
+	margin: 0 auto;
+	margin-top: 30px;
+	padding: 20px 0;
+}
+
+.list{
+	display: flex;
+	flex-direction: column;
+	width: 1500px;
+	margin: 0 auto;
+	margin-top: 30px;
+	background-color: #fffb;
+	border-radius: .6rem;
+	flex-grow: 1;
+}
+
+.coltitle, .col {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 18px;
+	font-weight: bold;
+	flex: 1; /* 동일한 너비 분배 */
+	text-align: center;
+	padding: 10px;
+}
+
+.list .mypagerow:nth-child(even) {
+	background-color: #0000000b; /* 짝수 행에 배경색 추가 */
+}
+
+/* 기본 예약취소 버튼 스타일 */
+.cancel-button {
+	background-color: #7494ec; /* 빨간색 배경 */
+	color: white; /* 글자색은 흰색 */
+	padding: 10px 20px; /* 여백 */
+	font-size: 16px; /* 글자 크기 */
+	border-radius: 8px; /* 모서리 둥글게 */
+	cursor: pointer; /* 마우스 커서 포인터 */
+	transition: background-color 0.3s, transform 0.3s; /* 배경색과 애니메이션 */
+	border: none;
+}
+
+/* 마우스 오버시 배경색 변경 */
+.cancel-button:hover {
+	background-color: #007cfb; /* 마우스 올렸을 때 */
+
+}
+
+/* 마우스 클릭시 효과 */
+.cancel-button:active {
+	background-color: #2faaff; /* 클릭 시 배경색 변경 */
+	transform: scale(1); /* 클릭 시 크기 리셋 */
+}
+
+/*html, body {*/
+/*	height: 100%; !* 페이지 높이를 100%로 설정 *!*/
+/*	margin: 0; !* 기본 여백 제거 *!*/
+/*	overflow: auto; !* 콘텐츠가 넘칠 때 스크롤을 표시 *!*/
+/*}*/
+
+/* pagination 버튼 기본 스타일 */
+
+
+
+
+

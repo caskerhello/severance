@@ -1,0 +1,68 @@
+/* 전체 컨테이너 설정 */
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*height: 100vh;*/
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* 카드 스타일 */
+article {
+    width: 100%;
+    max-width: 1000px; /* 최대 크기를 제한 */
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; /* 패딩 포함 크기 계산 */
+    text-align: left;
+}
+
+/* 버튼 */
+article button {
+    width: 100%; /* 버튼이 부모 요소 크기를 따르도록 설정 */
+    padding: 10px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+article button:hover {
+    background-color: #0056b3;
+}
+
+input[type="text"],
+input[type="email"] {
+    width: 100%; /* 부모 요소의 너비에 맞춤 */
+    padding: 10px; /* 입력 필드 안쪽 여백 */
+    font-size: 14px; /* 텍스트 크기 */
+    border: 1px solid #ddd; /* 테두리 설정 */
+    border-radius: 5px; /* 모서리 둥글게 설정 */
+    box-sizing: border-box; /* 패딩 포함 크기 계산 */
+    margin-top: 5px;
+    margin-bottom: 15px; /* 아래 여백 추가 */
+    outline: none; /* 포커스 시 기본 outline 제거 */
+}
+
+/* 반응형 디자인 */
+@media (max-width: 800px) {
+
+    article h3 {
+        font-size: 20px; /* 제목 크기를 줄임 */
+    }
+
+    article p {
+        font-size: 12px; /* 설명 크기를 줄임 */
+    }
+
+    article input[type="text"], input[type="email"]
+    article button {
+        font-size: 14px; /* 버튼과 입력 필드의 글꼴 크기를 줄임 */
+    }
+}

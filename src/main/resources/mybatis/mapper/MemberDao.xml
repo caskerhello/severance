@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.third.severance.dao.IMemberDao">
+    <select id="getMember" resultType="com.third.severance.dto.MemberVO" >
+        select * from member where userid=#{userid}
+    </select>
+
+    <insert id="insertMember" parameterType="com.third.severance.dto.MemberVO">
+        insert into member( userid, pwd, name, email, zip_num, address, phone)
+        values( #{userid}, #{pwd}, #{name}, #{email}, #{zip_num}, #{address}, #{phone})
+    </insert>
+
+    <update id="updateMember" parameterType="com.third.severance.dto.MemberVO">
+        update member
+        set pwd=#{pwd}, phone=#{phone}, email=#{email}, zip_num=#{zip_num}, address=#{address}
+        where userid=#{userid}
+    </update>
+
+    <delete id="deleteMember">
+        delete from member where userid=#{param1}
+    </delete>
+
+<!--    <select id="memberIdSearch" parameterType="com.third.severance.dto.MemberVO" resultType="com.third.severance.dto.MemberVO">-->
+<!--     <![CDATA[-->
+<!--        SELECT-->
+<!--            userid AS me_id,-->
+<!--            name AS me_name,-->
+<!--            phone AS me_tel-->
+<!--        FROM-->
+<!--            member-->
+<!--        WHERE-->
+<!--            name = #{me_name}-->
+<!--          AND phone = #{me_tel}-->
+<!--        ]]>-->
+<!--     </select>-->
+
+    <select id="memberIdSearch" parameterType="com.third.severance.dto.MemberVO" resultType="com.third.severance.dto.MemberVO">
+    <![CDATA[
+        SELECT
+            userid AS me_id,
+            name AS me_name,
+            phone AS me_tel,
+            email AS me_email
+        FROM
+            member
+        WHERE
+            name = #{me_name}
+          AND phone = #{me_tel}
+            AND email = #{me_email}
+            LIMIT 1
+        ]]>
+    </select>
+
+
+    <select id="isUserExist" resultType="int">
+        SELECT COUNT(*)
+        FROM member
+        WHERE email = #{email} AND name = #{name}
+    </select>
+
+    <update id="updatePassword">
+        UPDATE member
+        SET pwd = #{pwd}
+        WHERE email = #{email} AND name = #{name}
+    </update>
+
+</mapper>

@@ -1,0 +1,76 @@
+/* 전체 컨테이너 설정 */
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* 카드 스타일 */
+article {
+    width: 100%;
+    max-width: 1000px;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    text-align: left;
+}
+
+/* 입력 필드 */
+article input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    outline: none;
+}
+
+/* 버튼 스타일 */
+.btn {
+    display: inline-block;
+    width: 100%; /* 버튼을 전체 너비로 설정 */
+    padding: 10px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* 버튼 hover 상태 */
+.btn:hover {
+    background-color: #0056b3;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 800px) {
+    article {
+        padding: 10px;
+    }
+
+    article h1 {
+        font-size: 20px;
+    }
+
+    article p {
+        font-size: 12px;
+    }
+
+    article input[type="text"] {
+        font-size: 14px;
+    }
+
+    .btn {
+        font-size: 14px;
+    }
+}
