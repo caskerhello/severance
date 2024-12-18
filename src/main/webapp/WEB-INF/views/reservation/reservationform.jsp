@@ -728,7 +728,7 @@
 			<div class="contact-box2">
 
 				<div class="left3">
-					<img src="images/Doctor_image/${detail.savefilename}" />
+					<img src="doctor_images/${detail.savefilename}" />
 				</div>
 
 				<div class="right3">

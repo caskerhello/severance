@@ -35,7 +35,7 @@
 
   <section class="history">
     <div class="mark">
-      <img src="doctor_images/${dvo.univlogo}" />
+      <img src="doctor_images/${dvo.univlogofilename}" />
     </div>
 
     <div class="profile-text">
