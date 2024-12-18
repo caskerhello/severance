@@ -17,19 +17,17 @@
 
                 <br><br>
                 COPYRIGHT(C) HIMEDIA HOSPITAL. ALL RIGHTS RESERVED.<br>
-                Contact mail : abc@abc.com
-                <hr />
-                Tel : +82 010 1234 1234
-                <hr />
-                Fax : +82 02 1234 1234
-                <hr />
+                Contact mail : abc@abc.com<br>
+                Tel : +82 010 1234 1234 &nbsp&nbsp Fax : +82 02 1234 1234
+
+
             </div>
         </div>
 
         <div class="footer2">
             <br>
             <div id="copy1">
-                <img src="/images/hstime.png"/>
+                <img src="/images/hstime2.png"/>
 
             </div>
         </div>
