@@ -728,7 +728,7 @@
 			<div class="contact-box2">
 
 				<div class="left3">
-					<img src="images/Doctor_image/${detail.savefilename}" />
+					<img src="doctor_images/${detail.savefilename}" />
 				</div>
 
 				<div class="right3">
@@ -862,7 +862,14 @@
 
 														<input type="hidden" name="mseq" value="${mvo.mseq}"></input>
 														<input type="hidden" name="dseq" value="${dseq}"></input>
-														<div>${validmsg}</div>
+														<div><input
+																type="text"
+																class="field3"
+
+																value="${validmsg}"
+																readonly
+																<c:if test="${not empty validmsg}">autofocus</c:if>
+														/></div>
 														<input type="submit" value="예약" id="btn_submit">
 
 
