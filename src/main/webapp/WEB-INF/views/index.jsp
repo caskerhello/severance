@@ -4,6 +4,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
+<script>
+    // 메시지가 있을 경우 팝업 띄우기
+    window.onload = function() {
+        const message = "${message}";
+        if (message) {
+            alert(message);
+        }
+    };
+</script>
+
 <!-- 가운데 -->
 <div class="container">
     <section class="center">
