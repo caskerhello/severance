@@ -22,7 +22,7 @@
 				<div class="agreement-detail">
 					<div>
 						<input type="checkbox" id="terms-service" name="termsService" class="sub-checkbox" required />
-						<label for="terms-service">연세메모리의 이용약관(필수)</label>
+						<label for="terms-service">하이미디어 병원 이용약관(필수)</label>
 						<textarea readonly>
 제 1조 목적
 본 약관은 하이미디어 병원이 제공하는 [진료예약] 서비스(이하 "서비스")의 이용 조건 및 절차, 이용자와 회사 간의 권리와 의무를 규정하는 것을 목적으로 합니다.
