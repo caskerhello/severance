@@ -59,7 +59,8 @@ public class mypageController2 {
             model.addAttribute("message", "패스워드를 입력하세요");
         } else if (!membervo.getPwd().equals(pwdCheck)) {
             model.addAttribute("message", "패스워드 확인이 일치하지 않습니다");
-        } else {
+        }
+        else {
             // 모든 유효성 검사를 통과했을 경우
             rs2.updateMember(membervo); // 회원정보 업데이트
 
@@ -69,6 +70,8 @@ public class mypageController2 {
             System.out.println(membervo);
 
             session.setAttribute("loginUser", membervo); // 세션 정보 갱신
+            System.out.println("Updated session user: " + session.getAttribute("loginUser"));
+
             url = "redirect:/"; // 성공 시 메인페이지(/) 리다이렉트
         }
         redirectAttributes.addFlashAttribute("message", "회원정보가 성공적으로 수정되었습니다.");
