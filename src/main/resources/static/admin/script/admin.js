@@ -159,16 +159,16 @@ function adminDoctorUpdateForm(dseq,page) {
 
             content += '<tr>';
 
-
+            content += '<td>' + '번호' + '</td>';
             content += '<td id="admindoctorupdatedseq">' + result.dseq + '</td>';
             // content +=    '<td>' + result.name + '</td>';
             // content +=    '<td>' + result.doctorsection + '</td>';
-            content += '<td colspan="3">' + result.content + '</td>';
+            // content += '<td colspan="3">' + result.content + '</td>';
             // content +=    '<td>' +  result.bachd  +'</td>';
             // content +=    '<td>' +  result.mastd  +'</td>';
             // content +=    '<td>' +  result.doctd  +'</td>';
             // content +=    '<td>' +  result.resume  +'</td>';
-            content += '<td>' + result.univlogo + '</td>';
+            // content += '<td>' + result.univlogo + '</td>';
 
             content += '</tr>';
 
@@ -180,10 +180,10 @@ function adminDoctorUpdateForm(dseq,page) {
             // content +=    '<td>' + result.name + '</td>';
             // content +=    '<td>' + result.doctorsection + '</td>';
             // content +=    '<td colspan="3">' + result.content + '</td>';
-            content += '<td>' + '약력' + '</td>';
-            content += '<td>' + '[학부]' + result.bachd + '<br>' + '[석사]' + result.mastd + '</td>';
-
-            content += '<td>' + '[박사]' + result.doctd + '<br>' + '[경력]' + result.resume + '</td>';
+            // content += '<td>' + '약력' + '</td>';
+            // content += '<td>' + '[학부]' + result.bachd + '<br>' + '[석사]' + result.mastd + '</td>';
+            //
+            // content += '<td>' + '[박사]' + result.doctd + '<br>' + '[경력]' + result.resume + '</td>';
 
             // content +=    '<td>' +  result.univlogo  +'</td>';
 
@@ -192,25 +192,33 @@ function adminDoctorUpdateForm(dseq,page) {
             content += '<tr>';
 
 
-            content += '<td>' + result.name + '</td>';
-            content += '<td><input type="text" id="admindoctorupdatename" placeholder="이름"/></td>';
-            content += '<td><input type="text" id="admindoctorupdatedoctorsection" placeholder="진료과"/></td>';
-
-            content += '<td><input type="text" id="admindoctorupdatedaylimit" placeholder="출근일"/></td>';
+            content += '<td>' + '이름' + '</td>';
+            content += '<td><input type="text" id="admindoctorupdatename" placeholder="이름" value="' + result.name + '"/></td>';
+            content += '<td>' + '진료과' + '</td>';
+            content += '<td><input type="text" id="admindoctorupdatedoctorsection" placeholder="진료과" value="' + result.doctorsection + '"/></td>';
+            content += '<td>' + '출근일' + '</td>';
+            content += '<td><input type="text" id="admindoctorupdatedaylimit" placeholder="출근일" value="' + result.daylimit + '"/></td>';
 
             content += '</tr>';
 
             content += '<tr>';
-            content += '<td colspan="5"><textarea id="admindoctorupdatecontent" placeholder="과 설명" rows="4" cols="200"/></td>';
+            content += '<td colspan="5"><textarea id="admindoctorupdatecontent" placeholder="과 설명" rows="4" cols="200">' + result.content + '</textarea></td>';
             content += '</tr>';
 
 
             content += '<tr>';
 
 
-            content += '<td>' + '약력' + '</td>';
+            content += '<td>' + '약력1' + '</td>';
 
-            content += '<td colspan="4"><input type="text" style="width: 300px;" id="admindoctorupdatebachd" placeholder="학부"/><input type="text" style="width: 300px;" id="admindoctorupdatemastd" placeholder="석사"/><input type="text" style="width: 300px;" id="admindoctorupdatedoctd" placeholder="박사"/><input type="text" style="width: 300px;" id="admindoctorupdateresume" placeholder="이력"/></td>';
+            content += '<td colspan="4"><input type="text" style="width: 300px;" id="admindoctorupdatebachd" placeholder="학부" value="'+result.bachd+'"/>' +
+                '<input type="text" style="width: 300px;" id="admindoctorupdatemastd" placeholder="석사" value="'+result.mastd+'"/></td>'
+            content += '</tr>';
+
+            content += '<tr>';
+            content += '<td>' + '약력2' + '</td>';
+            content += '<td colspan="4"><input type="text" style="width: 300px;" id="admindoctorupdatedoctd" placeholder="박사" value="'+result.doctd+'"/>' +
+                '<input type="text" style="width: 300px;" id="admindoctorupdateresume" placeholder="이력" value="'+result.resume+'"/></td>';
 
             // content +=    '<td>' +  result.univlogo  +'</td>';
 
@@ -329,9 +337,21 @@ function adminDoctorInsertForm() {
     content += '<tr>';
 
 
-    content += '<td>' + '정보입력' + '</td>';
+    content += '<td>' + '정보입력1' + '</td>';
 
-    content += '<td colspan="4"><input type="text" style="width: 300px;" id="admindoctorinsertbachd" placeholder="학부"/><input type="text" style="width: 300px;" id="admindoctorinsertmastd" placeholder="석사"/><input type="text" style="width: 300px;" id="admindoctorinsertdoctd" placeholder="박사"/><input type="text" style="width: 300px;" id="admindoctorinsertresume" placeholder="이력"/></td>';
+    content += '<td colspan="4">' +
+        '<input type="text" style="width: 300px;" id="admindoctorinsertbachd" placeholder="학부"/>' +
+        '<input type="text" style="width: 300px;" id="admindoctorinsertmastd" placeholder="석사"/>'
+    content += '</tr>';
+
+    content += '<tr>';
+
+    content += '<td>' + '정보입력2' + '</td>';
+
+    content += '<td colspan="4">' +
+
+        '<input type="text" style="width: 300px;" id="admindoctorinsertdoctd" placeholder="박사"/>' +
+        '<input type="text" style="width: 300px;" id="admindoctorinsertresume" placeholder="이력"/></td>';
 
     // content +=    '<td>' +  result.univlogo  +'</td>';
 

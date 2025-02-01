@@ -24,7 +24,16 @@ body{
     border-radius: 30px;
 }
 
-.main-img{
+.ri-account-circle-fill{
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    top: -70px;
+    left: calc(48% - 50px);
+}
+
+
+#main-img{
     position: absolute;
     width: 120px;
     height: 120px;
