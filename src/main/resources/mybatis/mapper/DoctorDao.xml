@@ -9,14 +9,14 @@
 
     <select id="getDoctor" resultType="com.third.severance.dto.DoctorVO">
 
-        select * from DOCTOR where dseq=#{param1}
+        select * from doctor where dseq=#{param1}
     </select>
 
 
 
 
     <select id="selectSection" resultType="com.third.severance.dto.DoctorVO">
-        select * from DOCTOR where doctorsection=#{param1}
+        select * from doctor where doctorsection=#{param1}
     </select>
 
 </mapper>
